@@ -9,8 +9,15 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    // MARK: - Nodes
     private var player = SKShapeNode(circleOfRadius: 15)
-    private var screenSize = UIScreen.main.bounds
+    
+    // MARK: - Sizes
+    private var screenHeight = UIScreen.main.bounds.height
+    private var screenWidth = UIScreen.main.bounds.width
+    
+    // MARK: - Collision Categories
+    let playerCategory: UInt32 = 1 << 5
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -19,33 +26,18 @@ class GameScene: SKScene {
     }
     
     func createSceneBoundingBox() {
-        self.view?.showsPhysics = true
-
-        let rect = CGRect(x: 0, y: 0, width: screenSize.width/3, height: screenSize.height)
-        let leftWall = SKShapeNode(rect: rect)
-        leftWall.fillColor = .red
-
-        #warning("this is vrong")
-        let verticalWallPhysics = SKPhysicsBody(rectangleOf: leftWall.frame.size)
-        verticalWallPhysics.node?.position = CGPoint(x: 0, y: 0)
-        
-        verticalWallPhysics.affectedByGravity = false
-        verticalWallPhysics.collisionBitMask = 0b0001
-        
-        leftWall.physicsBody = verticalWallPhysics
-        
-        self.addChild(leftWall)
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
     }
     
     func createPlayer() {
         self.player.fillColor = .green
         self.player.strokeColor = .clear
-        self.player.position = CGPoint(x: 0, y: -(screenSize.height/2.5))
+        self.player.position = CGPoint(x: 0, y: -(screenHeight/2.5))
         let physics = SKPhysicsBody(circleOfRadius: (self.player.path?.boundingBox.width)!/2)
-        physics.collisionBitMask = 0b0001
+        physics.categoryBitMask = playerCategory
         physics.affectedByGravity = false
         self.player.physicsBody = physics
-        
+
         self.addChild(player)
     }
     
