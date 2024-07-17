@@ -19,6 +19,7 @@ class GameScene: SKScene {
     // MARK: - Collision Categories
     let playerCategory: UInt32 = 1 << 5
     let obstaclesCategory: UInt32 = 1 << 4
+    let bonusCategory: UInt32 = 1 << 3
     
     // MARK: - Variables
     private var isTouching: Bool = false
@@ -27,6 +28,8 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        physicsWorld.contactDelegate = self
+        
         createSceneBoundingBox()
         createPlayer()
     }
@@ -43,9 +46,13 @@ class GameScene: SKScene {
         self.player.position = CGPoint(x: 0, y: -(screenHeight/2.5))
         self.player.zPosition = 1
         
-        let physics = SKPhysicsBody(circleOfRadius: (self.player.path?.boundingBox.width)!/2)
-        physics.categoryBitMask = playerCategory
+        let physics = SKPhysicsBody(circleOfRadius: 15)
+        physics.isDynamic = true
         physics.affectedByGravity = false
+        physics.usesPreciseCollisionDetection = true
+        physics.categoryBitMask = playerCategory
+        physics.collisionBitMask = obstaclesCategory
+        physics.contactTestBitMask = obstaclesCategory | bonusCategory
         self.player.physicsBody = physics
 
         self.addChild(player)
@@ -64,8 +71,11 @@ class GameScene: SKScene {
         obstacle.zPosition = 1
         
         let physics = SKPhysicsBody(rectangleOf: CGSize(width: obstacleSize, height: obstacleSize))
-        physics.categoryBitMask = obstaclesCategory
+        physics.isDynamic = false
         physics.affectedByGravity = false
+        physics.usesPreciseCollisionDetection = true
+        physics.categoryBitMask = obstaclesCategory
+        physics.contactTestBitMask = playerCategory
         obstacle.physicsBody = physics
         
         addChild(obstacle)
@@ -90,6 +100,17 @@ extension GameScene {
             if node.position.y <= -self.screenHeight/2 + 15 { // 15 é o tamanho do obstáculo, ajustar depois
                 node.removeFromParent()
             }
+        }
+    }
+}
+
+// MARK: - Physics
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        print(contact.bodyA.categoryBitMask)
+        if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == obstaclesCategory) || (
+            contact.bodyA.categoryBitMask == obstaclesCategory) && (contact.bodyB.categoryBitMask == playerCategory) {
+            self.scene?.isPaused = true
         }
     }
 }
