@@ -24,7 +24,8 @@ class GameScene: SKScene {
     // MARK: - Variables
     private var isTouching: Bool = false
     private var touchLocation: CGFloat = 0.0
-    private var lastCurrentTime: Double = -1
+    private var lastCurrentTimeObstacle: Double = -1
+    private var lastCurrentTimeBonus: Double = -1
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -80,6 +81,30 @@ class GameScene: SKScene {
         
         addChild(obstacle)
     }
+    
+    func createBonus() {
+        let bonusSize = 15
+        let bonus = SKShapeNode(rectOf: CGSize(width: bonusSize, height: bonusSize))
+        bonus.name = "Bonus"
+        bonus.strokeColor = .clear
+        bonus.fillColor = .blue
+        
+        let x = getPosition()
+        let obstaclePosition = CGPoint(x: x, y: screenHeight/2)
+        bonus.position = obstaclePosition
+        bonus.zPosition = 1
+        bonus.zRotation = 0.785398
+        
+        let physics = SKPhysicsBody(rectangleOf: CGSize(width: bonusSize, height: bonusSize))
+        physics.isDynamic = false
+        physics.affectedByGravity = false
+        physics.usesPreciseCollisionDetection = true
+        physics.categoryBitMask = bonusCategory
+        physics.contactTestBitMask = playerCategory
+        bonus.physicsBody = physics
+        
+        addChild(bonus)
+    }
 }
 
 // MARK: - Moves
@@ -102,15 +127,33 @@ extension GameScene {
             }
         }
     }
+    
+    func moveBonus() {
+        self.enumerateChildNodes(withName: "Bonus") { node, error in
+            node.position.y -= 2 // aqui que define a velocidade na qual serão movidos os bonus
+            if node.position.y <= -self.screenHeight/2 + 15 { // 15 é o tamanho do bonus, ajustar depois
+                node.removeFromParent()
+            }
+        }
+    }
 }
 
 // MARK: - Physics
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-        print(contact.bodyA.categoryBitMask)
         if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == obstaclesCategory) || (
             contact.bodyA.categoryBitMask == obstaclesCategory) && (contact.bodyB.categoryBitMask == playerCategory) {
             self.scene?.isPaused = true
+        }
+        
+        if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == bonusCategory) || (
+            contact.bodyA.categoryBitMask == bonusCategory) && (contact.bodyB.categoryBitMask == playerCategory) {
+            print("bonus")
+            if contact.bodyA.categoryBitMask == bonusCategory {
+                contact.bodyA.node?.removeFromParent()
+            } else if contact.bodyB.categoryBitMask == bonusCategory {
+                contact.bodyB.node?.removeFromParent()
+            }
         }
     }
 }
@@ -144,22 +187,33 @@ extension GameScene {
 // MARK: - Update
 extension GameScene {
     override func update(_ currentTime: TimeInterval) {
-        // MARK: Player movement
+        if lastCurrentTimeObstacle == -1 {
+            lastCurrentTimeObstacle = currentTime
+            lastCurrentTimeBonus = currentTime
+        }
+        
+        let deltaTimeObstacle = currentTime - lastCurrentTimeObstacle
+        let deltaTimeBonus = currentTime - lastCurrentTimeBonus
+        
+        // Player movement
         movePlayer()
         
-        // MARK: Generate obstacles
-        if lastCurrentTime == -1 {
-            lastCurrentTime = currentTime
-        }
-        
-        let deltaTime = currentTime - lastCurrentTime
-        
-        if deltaTime > 2.5 { // aqui que define a velocidade na qual serão gerados novos obstáculos
+        // Generate obstacles
+        if deltaTimeObstacle > 2.5 { // aqui que define a velocidade na qual serão gerados novos obstáculos
             createObstacles()
-            lastCurrentTime = currentTime
+            lastCurrentTimeObstacle = currentTime
         }
         
-        // MARK: Obstacles movement
+        // Generate bonus
+        if deltaTimeBonus > 7 { // aqui que define a velocidade na qual serão gerados novos bonus
+            createBonus()
+            lastCurrentTimeBonus = currentTime
+        }
+        
+        // Obstacles movement
         moveObstacles()
+        
+        // Bonus movement
+        moveBonus()
     }
 }
