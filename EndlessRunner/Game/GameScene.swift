@@ -29,7 +29,6 @@ class GameScene: SKScene {
     private var lastCurrentTimeBonus: Double = -1
     private var score: Int = 0
     private var lives: Int = 3
-    private var gameOver: Bool = false
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
