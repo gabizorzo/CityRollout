@@ -12,6 +12,7 @@ import GameplayKit
 class GameViewController: UIViewController {
 
     @IBOutlet weak var gameView: SKView!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,7 @@ class GameViewController: UIViewController {
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
+            return .portrait
         } else {
             return .all
         }
@@ -32,15 +33,25 @@ class GameViewController: UIViewController {
     }
 }
 
+// MARK: - Game scene
 extension GameViewController {
     func presentScene() {
         let screenSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         let scene = GameScene(size: screenSize)
+        scene.gameDelegate = self
+        
         scene.scaleMode = .aspectFill
         scene.size = self.view.bounds.size
         
         // Present the scene
         gameView.presentScene(scene)
         gameView.ignoresSiblingOrder = true
+    }
+}
+
+// MARK: - Game Delegate
+extension GameViewController: GameDelegate {
+    func updateScore(score: Int) {
+        scoreLabel.text = "\(score)"
     }
 }

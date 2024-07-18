@@ -8,7 +8,15 @@
 import SpriteKit
 import GameplayKit
 
+
+protocol GameDelegate: AnyObject {
+    func updateScore(score: Int)
+}
+
 class GameScene: SKScene {
+    // MARK: - Delegate
+    weak var gameDelegate: GameDelegate?
+    
     // MARK: - Nodes
     private var player = SKShapeNode(circleOfRadius: 15)
     private var background: [SKSpriteNode] = []
@@ -180,6 +188,7 @@ extension GameScene: SKPhysicsContactDelegate {
         if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == bonusCategory) || (
             contact.bodyA.categoryBitMask == bonusCategory) && (contact.bodyB.categoryBitMask == playerCategory) {
             score += 1
+            self.gameDelegate?.updateScore(score: score)
             
             if contact.bodyA.categoryBitMask == bonusCategory {
                 contact.bodyA.node?.removeFromParent()
