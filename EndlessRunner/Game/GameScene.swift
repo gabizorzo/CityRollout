@@ -26,6 +26,8 @@ class GameScene: SKScene {
     private var touchLocation: CGFloat = 0.0
     private var lastCurrentTimeObstacle: Double = -1
     private var lastCurrentTimeBonus: Double = -1
+    private var score: Int = 0
+    private var lives: Int = 3
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -143,12 +145,19 @@ extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == obstaclesCategory) || (
             contact.bodyA.categoryBitMask == obstaclesCategory) && (contact.bodyB.categoryBitMask == playerCategory) {
-            self.scene?.isPaused = true
+            didCollide()
+            
+            if contact.bodyA.categoryBitMask == obstaclesCategory {
+                contact.bodyA.node?.removeFromParent()
+            } else if contact.bodyB.categoryBitMask == obstaclesCategory {
+                contact.bodyB.node?.removeFromParent()
+            }
         }
         
         if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == bonusCategory) || (
             contact.bodyA.categoryBitMask == bonusCategory) && (contact.bodyB.categoryBitMask == playerCategory) {
-            print("bonus")
+            score += 1
+            
             if contact.bodyA.categoryBitMask == bonusCategory {
                 contact.bodyA.node?.removeFromParent()
             } else if contact.bodyB.categoryBitMask == bonusCategory {
@@ -165,6 +174,25 @@ extension GameScene {
         let max = screenWidth/2 - 15 // 15 é o tamanho do obstáculo, ajustar depois
         let value = Int.random(in: Int(min)..<Int(max))
         return CGFloat(value)
+    }
+    
+    func setHighScore() {
+        print("\nscore: \(score)")
+        print("high score: \(Database.shared.getHighScore())")
+        if score > Database.shared.getHighScore() {
+            Database.shared.setHighScore(score: score)
+            print("new high score: \(score)")
+        }
+    }
+    
+    func didCollide() {
+        print("lives: \(lives)")
+        if lives == 0 {
+            self.scene?.isPaused = true
+            setHighScore()
+        } else {
+            lives -= 1
+        }
     }
 }
 
