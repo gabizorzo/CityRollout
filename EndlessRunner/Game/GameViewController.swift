@@ -11,28 +11,12 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var gameView: SKView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            
-            let screenSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            
-            let scene = GameScene(size: screenSize)
-            // Set the scale mode to scale to fit the window
-            scene.scaleMode = .aspectFill
-            
-            scene.size = self.view.bounds.size
-            
-            // Present the scene
-            view.presentScene(scene)
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        presentScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -45,5 +29,18 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+extension GameViewController {
+    func presentScene() {
+        let screenSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        let scene = GameScene(size: screenSize)
+        scene.scaleMode = .aspectFill
+        scene.size = self.view.bounds.size
+        
+        // Present the scene
+        gameView.presentScene(scene)
+        gameView.ignoresSiblingOrder = true
     }
 }

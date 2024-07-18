@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0914C42E2C489E08007640C7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914C42D2C489E08007640C7 /* Database.swift */; };
+		0914C4302C49637C007640C7 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094A84782C45D76900E17B2C /* Game.storyboard */; };
 		094A846F2C45D76900E17B2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A846E2C45D76900E17B2C /* AppDelegate.swift */; };
 		094A84752C45D76900E17B2C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A84742C45D76900E17B2C /* GameScene.swift */; };
 		094A84772C45D76900E17B2C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A84762C45D76900E17B2C /* GameViewController.swift */; };
@@ -134,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0914C4302C49637C007640C7 /* Game.storyboard in Resources */,
 				094A847A2C45D76900E17B2C /* Base in Resources */,
 				094A847C2C45D76D00E17B2C /* Assets.xcassets in Resources */,
 				094A847F2C45D76D00E17B2C /* Base in Resources */,
