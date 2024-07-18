@@ -11,6 +11,8 @@ import GameplayKit
 
 protocol GameDelegate: AnyObject {
     func updateScore(score: Int)
+    func updateLives(lives: Int)
+    func gameOver(score: Int)
 }
 
 class GameScene: SKScene {
@@ -215,15 +217,16 @@ extension GameScene {
             Database.shared.setHighScore(score: score)
             print("new high score: \(score)")
         }
+        self.gameDelegate?.gameOver(score: score)
     }
     
     func didCollide() {
+        lives -= 1
         print("lives: \(lives)")
+        self.gameDelegate?.updateLives(lives: lives)
         if lives == 0 {
             self.scene?.isPaused = true
             setHighScore()
-        } else {
-            lives -= 1
         }
     }
 }

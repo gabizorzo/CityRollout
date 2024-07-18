@@ -13,6 +13,8 @@ class GameViewController: UIViewController {
 
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var livesLabel: UILabel!
+    @IBOutlet weak var gameOverView: GameOverView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,5 +55,14 @@ extension GameViewController {
 extension GameViewController: GameDelegate {
     func updateScore(score: Int) {
         scoreLabel.text = "\(score)"
+    }
+    
+    func updateLives(lives: Int) {
+        livesLabel.text = "Lives: \(lives)"
+    }
+    
+    func gameOver(score: Int) {
+        gameOverView.setupScore(score: score)
+        gameOverView.isHidden = false
     }
 }
