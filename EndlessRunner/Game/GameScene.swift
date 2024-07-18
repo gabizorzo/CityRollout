@@ -16,9 +16,7 @@ class GameScene: SKScene {
     // MARK: - Sizes
     private let screenHeight = UIScreen.main.bounds.height
     private let screenWidth = UIScreen.main.bounds.width
-    #warning("tem um warning de deprecation quando usa uiscreen.main    nao entendi como resovle")
-    //    private let teste = view?.window?.windowScene?.screen.bounds.height
-
+    
     // MARK: - Collision Categories
     let playerCategory: UInt32 = 1 << 5
     let obstaclesCategory: UInt32 = 1 << 4
@@ -48,10 +46,14 @@ class GameScene: SKScene {
     }
     
     func createBackground() {
-        let texture = SKTexture(imageNamed: "background")
-        background.append(SKSpriteNode(texture: texture, size: CGSize(width: screenWidth, height: screenHeight)))
-        for image in background {
-            self.addChild(image)
+        for i in 0...1 {
+            let texture = SKTexture(imageNamed: "background") 
+            let node = SKSpriteNode(texture: texture, size: CGSize(width: screenWidth, height: screenHeight))
+            node.name = "Background"
+            if i > 0 {
+                node.position.y += screenHeight
+            }
+            self.addChild(node)
         }
     }
     
@@ -70,7 +72,7 @@ class GameScene: SKScene {
         physics.collisionBitMask = obstaclesCategory
         physics.contactTestBitMask = obstaclesCategory | bonusCategory
         self.player.physicsBody = physics
-
+        
         self.addChild(player)
     }
     
@@ -102,7 +104,7 @@ class GameScene: SKScene {
         let bonus = SKShapeNode(rectOf: CGSize(width: bonusSize, height: bonusSize))
         bonus.name = "Bonus"
         bonus.strokeColor = .clear
-        bonus.fillColor = .blue
+        bonus.fillColor = .systemBlue
         
         let x = getPosition()
         let obstaclePosition = CGPoint(x: x, y: screenHeight/2)
@@ -130,6 +132,15 @@ extension GameScene {
                 self.player.run(SKAction.move(by: CGVector(dx: 2, dy: 0), duration: 0.05))
             } else {
                 self.player.run(SKAction.move(by: CGVector(dx: -2, dy: 0), duration: 0.05))
+            }
+        }
+    }
+    
+    func moveBackground() {
+        self.enumerateChildNodes(withName: "Background") { node, error in
+            node.position.y -= 1
+            if node.position.y <= -(self.screenHeight) {
+                node.position.y = self.screenHeight
             }
         }
     }
@@ -202,8 +213,6 @@ extension GameScene {
         print("lives: \(lives)")
         if lives == 0 {
             self.scene?.isPaused = true
-            #warning("adicionar retry")
-            
             setHighScore()
         } else {
             lives -= 1
@@ -252,6 +261,9 @@ extension GameScene {
             createBonus()
             lastCurrentTimeBonus = currentTime
         }
+        
+        // Background movement
+        moveBackground()
         
         // Obstacles movement
         moveObstacles()
