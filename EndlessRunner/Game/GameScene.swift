@@ -11,6 +11,7 @@ import GameplayKit
 class GameScene: SKScene {
     // MARK: - Nodes
     private var player = SKShapeNode(circleOfRadius: 15)
+    private var background: [SKSpriteNode] = []
     
     // MARK: - Sizes
     private let screenHeight = UIScreen.main.bounds.height
@@ -34,12 +35,25 @@ class GameScene: SKScene {
         physicsWorld.contactDelegate = self
         
         createSceneBoundingBox()
+        createBackground()
         createPlayer()
     }
     
     // MARK: - Create nodes
     func createSceneBoundingBox() {
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+    }
+    
+    func createBackground() {
+        for i in 0...1 {
+            let texture = SKTexture(imageNamed: "background") 
+            let node = SKSpriteNode(texture: texture, size: CGSize(width: screenWidth, height: screenHeight))
+            node.name = "Background"
+            if i > 0 {
+                node.position.y += screenHeight
+            }
+            self.addChild(node)
+        }
     }
     
     func createPlayer() {
@@ -57,7 +71,7 @@ class GameScene: SKScene {
         physics.collisionBitMask = obstaclesCategory
         physics.contactTestBitMask = obstaclesCategory | bonusCategory
         self.player.physicsBody = physics
-
+        
         self.addChild(player)
     }
     
@@ -89,7 +103,7 @@ class GameScene: SKScene {
         let bonus = SKShapeNode(rectOf: CGSize(width: bonusSize, height: bonusSize))
         bonus.name = "Bonus"
         bonus.strokeColor = .clear
-        bonus.fillColor = .blue
+        bonus.fillColor = .systemBlue
         
         let x = getPosition()
         let obstaclePosition = CGPoint(x: x, y: screenHeight/2)
@@ -117,6 +131,15 @@ extension GameScene {
                 self.player.run(SKAction.move(by: CGVector(dx: 2, dy: 0), duration: 0.05))
             } else {
                 self.player.run(SKAction.move(by: CGVector(dx: -2, dy: 0), duration: 0.05))
+            }
+        }
+    }
+    
+    func moveBackground() {
+        self.enumerateChildNodes(withName: "Background") { node, error in
+            node.position.y -= 1
+            if node.position.y <= -(self.screenHeight) {
+                node.position.y = self.screenHeight
             }
         }
     }
@@ -237,6 +260,9 @@ extension GameScene {
             createBonus()
             lastCurrentTimeBonus = currentTime
         }
+        
+        // Background movement
+        moveBackground()
         
         // Obstacles movement
         moveObstacles()
