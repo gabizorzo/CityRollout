@@ -11,11 +11,14 @@ import GameplayKit
 class GameScene: SKScene {
     // MARK: - Nodes
     private var player = SKShapeNode(circleOfRadius: 15)
+    private var background: [SKSpriteNode] = []
     
     // MARK: - Sizes
     private let screenHeight = UIScreen.main.bounds.height
     private let screenWidth = UIScreen.main.bounds.width
-    
+    #warning("tem um warning de deprecation quando usa uiscreen.main    nao entendi como resovle")
+    //    private let teste = view?.window?.windowScene?.screen.bounds.height
+
     // MARK: - Collision Categories
     let playerCategory: UInt32 = 1 << 5
     let obstaclesCategory: UInt32 = 1 << 4
@@ -28,18 +31,28 @@ class GameScene: SKScene {
     private var lastCurrentTimeBonus: Double = -1
     private var score: Int = 0
     private var lives: Int = 3
+    private var gameOver: Bool = false
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         physicsWorld.contactDelegate = self
         
         createSceneBoundingBox()
+        createBackground()
         createPlayer()
     }
     
     // MARK: - Create nodes
     func createSceneBoundingBox() {
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+    }
+    
+    func createBackground() {
+        let texture = SKTexture(imageNamed: "background")
+        background.append(SKSpriteNode(texture: texture, size: CGSize(width: screenWidth, height: screenHeight)))
+        for image in background {
+            self.addChild(image)
+        }
     }
     
     func createPlayer() {
@@ -189,6 +202,8 @@ extension GameScene {
         print("lives: \(lives)")
         if lives == 0 {
             self.scene?.isPaused = true
+            #warning("adicionar retry")
+            
             setHighScore()
         } else {
             lives -= 1
