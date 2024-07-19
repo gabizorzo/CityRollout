@@ -11,33 +11,20 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var gameView: SKView!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var livesLabel: UILabel!
+    @IBOutlet weak var gameOverView: GameOverView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            
-            let screenSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            
-            let scene = GameScene(size: screenSize)
-            // Set the scale mode to scale to fit the window
-            scene.scaleMode = .aspectFill
-            
-            scene.size = self.view.bounds.size
-            
-            // Present the scene
-            view.presentScene(scene)
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        presentScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
+            return .portrait
         } else {
             return .all
         }
@@ -45,5 +32,37 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+// MARK: - Game scene
+extension GameViewController {
+    func presentScene() {
+        let screenSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        let scene = GameScene(size: screenSize)
+        scene.gameDelegate = self
+        
+        scene.scaleMode = .aspectFill
+        scene.size = self.view.bounds.size
+        
+        // Present the scene
+        gameView.presentScene(scene)
+        gameView.ignoresSiblingOrder = true
+    }
+}
+
+// MARK: - Game Delegate
+extension GameViewController: GameDelegate {
+    func updateScore(score: Int) {
+        scoreLabel.text = "\(score)"
+    }
+    
+    func updateLives(lives: Int) {
+        livesLabel.text = "Lives: \(lives)"
+    }
+    
+    func gameOver(score: Int) {
+        gameOverView.setupScore(score: score)
+        gameOverView.isHidden = false
     }
 }
