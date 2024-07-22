@@ -8,6 +8,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import ARKit
 
 class GameViewController: UIViewController {
 
@@ -17,10 +18,26 @@ class GameViewController: UIViewController {
     @IBOutlet weak var gameOverView: GameOverView!
     @IBOutlet weak var pauseButton: UIButton!
     
+    var scene: GameScene!
+    var session: ARSession!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        session = ARSession()
+        session.delegate = self
+        
         presentScene()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard ARFaceTrackingConfiguration.isSupported else { return } // tratar mensagem para dispositivos que não suportam
+        
+        let configuration = ARFaceTrackingConfiguration()
+        
+        session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
     // MARK: - Actions
@@ -53,7 +70,7 @@ class GameViewController: UIViewController {
 extension GameViewController {
     func presentScene() {
         let screenSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        let scene = GameScene(size: screenSize)
+        scene = GameScene(size: screenSize)
         scene.gameDelegate = self
         
         scene.scaleMode = .aspectFill
@@ -78,5 +95,50 @@ extension GameViewController: GameDelegate {
     func gameOver(score: Int) {
         gameOverView.setupScore(score: score)
         gameOverView.isHidden = false
+    }
+}
+
+// MARK: - Face Movement
+extension GameViewController: ARSessionDelegate {
+    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+//        if let faceAnchor = anchors.first as? ARFaceAnchor {
+//            update(withFaceAnchor: faceAnchor)
+//        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        if let faceAnchor = anchor as? ARFaceAnchor,
+           let faceGeo = node.geometry as? ARSCNFaceGeometry {
+                
+            if faceAnchor.lookAtPoint.y <= 0 {
+                print("A head is...")
+            }
+                
+            if node.orientation.x >= Float.pi/32 {
+                print("A head is...")
+            }
+        }
+    }
+    
+    func update(withFaceAnchor faceAnchor: ARFaceAnchor) {
+
+//        var blendShapes: [ARFaceAnchor.BlendShapeLocation:Any] = faceAnchor.blendShapes
+//        
+//        if let lookLeft = blendShapes[.eyeLookOutLeft] as? Float {
+//            print(lookLeft)
+//            
+//            if lookLeft > 0 {
+//                scene.moveNegative()
+//            }
+//        }
+//        
+//        if let lookRight = blendShapes[.eyeLookOutRight] as? Float {
+//            print(lookRight)
+//            
+//            if lookRight > 0 {
+//                scene.movePositive()
+//            }
+//        }
+        
     }
 }
