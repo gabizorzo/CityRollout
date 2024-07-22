@@ -39,6 +39,7 @@ class GameScene: SKScene {
     private var lastCurrentTimeBonus: Double = -1
     private var score: Int = 0
     private var lives: Int = 3
+    private var gamePaused: Bool = false
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -225,7 +226,7 @@ extension GameScene {
         print("lives: \(lives)")
         self.gameDelegate?.updateLives(lives: lives)
         if lives == 0 {
-            self.scene?.isPaused = true
+            gamePaused = true
             setHighScore()
         }
     }
@@ -250,6 +251,8 @@ extension GameScene {
 // MARK: - Update
 extension GameScene {
     override func update(_ currentTime: TimeInterval) {
+        self.isPaused = gamePaused // gambiarra pra cena não voltar rodando
+        
         if lastCurrentTimeObstacle == -1 {
             lastCurrentTimeObstacle = currentTime
             lastCurrentTimeBonus = currentTime
