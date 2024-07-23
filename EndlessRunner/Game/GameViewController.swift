@@ -20,14 +20,13 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.rotateLabels), name: UIDevice.orientationDidChangeNotification, object: nil)
-        
+        createOrientationObserver()
         presentScene()
         restartGame()
     }
     
     deinit {
-       NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
+        removeOrientationObserver()
     }
     
     // MARK: - Actions
@@ -44,6 +43,14 @@ class GameViewController: UIViewController {
     // MARK: - Configs
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func createOrientationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.rotateLabels), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    
+    func removeOrientationObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 }
 
