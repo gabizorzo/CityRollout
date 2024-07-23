@@ -224,8 +224,6 @@ extension GameScene {
     
     func didCollide() {
         lives -= 1
-        lives = 0
-        #warning("remove line above")
         print("lives: \(lives)")
         self.gameDelegate?.updateLives(lives: lives)
         if lives == 0 {
