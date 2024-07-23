@@ -14,6 +14,7 @@ protocol GameDelegate: AnyObject {
     func updateLives(lives: Int)
     func gameOver(score: Int)
     func restartGame()
+    func rotateLabels()
 }
 
 class GameScene: SKScene {

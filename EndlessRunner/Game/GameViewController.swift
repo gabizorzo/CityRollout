@@ -20,7 +20,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.rotateLabels), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         presentScene()
         restartGame()
@@ -40,18 +40,10 @@ class GameViewController: UIViewController {
             pauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         }
     }
-    
+
     // MARK: - Configs
     override var prefersStatusBarHidden: Bool {
         return true
-    }
-    
-    @objc func rotated() {
-        if UIDevice.current.orientation.isLandscape {
-            print("Landscape")
-        } else {
-            print("Portrait")
-        }
     }
 }
 
@@ -93,5 +85,22 @@ extension GameViewController: GameDelegate {
             self?.gameOverView.isHidden = true
             self?.presentScene()
         }
+    }
+    
+    @objc func rotateLabels() {
+        let currentOrientation = UIDevice.current.orientation
+        var rotation = CGAffineTransform()
+        
+        if currentOrientation == .landscapeLeft {
+            rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+        } else if currentOrientation == .landscapeRight {
+            rotation = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
+        } else {
+            rotation = CGAffineTransform(rotationAngle: 0)
+        }
+        
+        self.scoreLabel.transform = rotation
+        self.livesLabel.transform = rotation
+        self.pauseButton.transform = rotation
     }
 }
