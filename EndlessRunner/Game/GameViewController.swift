@@ -40,6 +40,12 @@ class GameViewController: UIViewController {
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        session.pause()
+    }
+    
     // MARK: - Actions
     @IBAction func pauseAction(_ sender: Any) {
         gameView.isPaused = !gameView.isPaused
@@ -101,44 +107,28 @@ extension GameViewController: GameDelegate {
 // MARK: - Face Movement
 extension GameViewController: ARSessionDelegate {
     func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
-//        if let faceAnchor = anchors.first as? ARFaceAnchor {
-//            update(withFaceAnchor: faceAnchor)
-//        }
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        if let faceAnchor = anchor as? ARFaceAnchor,
-           let faceGeo = node.geometry as? ARSCNFaceGeometry {
-                
-            if faceAnchor.lookAtPoint.y <= 0 {
-                print("A head is...")
-            }
-                
-            if node.orientation.x >= Float.pi/32 {
-                print("A head is...")
-            }
+        if let faceAnchor = anchors.first as? ARFaceAnchor {
+            update(withFaceAnchor: faceAnchor)
         }
     }
     
     func update(withFaceAnchor faceAnchor: ARFaceAnchor) {
-
-//        var blendShapes: [ARFaceAnchor.BlendShapeLocation:Any] = faceAnchor.blendShapes
-//        
-//        if let lookLeft = blendShapes[.eyeLookOutLeft] as? Float {
-//            print(lookLeft)
-//            
-//            if lookLeft > 0 {
-//                scene.moveNegative()
-//            }
-//        }
-//        
-//        if let lookRight = blendShapes[.eyeLookOutRight] as? Float {
-//            print(lookRight)
-//            
-//            if lookRight > 0 {
-//                scene.movePositive()
-//            }
-//        }
+        let blendShapes: [ARFaceAnchor.BlendShapeLocation:Any] = faceAnchor.blendShapes
         
+        if let left = blendShapes[.mouthLeft] as? Float {
+            print("L: \(left)")
+            
+            if left > 0.1 {
+                scene.movePositive()
+            }
+        }
+        
+        if let right = blendShapes[.mouthRight] as? Float {
+            print("R: \(right)")
+            
+            if right > 0.1 {
+                scene.moveNegative()
+            }
+        }
     }
 }
