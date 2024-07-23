@@ -15,13 +15,27 @@ class GameViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var livesLabel: UILabel!
     @IBOutlet weak var gameOverView: GameOverView!
+    @IBOutlet weak var pauseButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presentScene()
     }
-
+    
+    // MARK: - Actions
+    @IBAction func pauseAction(_ sender: Any) {
+        gameView.isPaused = !gameView.isPaused
+        
+        if gameView.isPaused {
+            pauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        } else {
+            pauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        }
+    }
+    
+    
+    // MARK: - Configs
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .portrait
