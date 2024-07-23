@@ -21,6 +21,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         presentScene()
+        restartGame()
     }
     
     // MARK: - Actions
@@ -78,5 +79,14 @@ extension GameViewController: GameDelegate {
     func gameOver(score: Int) {
         gameOverView.setupScore(score: score)
         gameOverView.isHidden = false
+    }
+    
+    func restartGame() {
+        gameOverView.restartButtonAction = { [weak self] in
+            self?.updateLives(lives: 3)
+            self?.updateScore(score: 0)
+            self?.gameOverView.isHidden = true
+            self?.presentScene()
+        }
     }
 }

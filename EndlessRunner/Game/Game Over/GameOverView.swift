@@ -14,7 +14,8 @@ class GameOverView: UIView {
     @IBOutlet weak var yourScoreValueLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var highScoreValueLabel: UILabel!
-    
+    @IBOutlet weak var restartButton: UIButton!
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -33,10 +34,18 @@ class GameOverView: UIView {
         gameOverLabel.text = "GAME OVER!"
         yourScoreLabel.text = "Your score:"
         highScoreLabel.text = "High score:"
+        restartButton.setTitle(" Play Again", for: .normal)
     }
     
     func setupScore(score: Int) {
         yourScoreValueLabel.text = "\(score)"
         highScoreValueLabel.text = "\(Database.shared.getHighScore())"
     }
+    
+    //MARK: - Actions
+    var restartButtonAction: () -> Void = {}
+    @IBAction func restartAction(_ sender: UIButton) {
+        restartButtonAction()
+    }
 }
+
