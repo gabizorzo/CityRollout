@@ -9,6 +9,7 @@ import UIKit
 class GameOverView: UIView {
     
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var gameOverLabel: UILabel!
     @IBOutlet weak var yourScoreLabel: UILabel!
     @IBOutlet weak var yourScoreValueLabel: UILabel!
