@@ -16,5 +16,6 @@ class MenuViewController: UIViewController {
         startButton.layer.position.x = UIScreen.main.bounds.width/2
         startButton.setTitle(" Tap to play", for: .normal)
         startButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        startButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 }

@@ -35,6 +35,7 @@ class GameOverView: UIView {
         yourScoreLabel.text = "Your score:"
         highScoreLabel.text = "High score:"
         restartButton.setTitle(" Play Again", for: .normal)
+        restartButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
     func setupScore(score: Int) {

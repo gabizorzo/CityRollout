@@ -54,7 +54,6 @@
 				094A84742C45D76900E17B2C /* GameScene.swift */,
 				094A84762C45D76900E17B2C /* GameViewController.swift */,
 				094A84782C45D76900E17B2C /* Game.storyboard */,
-				268103EA2C4F516A00C6111A /* Menu */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -89,6 +88,7 @@
 			children = (
 				094A846E2C45D76900E17B2C /* AppDelegate.swift */,
 				0914C42D2C489E08007640C7 /* Database.swift */,
+				268103EA2C4F516A00C6111A /* Menu */,
 				0914C42C2C489DEE007640C7 /* Game */,
 				094A847B2C45D76D00E17B2C /* Assets.xcassets */,
 				094A847D2C45D76D00E17B2C /* LaunchScreen.storyboard */,
