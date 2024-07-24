@@ -96,9 +96,9 @@ extension GameViewController: GameDelegate {
     
     @objc func rotateLabels() {
         let currentOrientation = UIDevice.current.orientation
+        let proportion = 0.07
         var rotation = CGAffineTransform()
         var spacing = 0.0
-        let proportion = 0.07
         
         if currentOrientation == .landscapeLeft {
             rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
