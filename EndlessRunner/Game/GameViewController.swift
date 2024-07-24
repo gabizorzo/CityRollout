@@ -20,7 +20,14 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
         presentScene()
+        restartGame()
+    }
+    
+    deinit {
+       NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     // MARK: - Actions
@@ -34,18 +41,17 @@ class GameViewController: UIViewController {
         }
     }
     
-    
     // MARK: - Configs
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .portrait
-        } else {
-            return .all
-        }
-    }
-
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    @objc func rotated() {
+        if UIDevice.current.orientation.isLandscape {
+            print("Landscape")
+        } else {
+            print("Portrait")
+        }
     }
 }
 
@@ -78,5 +84,14 @@ extension GameViewController: GameDelegate {
     func gameOver(score: Int) {
         gameOverView.setupScore(score: score)
         gameOverView.isHidden = false
+    }
+    
+    func restartGame() {
+        gameOverView.restartButtonAction = { [weak self] in
+            self?.updateLives(lives: 3)
+            self?.updateScore(score: 0)
+            self?.gameOverView.isHidden = true
+            self?.presentScene()
+        }
     }
 }

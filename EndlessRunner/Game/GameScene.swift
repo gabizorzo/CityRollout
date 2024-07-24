@@ -13,6 +13,7 @@ protocol GameDelegate: AnyObject {
     func updateScore(score: Int)
     func updateLives(lives: Int)
     func gameOver(score: Int)
+    func restartGame()
 }
 
 class GameScene: SKScene {
