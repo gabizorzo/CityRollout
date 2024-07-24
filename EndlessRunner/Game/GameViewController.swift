@@ -21,6 +21,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         createOrientationObserver()
+        rotateLabels()
         presentScene()
         restartGame()
     }
