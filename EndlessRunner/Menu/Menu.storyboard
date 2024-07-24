@@ -37,17 +37,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5R-Ud-Alm">
-                                <rect key="frame" x="107" y="705" width="178" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5R-Ud-Alm">
+                                <rect key="frame" x="144.33333333333334" y="754.33333333333337" width="104.33333333333334" height="47.666666666666629"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Button">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="SuN-UC-c1G" kind="show" animates="NO" id="u2i-oe-PkT"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <constraints>
+                            <constraint firstItem="b5R-Ud-Alm" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="44I-Ho-O5P"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="b5R-Ud-Alm" secondAttribute="bottom" constant="16" id="WH8-bq-3lQ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QQQ-VA-YzT"/>
                     <connections>
