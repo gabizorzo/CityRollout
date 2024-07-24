@@ -14,6 +14,7 @@
                 <outlet property="highScoreLabel" destination="Xjv-3t-6OJ" id="IwU-jM-Etr"/>
                 <outlet property="highScoreValueLabel" destination="d8w-9a-RMA" id="J9K-0k-qDR"/>
                 <outlet property="restartButton" destination="4AQ-Fn-lmG" id="1Lq-K9-h5w"/>
+                <outlet property="stackView" destination="AzB-Vl-tFw" id="heg-gy-Utg"/>
                 <outlet property="yourScoreLabel" destination="Acq-g8-jMV" id="4Tf-Ub-OFU"/>
                 <outlet property="yourScoreValueLabel" destination="eYN-4L-wJY" id="3f3-OO-m6P"/>
             </connections>
@@ -24,63 +25,61 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AzB-Vl-tFw">
-                    <rect key="frame" x="141.33333333333334" y="326" width="110.66666666666666" height="200"/>
+                    <rect key="frame" x="141.33333333333334" y="317" width="110.66666666666666" height="218"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="3F0-hO-Doh">
-                            <rect key="frame" x="0.0" y="0.0" width="110.66666666666667" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="110.66666666666667" height="36.333333333333336"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Acq-g8-jMV">
-                            <rect key="frame" x="0.0" y="40" width="110.66666666666667" height="40"/>
+                            <rect key="frame" x="0.0" y="36.333333333333329" width="110.66666666666667" height="36.333333333333329"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="eYN-4L-wJY">
-                            <rect key="frame" x="28.999999999999996" y="80" width="52.666666666666657" height="40"/>
+                            <rect key="frame" x="28.999999999999996" y="72.666666666666671" width="52.666666666666657" height="36.333333333333329"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Xjv-3t-6OJ">
-                            <rect key="frame" x="0.0" y="120" width="110.66666666666667" height="40"/>
+                            <rect key="frame" x="0.0" y="109" width="110.66666666666667" height="36.333333333333343"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="d8w-9a-RMA">
-                            <rect key="frame" x="28.999999999999996" y="160" width="52.666666666666657" height="40"/>
+                            <rect key="frame" x="28.999999999999996" y="145.33333333333334" width="52.666666666666657" height="36.333333333333343"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-Fn-lmG" userLabel="Restart Button">
+                            <rect key="frame" x="3.6666666666666572" y="181.66666666666669" width="103.33333333333331" height="36.333333333333343"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="gobackward" catalog="system" title="Button">
+                                <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="restartAction:" destination="-1" eventType="touchUpInside" id="H3E-a5-ZWG"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-Fn-lmG" userLabel="Restart Button">
-                    <rect key="frame" x="131.66666666666666" y="754.33333333333337" width="129.99999999999997" height="47.666666666666629"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="gobackward" catalog="system" title="Button">
-                        <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="restartAction:" destination="-1" eventType="touchUpInside" id="H3E-a5-ZWG"/>
-                    </connections>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="HfR-kq-M8N"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="AzB-Vl-tFw" firstAttribute="centerX" secondItem="7Ei-uP-0Qn" secondAttribute="centerX" id="38v-ym-W2e"/>
-                <constraint firstItem="HfR-kq-M8N" firstAttribute="bottom" secondItem="4AQ-Fn-lmG" secondAttribute="bottom" constant="16" id="BOk-80-djG"/>
                 <constraint firstItem="AzB-Vl-tFw" firstAttribute="centerY" secondItem="7Ei-uP-0Qn" secondAttribute="centerY" id="Lkx-nF-QL4"/>
-                <constraint firstItem="4AQ-Fn-lmG" firstAttribute="centerX" secondItem="7Ei-uP-0Qn" secondAttribute="centerX" id="aSp-eh-RKK"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

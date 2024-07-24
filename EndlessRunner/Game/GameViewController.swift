@@ -109,5 +109,6 @@ extension GameViewController: GameDelegate {
         self.scoreLabel.transform = rotation
         self.livesLabel.transform = rotation
         self.pauseButton.transform = rotation
+        self.gameOverView.stackView.transform = rotation
     }
 }
