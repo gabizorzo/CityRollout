@@ -97,11 +97,15 @@ extension GameViewController: GameDelegate {
     @objc func rotateLabels() {
         let currentOrientation = UIDevice.current.orientation
         var rotation = CGAffineTransform()
+        var spacing = 0.0
+        let proportion = 0.07
         
         if currentOrientation == .landscapeLeft {
             rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+            spacing -= UIScreen.main.bounds.width * proportion
         } else if currentOrientation == .landscapeRight {
             rotation = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
+            spacing -= UIScreen.main.bounds.width * proportion
         } else {
             rotation = CGAffineTransform(rotationAngle: 0)
         }
@@ -110,5 +114,6 @@ extension GameViewController: GameDelegate {
         self.livesLabel.transform = rotation
         self.pauseButton.transform = rotation
         self.gameOverView.stackView.transform = rotation
+        self.gameOverView.stackView.spacing = spacing
     }
 }
