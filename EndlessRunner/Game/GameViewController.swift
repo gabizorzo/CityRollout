@@ -27,7 +27,14 @@ class GameViewController: UIViewController {
         session = ARSession()
         session.delegate = self
         
+        createOrientationObserver()
+        rotateLabels()
         presentScene()
+        restartGame()
+    }
+    
+    deinit {
+        removeOrientationObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,19 +63,18 @@ class GameViewController: UIViewController {
             pauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         }
     }
-    
-    
-    // MARK: - Configs
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .portrait
-        } else {
-            return .all
-        }
-    }
 
+    // MARK: - Configs
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func createOrientationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.rotateLabels), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    
+    func removeOrientationObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 }
 
@@ -101,6 +107,33 @@ extension GameViewController: GameDelegate {
     func gameOver(score: Int) {
         gameOverView.setupScore(score: score)
         gameOverView.isHidden = false
+    }
+    
+    func restartGame() {
+        gameOverView.restartButtonAction = { [weak self] in
+            self?.updateLives(lives: 3)
+            self?.updateScore(score: 0)
+            self?.gameOverView.isHidden = true
+            self?.presentScene()
+        }
+    }
+    
+    @objc func rotateLabels() {
+        let currentOrientation = UIDevice.current.orientation
+        var rotation = CGAffineTransform()
+        
+        if currentOrientation == .landscapeLeft {
+            rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+        } else if currentOrientation == .landscapeRight {
+            rotation = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
+        } else {
+            rotation = CGAffineTransform(rotationAngle: 0)
+        }
+        
+        self.scoreLabel.transform = rotation
+        self.livesLabel.transform = rotation
+        self.pauseButton.transform = rotation
+        self.gameOverView.stackView.transform = rotation
     }
 }
 
