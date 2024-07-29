@@ -118,7 +118,7 @@ extension GameViewController: ARSessionDelegate {
         if let left = blendShapes[.mouthLeft] as? Float {
             print("L: \(left)")
             
-            if left > 0.1 {
+            if left > 0.09 {
                 scene.movePositive()
             }
         }
@@ -126,7 +126,7 @@ extension GameViewController: ARSessionDelegate {
         if let right = blendShapes[.mouthRight] as? Float {
             print("R: \(right)")
             
-            if right > 0.1 {
+            if right > 0.09 {
                 scene.moveNegative()
             }
         }

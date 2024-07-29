@@ -152,10 +152,6 @@ extension GameScene {
         }
     }
     
-    func movePlayerFace() {
-        
-    }
-    
     func movePositive() {
         self.player.run(SKAction.move(by: CGVector(dx: 2, dy: 0), duration: 0.05))
     }
