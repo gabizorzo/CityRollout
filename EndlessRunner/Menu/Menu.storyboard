@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sFN-dZ-yWq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sFN-dZ-yWq">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,26 +37,42 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5R-Ud-Alm">
-                                <rect key="frame" x="144.33333333333334" y="754.33333333333337" width="104.33333333333334" height="47.666666666666629"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Button">
-                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="SuN-UC-c1G" kind="show" animates="NO" id="u2i-oe-PkT"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="laU-5C-QbG">
+                                <rect key="frame" x="144.33333333333334" y="658.66666666666663" width="104.33333333333334" height="127.33333333333337"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5R-Ud-Alm">
+                                        <rect key="frame" x="0.0" y="0.0" width="104.33333333333333" height="47.666666666666664"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Button">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="SuN-UC-c1G" kind="show" animates="NO" id="u2i-oe-PkT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3F-8q-Xd8" userLabel="Settings Button">
+                                        <rect key="frame" x="0.0" y="79.666666666666742" width="104.33333333333333" height="47.666666666666657"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Button">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="nfE-tJ-fv0" kind="show" id="yUf-Ms-II3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <constraints>
-                            <constraint firstItem="b5R-Ud-Alm" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="44I-Ho-O5P"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="b5R-Ud-Alm" secondAttribute="bottom" constant="16" id="WH8-bq-3lQ"/>
+                            <constraint firstItem="laU-5C-QbG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="GiK-Cf-SeQ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="laU-5C-QbG" secondAttribute="bottom" constant="32" id="Vqn-rA-t5f"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QQQ-VA-YzT"/>
                     <connections>
                         <outlet property="backgroundImage" destination="KHj-mz-5uX" id="q6w-26-1AH"/>
+                        <outlet property="settingsButton" destination="a3F-8q-Xd8" id="yYp-cK-1qp"/>
                         <outlet property="startButton" destination="b5R-Ud-Alm" id="fG3-l0-xOq"/>
                     </connections>
                 </viewController>
@@ -73,6 +89,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="61g-ph-1hw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1677" y="103"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="G3g-US-mec">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="nfE-tJ-fv0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="olA-dq-NkD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6CV-dO-9WM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1706" y="182"/>
         </scene>
     </scenes>
     <resources>

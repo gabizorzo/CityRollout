@@ -12,6 +12,7 @@ class Database {
     static var shared = Database()
     
     private let highScore: String = "highScore"
+    private let firstSettings: String = "firstSettings"
     
     private init() {}
     
@@ -21,5 +22,31 @@ class Database {
     
     func setHighScore(score: Int) {
         userDefaults.setValue(score, forKey: highScore)
+    }
+    
+    func getFirstSettings() -> Bool {
+        return userDefaults.bool(forKey: firstSettings)
+    }
+    
+    func setFirstSettings() {
+        userDefaults.setValue(true, forKey: firstSettings)
+    }
+    
+    func toggleSettingsStatus(for setting: SettingsName){
+        let value = !getSettingsStatus(for: setting)
+        userDefaults.setValue(value, forKey: setting.rawValue)
+    }
+    
+    func getSettingsStatus(for setting: SettingsName) -> Bool {
+        return userDefaults.bool(forKey: setting.rawValue)
+    }
+    
+    func setSettingsLevel(level: String, for setting: SettingsName){
+        userDefaults.setValue(level, forKey: setting.rawValue)
+    }
+    
+    func getSettingsLevel(for setting: SettingsName) -> SettingsLevel {
+        let level = userDefaults.string(forKey: setting.rawValue) ?? ""
+        return SettingsLevel(rawValue: level) ?? .medium
     }
 }
