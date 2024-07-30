@@ -24,9 +24,9 @@ class SettingsViewModel {
             statusFaceMovements = Database.shared.getSettingsStatus(for: .faceMovements)
         }
         
-        let haptics: SettingsModel = SettingsModel(label: "Enable haptics", name: .haptics, active: statusHaptics)
-        let sounds: SettingsModel = SettingsModel(label: "Enable sounds", name: .sounds, active: statusSounds)
-        let faceMovements: SettingsModel = SettingsModel(label: "Enable face movements", name: .faceMovements, active: statusFaceMovements)
+        let haptics: SettingsModel = SettingsModel(label: "Haptics", name: .haptics, active: statusHaptics)
+        let sounds: SettingsModel = SettingsModel(label: "Sounds", name: .sounds, active: statusSounds)
+        let faceMovements: SettingsModel = SettingsModel(label: "Face movements", name: .faceMovements, active: statusFaceMovements)
         
         settings = [haptics, sounds, faceMovements]
     }

@@ -57,7 +57,7 @@
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="nfE-tJ-fv0" kind="show" id="yUf-Ms-II3"/>
+                                            <segue destination="nfE-tJ-fv0" kind="show" animates="NO" id="yUf-Ms-II3"/>
                                         </connections>
                                     </button>
                                 </subviews>
