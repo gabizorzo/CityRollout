@@ -42,16 +42,26 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsToggleCell", for: indexPath) as! SettingsToggleCell
-        
-        cell.settingName = viewModel.settings[indexPath.row].name
-        cell.settingLabel.text = viewModel.settings[indexPath.row].label
-        cell.settingSwitch.isOn = viewModel.settings[indexPath.row].active
-        
-        return cell
+        if indexPath.row < 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsToggleCell", for: indexPath) as! SettingsToggleCell
+            
+            cell.settingName = viewModel.settings[indexPath.row].name
+            cell.settingLabel.text = viewModel.settings[indexPath.row].label
+            cell.settingSwitch.isOn = viewModel.settings[indexPath.row].active
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsSelectCell", for: indexPath) as! SettingsSelectCell
+            
+            cell.settingName = viewModel.settings[indexPath.row].name
+            cell.settingLabel.text = viewModel.settings[indexPath.row].label
+            cell.setupMenu()
+            
+            return cell
+        }
     }
 }

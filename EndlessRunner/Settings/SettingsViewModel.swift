@@ -28,6 +28,9 @@ class SettingsViewModel {
         let sounds: SettingsModel = SettingsModel(label: "Sounds", name: .sounds, active: statusSounds)
         let faceMovements: SettingsModel = SettingsModel(label: "Face movements", name: .faceMovements, active: statusFaceMovements)
         
-        settings = [haptics, sounds, faceMovements]
+        let level = Database.shared.getSettingsLevel(for: .difficulty)
+        let difficulty: SettingsModel = SettingsModel(label: "Difficulty", name: .difficulty, active: true, level: level)
+        
+        settings = [haptics, sounds, faceMovements, difficulty]
     }
 }

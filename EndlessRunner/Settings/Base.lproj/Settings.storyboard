@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -55,6 +56,48 @@
                                         <connections>
                                             <outlet property="settingLabel" destination="fjo-fn-pOY" id="y32-fQ-agR"/>
                                             <outlet property="settingSwitch" destination="xO9-yE-v31" id="9Ej-a3-aAv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsSelectCell" id="RDG-Jp-fMo" customClass="SettingsSelectCell" customModule="EndlessRunner" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="119" width="393" height="49"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RDG-Jp-fMo" id="dcN-Ko-ER9">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" verticalCompressionResistancePriority="900" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEq-eo-PV8">
+                                                    <rect key="frame" x="28" y="19" width="42" height="27"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UCo-dD-nZ0">
+                                                    <rect key="frame" x="86" y="8" width="291" height="33"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <menu key="menu" id="pgF-oD-uH3">
+                                                        <menuOptions key="menuOptions" singleSelection="YES"/>
+                                                        <children>
+                                                            <command title="Easy" id="mMb-NX-FJP"/>
+                                                            <command title="Medium" id="r20-Yz-M85"/>
+                                                            <command title="Hard" id="rg6-So-91y"/>
+                                                        </children>
+                                                    </menu>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UCo-dD-nZ0" firstAttribute="leading" secondItem="fEq-eo-PV8" secondAttribute="trailing" constant="16" id="6Rg-Bx-W7W"/>
+                                                <constraint firstAttribute="trailing" secondItem="UCo-dD-nZ0" secondAttribute="trailing" constant="16" id="K9w-HI-04g"/>
+                                                <constraint firstAttribute="bottom" secondItem="UCo-dD-nZ0" secondAttribute="bottom" constant="8" id="TIK-HE-qFZ"/>
+                                                <constraint firstItem="UCo-dD-nZ0" firstAttribute="top" secondItem="dcN-Ko-ER9" secondAttribute="top" constant="8" id="b3d-uK-uYz"/>
+                                                <constraint firstItem="fEq-eo-PV8" firstAttribute="bottom" secondItem="dcN-Ko-ER9" secondAttribute="bottomMargin" constant="8" id="kMD-LR-YWU"/>
+                                                <constraint firstItem="fEq-eo-PV8" firstAttribute="top" secondItem="dcN-Ko-ER9" secondAttribute="topMargin" constant="8" id="nfS-Mk-6Tk"/>
+                                                <constraint firstItem="fEq-eo-PV8" firstAttribute="leading" secondItem="dcN-Ko-ER9" secondAttribute="leadingMargin" constant="8" id="nxR-qq-XFI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="selectButton" destination="UCo-dD-nZ0" id="zy2-kg-DdC"/>
+                                            <outlet property="settingLabel" destination="fEq-eo-PV8" id="dMY-t9-NAx"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

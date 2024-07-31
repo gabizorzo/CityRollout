@@ -10,6 +10,7 @@
 		090EE0622C585B29000A6D70 /* SettingsToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090EE0612C585B29000A6D70 /* SettingsToggleCell.swift */; };
 		090EE0642C585D29000A6D70 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090EE0632C585D29000A6D70 /* SettingsModel.swift */; };
 		090EE0662C58600A000A6D70 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090EE0652C58600A000A6D70 /* SettingsViewModel.swift */; };
+		090EE0682C59B21D000A6D70 /* SettingsSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090EE0672C59B21D000A6D70 /* SettingsSelectCell.swift */; };
 		0914C42E2C489E08007640C7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914C42D2C489E08007640C7 /* Database.swift */; };
 		0914C4302C49637C007640C7 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094A84782C45D76900E17B2C /* Game.storyboard */; };
 		0922C2202C49A39E00CE5A4C /* GameOverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0922C21F2C49A39E00CE5A4C /* GameOverView.xib */; };
@@ -30,6 +31,7 @@
 		090EE0612C585B29000A6D70 /* SettingsToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsToggleCell.swift; sourceTree = "<group>"; };
 		090EE0632C585D29000A6D70 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		090EE0652C58600A000A6D70 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		090EE0672C59B21D000A6D70 /* SettingsSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSelectCell.swift; sourceTree = "<group>"; };
 		0914C42D2C489E08007640C7 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		0922C21F2C49A39E00CE5A4C /* GameOverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverView.xib; sourceTree = "<group>"; };
 		0922C2212C49A54200CE5A4C /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				090EE0652C58600A000A6D70 /* SettingsViewModel.swift */,
 				09C6B66F2C58532E009DF62B /* SettingsViewController.swift */,
 				090EE0612C585B29000A6D70 /* SettingsToggleCell.swift */,
+				090EE0672C59B21D000A6D70 /* SettingsSelectCell.swift */,
 				09C6B6722C585425009DF62B /* Settings.storyboard */,
 			);
 			path = Settings;
@@ -213,6 +216,7 @@
 				0914C42E2C489E08007640C7 /* Database.swift in Sources */,
 				090EE0622C585B29000A6D70 /* SettingsToggleCell.swift in Sources */,
 				094A846F2C45D76900E17B2C /* AppDelegate.swift in Sources */,
+				090EE0682C59B21D000A6D70 /* SettingsSelectCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

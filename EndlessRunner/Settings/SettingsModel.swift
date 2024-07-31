@@ -8,7 +8,7 @@
 import Foundation
 
 enum SettingsName: String {
-    case haptics, sounds, faceMovements, speed
+    case haptics, sounds, faceMovements, difficulty
 }
 
 enum SettingsLevel: String {
