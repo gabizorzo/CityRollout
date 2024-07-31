@@ -43,9 +43,15 @@ class GameScene: SKScene {
     private var lives: Int = 3
     private var gamePaused: Bool = false
     
+    // MARK: - Face
+    var generator: UIImpactFeedbackGenerator!
+    
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         physicsWorld.contactDelegate = self
+        
+        generator = UIImpactFeedbackGenerator(style: .light)
+        generator.prepare()
         
         createSceneBoundingBox()
         createBackground()
@@ -138,14 +144,22 @@ class GameScene: SKScene {
 
 // MARK: - Moves
 extension GameScene {
-    func movePlayer() {
+    func movePlayerTouch() {
         if isTouching {
             if touchLocation > 0 {
-                self.player.run(SKAction.move(by: CGVector(dx: 2, dy: 0), duration: 0.05))
+               movePositive()
             } else {
-                self.player.run(SKAction.move(by: CGVector(dx: -2, dy: 0), duration: 0.05))
+                moveNegative()
             }
         }
+    }
+    
+    func movePositive() {
+        self.player.run(SKAction.move(by: CGVector(dx: 2, dy: 0), duration: 0.05))
+    }
+    
+    func moveNegative() {
+        self.player.run(SKAction.move(by: CGVector(dx: -2, dy: 0), duration: 0.05))
     }
     
     func moveBackground() {
@@ -227,6 +241,7 @@ extension GameScene {
         lives -= 1
         print("lives: \(lives)")
         self.gameDelegate?.updateLives(lives: lives)
+        self.generator.impactOccurred()
         if lives == 0 {
             gamePaused = true
             setHighScore()
@@ -264,7 +279,7 @@ extension GameScene {
         let deltaTimeBonus = currentTime - lastCurrentTimeBonus
         
         // Player movement
-        movePlayer()
+        movePlayerTouch()
         
         // Generate obstacles
         if deltaTimeObstacle > 2.5 { // aqui que define a velocidade na qual serão gerados novos obstáculos

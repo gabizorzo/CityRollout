@@ -8,6 +8,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import ARKit
 
 class GameViewController: UIViewController {
 
@@ -17,8 +18,14 @@ class GameViewController: UIViewController {
     @IBOutlet weak var gameOverView: GameOverView!
     @IBOutlet weak var pauseButton: UIButton!
     
+    var scene: GameScene!
+    var session: ARSession!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        session = ARSession()
+        session.delegate = self
         
         createOrientationObserver()
         rotateLabels()
@@ -28,6 +35,22 @@ class GameViewController: UIViewController {
     
     deinit {
         removeOrientationObserver()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard ARFaceTrackingConfiguration.isSupported else { return } // tratar mensagem para dispositivos que não suportam
+        
+        let configuration = ARFaceTrackingConfiguration()
+        
+        session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        session.pause()
     }
     
     // MARK: - Actions
@@ -59,7 +82,7 @@ class GameViewController: UIViewController {
 extension GameViewController {
     func presentScene() {
         let screenSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        let scene = GameScene(size: screenSize)
+        scene = GameScene(size: screenSize)
         scene.gameDelegate = self
         
         scene.scaleMode = .aspectFill
@@ -111,5 +134,34 @@ extension GameViewController: GameDelegate {
         self.livesLabel.transform = rotation
         self.pauseButton.transform = rotation
         self.gameOverView.stackView.transform = rotation
+    }
+}
+
+// MARK: - Face Movement
+extension GameViewController: ARSessionDelegate {
+    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+        if let faceAnchor = anchors.first as? ARFaceAnchor {
+            update(withFaceAnchor: faceAnchor)
+        }
+    }
+    
+    func update(withFaceAnchor faceAnchor: ARFaceAnchor) {
+        let blendShapes: [ARFaceAnchor.BlendShapeLocation:Any] = faceAnchor.blendShapes
+        
+        if let left = blendShapes[.mouthLeft] as? Float {
+            print("L: \(left)")
+            
+            if left > 0.09 {
+                scene.movePositive()
+            }
+        }
+        
+        if let right = blendShapes[.mouthRight] as? Float {
+            print("R: \(right)")
+            
+            if right > 0.09 {
+                scene.moveNegative()
+            }
+        }
     }
 }
