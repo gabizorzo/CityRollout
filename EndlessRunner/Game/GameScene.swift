@@ -8,12 +8,12 @@
 import SpriteKit
 import GameplayKit
 
-
 protocol GameDelegate: AnyObject {
     func updateScore(score: Int)
     func updateLives(lives: Int)
     func gameOver(score: Int)
     func unpauseGame()
+    func backToMenu()
     func restartGame()
     func rotateLabels()
 }

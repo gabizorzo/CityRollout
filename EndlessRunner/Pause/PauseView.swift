@@ -38,8 +38,9 @@ class PauseView: UIView {
         unpauseButtonAction()
     }
     
+    var menuButtonAction: () -> Void = {}
     @IBAction func menuAction(_ sender: Any) {
-        print("Menu Action")
+        menuButtonAction()
     }
     
 }

@@ -33,6 +33,7 @@ class GameViewController: UIViewController {
         presentScene()
         restartGame()
         unpauseGame()
+        backToMenu()
     }
     
     deinit {
@@ -57,7 +58,6 @@ class GameViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func pauseAction(_ sender: Any) {
-        #warning("Mexi aqui")
         gameView.isPaused = true
         pauseButton.isHidden = true
         pauseView.isHidden = false
@@ -96,12 +96,18 @@ extension GameViewController {
 // MARK: - Game Delegate
 extension GameViewController: GameDelegate {
     
+    func backToMenu() {
+        pauseView.menuButtonAction = { [weak self] in
+            self?.scene.setHighScore()
+            self?.navigationController?.popViewController(animated: false)
+        }
+    }
+    
     func unpauseGame() {
         pauseView.unpauseButtonAction = { [weak self] in
-            print("Unpause Action")
-            self?.gameView.isPaused = false
             self?.pauseButton.isHidden = false
             self?.pauseView.isHidden = true
+            self?.gameView.isPaused = false
         }
     }
     
