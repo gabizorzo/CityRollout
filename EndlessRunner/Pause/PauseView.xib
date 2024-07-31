@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PauseView" customModule="EndlessRunner" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="KFF-tn-1wL"/>
+                <outlet property="menuButton" destination="Lbz-HX-3O4" id="Odn-Bv-l9Q"/>
+                <outlet property="unpauseButton" destination="qDU-z3-azw" id="Q1b-66-Imd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDU-z3-azw" userLabel="Unpause Button">
+                    <rect key="frame" x="333.66666666666669" y="75" width="43.333333333333314" height="34.333333333333343"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
+                    <connections>
+                        <action selector="unpauseAction:" destination="-1" eventType="touchUpInside" id="V0f-y1-V5c"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbz-HX-3O4" userLabel="Menu Button">
+                    <rect key="frame" x="159" y="767" width="75" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                    <connections>
+                        <action selector="menuAction:" destination="-1" eventType="touchUpInside" id="IUd-Rf-7V1"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Lbz-HX-3O4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="PJs-Va-7KB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Lbz-HX-3O4" secondAttribute="bottom" constant="16" id="Rf8-0T-7G4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qDU-z3-azw" secondAttribute="trailing" constant="16" id="iPR-Eq-YjY"/>
+                <constraint firstItem="qDU-z3-azw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="peK-Cc-orp"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="136.64122137404578" y="17.605633802816904"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="play.fill" catalog="system" width="117" height="128"/>
+    </resources>
+</document>
