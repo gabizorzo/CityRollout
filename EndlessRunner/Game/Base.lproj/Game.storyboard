@@ -39,6 +39,10 @@
                                     <action selector="pauseAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="RGQ-k6-2nB"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZV-63-Ilf" userLabel="Pause View" customClass="PauseView" customModule="EndlessRunner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHa-n3-d18" userLabel="Game Over View" customClass="GameOverView" customModule="EndlessRunner" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,9 +54,12 @@
                             <constraint firstItem="Bj7-Qz-EIm" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="4cP-gd-6nH"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="iHa-n3-d18" secondAttribute="trailing" id="9wI-Rd-JDi"/>
                             <constraint firstItem="iwF-4q-LOZ" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="CPA-of-wl7"/>
+                            <constraint firstItem="zZV-63-Ilf" firstAttribute="trailing" secondItem="4qk-I5-YsI" secondAttribute="trailing" id="DMp-gg-3Vj"/>
                             <constraint firstItem="iHa-n3-d18" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="Fgg-ut-QWC"/>
+                            <constraint firstItem="zZV-63-Ilf" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="IHd-cg-VG6"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="bGf-o3-4y2" secondAttribute="trailing" constant="16" id="KIG-at-4Aa"/>
                             <constraint firstItem="iHa-n3-d18" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="VZQ-GG-nNm"/>
+                            <constraint firstAttribute="bottom" secondItem="zZV-63-Ilf" secondAttribute="bottom" id="W3Z-xv-C18"/>
                             <constraint firstAttribute="bottom" secondItem="Bj7-Qz-EIm" secondAttribute="bottom" id="Zav-eS-pKP"/>
                             <constraint firstItem="Bj7-Qz-EIm" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="bVG-j9-vIl"/>
                             <constraint firstAttribute="bottom" secondItem="iHa-n3-d18" secondAttribute="bottom" id="bVR-ur-W4M"/>
@@ -60,6 +67,7 @@
                             <constraint firstItem="iwF-4q-LOZ" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="16" id="iRH-fu-Zir"/>
                             <constraint firstItem="bGf-o3-4y2" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="16" id="m8a-yc-g2Q"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="Bj7-Qz-EIm" secondAttribute="trailing" id="qPW-Cf-DyG"/>
+                            <constraint firstItem="zZV-63-Ilf" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="tN2-L6-5DK"/>
                             <constraint firstItem="ZJd-7o-I1a" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="32" id="uZF-rb-CiE"/>
                         </constraints>
                     </view>
@@ -68,6 +76,7 @@
                         <outlet property="gameView" destination="Bj7-Qz-EIm" id="mEc-jF-8ro"/>
                         <outlet property="livesLabel" destination="iwF-4q-LOZ" id="hWC-br-VMd"/>
                         <outlet property="pauseButton" destination="bGf-o3-4y2" id="zFB-b0-Ant"/>
+                        <outlet property="pauseView" destination="zZV-63-Ilf" id="zEo-yX-acb"/>
                         <outlet property="scoreLabel" destination="ZJd-7o-I1a" id="Nnf-As-M5C"/>
                     </connections>
                 </viewController>

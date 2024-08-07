@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var livesLabel: UILabel!
+    @IBOutlet weak var pauseView: PauseView!
     @IBOutlet weak var gameOverView: GameOverView!
     @IBOutlet weak var pauseButton: UIButton!
     
@@ -31,6 +32,8 @@ class GameViewController: UIViewController {
         rotateLabels()
         presentScene()
         restartGame()
+        unpauseGame()
+        backToMenu()
     }
     
     deinit {
@@ -55,13 +58,9 @@ class GameViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func pauseAction(_ sender: Any) {
-        gameView.isPaused = !gameView.isPaused
-        
-        if gameView.isPaused {
-            pauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        } else {
-            pauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-        }
+        gameView.isPaused = true
+        pauseButton.isHidden = true
+        pauseView.isHidden = false
     }
 
     // MARK: - Configs
@@ -96,6 +95,22 @@ extension GameViewController {
 
 // MARK: - Game Delegate
 extension GameViewController: GameDelegate {
+    
+    func backToMenu() {
+        pauseView.menuButtonAction = { [weak self] in
+            self?.scene.setHighScore()
+            self?.navigationController?.popViewController(animated: false)
+        }
+    }
+    
+    func unpauseGame() {
+        pauseView.unpauseButtonAction = { [weak self] in
+            self?.pauseButton.isHidden = false
+            self?.pauseView.isHidden = true
+            self?.gameView.isPaused = false
+        }
+    }
+    
     func updateScore(score: Int) {
         scoreLabel.text = "\(score)"
     }

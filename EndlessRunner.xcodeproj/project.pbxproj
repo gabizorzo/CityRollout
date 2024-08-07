@@ -23,6 +23,8 @@
 		094A847F2C45D76D00E17B2C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 094A847E2C45D76D00E17B2C /* Base */; };
 		09C6B6702C58532E009DF62B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6B66F2C58532E009DF62B /* SettingsViewController.swift */; };
 		09C6B6732C585425009DF62B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C6B6722C585425009DF62B /* Settings.storyboard */; };
+		260EF3632C5A8B660032DBFC /* PauseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260EF3622C5A8B660032DBFC /* PauseView.xib */; };
+		2659052F2C5A741000ABD119 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2659052E2C5A741000ABD119 /* PauseView.swift */; };
 		268103E72C4F50AB00C6111A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268103E62C4F50AB00C6111A /* MenuViewController.swift */; };
 		268103E92C4F50BE00C6111A /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 268103E82C4F50BE00C6111A /* Menu.storyboard */; };
 /* End PBXBuildFile section */
@@ -44,6 +46,8 @@
 		094A847E2C45D76D00E17B2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09C6B66F2C58532E009DF62B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		09C6B6712C585425009DF62B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		260EF3622C5A8B660032DBFC /* PauseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PauseView.xib; sourceTree = "<group>"; };
+		2659052E2C5A741000ABD119 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		268103E62C4F50AB00C6111A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		268103E82C4F50BE00C6111A /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +66,7 @@
 		0914C42C2C489DEE007640C7 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				265905322C5A744600ABD119 /* Pause */,
 				0922C21C2C49A32F00CE5A4C /* Game Over */,
 				094A84742C45D76900E17B2C /* GameScene.swift */,
 				094A84762C45D76900E17B2C /* GameViewController.swift */,
@@ -120,6 +125,15 @@
 				09C6B6722C585425009DF62B /* Settings.storyboard */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		265905322C5A744600ABD119 /* Pause */ = {
+			isa = PBXGroup;
+			children = (
+				2659052E2C5A741000ABD119 /* PauseView.swift */,
+				260EF3622C5A8B660032DBFC /* PauseView.xib */,
+			);
+			path = Pause;
 			sourceTree = "<group>";
 		};
 		268103EA2C4F516A00C6111A /* Menu */ = {
@@ -194,6 +208,7 @@
 				094A847C2C45D76D00E17B2C /* Assets.xcassets in Resources */,
 				268103E92C4F50BE00C6111A /* Menu.storyboard in Resources */,
 				0922C2202C49A39E00CE5A4C /* GameOverView.xib in Resources */,
+				260EF3632C5A8B660032DBFC /* PauseView.xib in Resources */,
 				094A847F2C45D76D00E17B2C /* Base in Resources */,
 				09C6B6732C585425009DF62B /* Settings.storyboard in Resources */,
 			);
@@ -211,6 +226,7 @@
 				268103E72C4F50AB00C6111A /* MenuViewController.swift in Sources */,
 				09C6B6702C58532E009DF62B /* SettingsViewController.swift in Sources */,
 				094A84752C45D76900E17B2C /* GameScene.swift in Sources */,
+				2659052F2C5A741000ABD119 /* PauseView.swift in Sources */,
 				090EE0662C58600A000A6D70 /* SettingsViewModel.swift in Sources */,
 				094A84772C45D76900E17B2C /* GameViewController.swift in Sources */,
 				0914C42E2C489E08007640C7 /* Database.swift in Sources */,
