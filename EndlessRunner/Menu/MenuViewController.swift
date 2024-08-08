@@ -14,7 +14,7 @@ class MenuViewController: UIViewController {
         
     //MARK: - Buttons Haptic
     @IBAction func buttonHaptic(_ sender: Any) {
-        Haptics.shared.startGameHaptic()
+        Haptics.shared.buttonHaptic()
     }
     
     override func viewDidLoad() {

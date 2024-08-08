@@ -38,4 +38,34 @@ class Haptics {
             generator.notificationOccurred(.success)
         }
     }
+    
+    func gameOverHaptic() {
+        let hapticsStatus = Database.shared.getSettingsStatus(for: .haptics)
+        
+        if hapticsStatus {
+            let generator = UINotificationFeedbackGenerator()
+            generator.prepare()
+            generator.notificationOccurred(.error)
+        }
+    }
+    
+    func obstacleHaptic() {
+        let hapticsStatus = Database.shared.getSettingsStatus(for: .haptics)
+        
+        if hapticsStatus {
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.prepare()
+            generator.impactOccurred()
+        }
+    }
+    
+    func bonusHaptic() {
+        let hapticsStatus = Database.shared.getSettingsStatus(for: .haptics)
+        
+        if hapticsStatus {
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.prepare()
+            generator.impactOccurred()
+        }
+    }
 }

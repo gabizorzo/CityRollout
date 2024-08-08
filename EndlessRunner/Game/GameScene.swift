@@ -44,19 +44,15 @@ class GameScene: SKScene {
     private var lives: Int = 3
     private var gamePaused: Bool = false
     
-    // MARK: - Face
-    var generator: UIImpactFeedbackGenerator!
-    
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         physicsWorld.contactDelegate = self
-        
-        generator = UIImpactFeedbackGenerator(style: .light)
-        generator.prepare()
 
         createSceneBoundingBox()
         createBackground()
         createPlayer()
+        
+        Haptics.shared.startGameHaptic()
     }
     
     // MARK: - Create nodes
@@ -208,6 +204,7 @@ extension GameScene: SKPhysicsContactDelegate {
         if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == bonusCategory) || (
             contact.bodyA.categoryBitMask == bonusCategory) && (contact.bodyB.categoryBitMask == playerCategory) {
             score += 1
+            Haptics.shared.bonusHaptic()
             self.gameDelegate?.updateScore(score: score)
             
             if contact.bodyA.categoryBitMask == bonusCategory {
@@ -242,10 +239,12 @@ extension GameScene {
         lives -= 1
         print("lives: \(lives)")
         self.gameDelegate?.updateLives(lives: lives)
-        self.generator.impactOccurred()
         if lives == 0 {
             gamePaused = true
             setHighScore()
+            Haptics.shared.gameOverHaptic()
+        } else {
+            Haptics.shared.obstacleHaptic()
         }
     }
 }

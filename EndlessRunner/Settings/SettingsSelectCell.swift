@@ -45,5 +45,6 @@ class SettingsSelectCell: UITableViewCell {
         guard let settingName = settingName else { return }
         
         Database.shared.setSettingsLevel(level: level, for: settingName)
+        Haptics.shared.buttonHaptic()
     }
 }
