@@ -24,6 +24,7 @@
 		09C6B6702C58532E009DF62B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6B66F2C58532E009DF62B /* SettingsViewController.swift */; };
 		09C6B6732C585425009DF62B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C6B6722C585425009DF62B /* Settings.storyboard */; };
 		260EF3632C5A8B660032DBFC /* PauseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260EF3622C5A8B660032DBFC /* PauseView.xib */; };
+		2632408D2C63EF490014DAAF /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2632408C2C63EF490014DAAF /* Haptics.swift */; };
 		2659052F2C5A741000ABD119 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2659052E2C5A741000ABD119 /* PauseView.swift */; };
 		268103E72C4F50AB00C6111A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268103E62C4F50AB00C6111A /* MenuViewController.swift */; };
 		268103E92C4F50BE00C6111A /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 268103E82C4F50BE00C6111A /* Menu.storyboard */; };
@@ -47,6 +48,7 @@
 		09C6B66F2C58532E009DF62B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		09C6B6712C585425009DF62B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		260EF3622C5A8B660032DBFC /* PauseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PauseView.xib; sourceTree = "<group>"; };
+		2632408C2C63EF490014DAAF /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Haptics.swift; path = EndlessRunner/Haptics.swift; sourceTree = SOURCE_ROOT; };
 		2659052E2C5A741000ABD119 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		268103E62C4F50AB00C6111A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		268103E82C4F50BE00C6111A /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				094A846E2C45D76900E17B2C /* AppDelegate.swift */,
 				0914C42D2C489E08007640C7 /* Database.swift */,
+				2632408C2C63EF490014DAAF /* Haptics.swift */,
 				268103EA2C4F516A00C6111A /* Menu */,
 				0914C42C2C489DEE007640C7 /* Game */,
 				09C6B66C2C5852D1009DF62B /* Settings */,
@@ -228,6 +231,7 @@
 				094A84752C45D76900E17B2C /* GameScene.swift in Sources */,
 				2659052F2C5A741000ABD119 /* PauseView.swift in Sources */,
 				090EE0662C58600A000A6D70 /* SettingsViewModel.swift in Sources */,
+				2632408D2C63EF490014DAAF /* Haptics.swift in Sources */,
 				094A84772C45D76900E17B2C /* GameViewController.swift in Sources */,
 				0914C42E2C489E08007640C7 /* Database.swift in Sources */,
 				090EE0622C585B29000A6D70 /* SettingsToggleCell.swift in Sources */,
@@ -392,7 +396,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4A7DB99C3F;
+				DEVELOPMENT_TEAM = WSHKS965HP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to capture the player's movements.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -28,4 +28,14 @@ class Haptics {
             generator.selectionChanged()
         }
     }
+    
+    func startGameHaptic() {
+        let hapticsStatus = Database.shared.getSettingsStatus(for: .haptics)
+        
+        if hapticsStatus {
+            let generator = UINotificationFeedbackGenerator()
+            generator.prepare()
+            generator.notificationOccurred(.success)
+        }
+    }
 }
