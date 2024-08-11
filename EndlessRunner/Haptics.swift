@@ -8,14 +8,6 @@
 import Foundation
 import UIKit
 
-// UISelectionFeedbackGenerator
-// UINotificationFeedbackGenerator
-// UIImpactFeedbackGenerator
-
-enum hapticName {
-    case button, enemyCollision
-}
-
 class Haptics {
     static var shared = Haptics()
     
