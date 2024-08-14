@@ -46,5 +46,6 @@ class SettingsSelectCell: UITableViewCell {
         
         Database.shared.setSettingsLevel(level: level, for: settingName)
         Haptics.shared.buttonHaptic()
+        Sounds.shared.buttonSound()
     }
 }

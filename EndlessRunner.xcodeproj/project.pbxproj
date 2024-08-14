@@ -28,6 +28,7 @@
 		2659052F2C5A741000ABD119 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2659052E2C5A741000ABD119 /* PauseView.swift */; };
 		268103E72C4F50AB00C6111A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268103E62C4F50AB00C6111A /* MenuViewController.swift */; };
 		268103E92C4F50BE00C6111A /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 268103E82C4F50BE00C6111A /* Menu.storyboard */; };
+		26C068BE2C6A9F7C003A51F8 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C068BD2C6A9F7C003A51F8 /* Sounds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		2659052E2C5A741000ABD119 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		268103E62C4F50AB00C6111A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		268103E82C4F50BE00C6111A /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		26C068BD2C6A9F7C003A51F8 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				094A846E2C45D76900E17B2C /* AppDelegate.swift */,
 				0914C42D2C489E08007640C7 /* Database.swift */,
 				2632408C2C63EF490014DAAF /* Haptics.swift */,
+				26C068BD2C6A9F7C003A51F8 /* Sounds.swift */,
 				268103EA2C4F516A00C6111A /* Menu */,
 				0914C42C2C489DEE007640C7 /* Game */,
 				09C6B66C2C5852D1009DF62B /* Settings */,
@@ -235,6 +238,7 @@
 				094A84772C45D76900E17B2C /* GameViewController.swift in Sources */,
 				0914C42E2C489E08007640C7 /* Database.swift in Sources */,
 				090EE0622C585B29000A6D70 /* SettingsToggleCell.swift in Sources */,
+				26C068BE2C6A9F7C003A51F8 /* Sounds.swift in Sources */,
 				094A846F2C45D76900E17B2C /* AppDelegate.swift in Sources */,
 				090EE0682C59B21D000A6D70 /* SettingsSelectCell.swift in Sources */,
 			);

@@ -12,9 +12,10 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
         
-    //MARK: - Buttons Haptic
-    @IBAction func buttonHaptic(_ sender: Any) {
+    //MARK: - Settings button tap feedback
+    @IBAction func buttonTapFeedback(_ sender: Any) {
         Haptics.shared.buttonHaptic()
+        Sounds.shared.buttonSound()
     }
     
     override func viewDidLoad() {

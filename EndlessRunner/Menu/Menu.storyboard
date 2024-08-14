@@ -57,7 +57,7 @@
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="buttonHaptic:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NvL-yh-Knt"/>
+                                            <action selector="buttonTapFeedback:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eby-uF-doe"/>
                                             <segue destination="nfE-tJ-fv0" kind="show" animates="NO" id="yUf-Ms-II3"/>
                                         </connections>
                                     </button>
