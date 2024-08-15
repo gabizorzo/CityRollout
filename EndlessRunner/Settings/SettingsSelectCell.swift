@@ -22,9 +22,7 @@ class SettingsSelectCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setupMenu() {
-        guard let settingName = settingName else { return }
-        
+    func setupMenu() {        
         let level = Database.shared.getSettingsDifficulty()
         
         let menuClosure = {(action: UIAction) in
