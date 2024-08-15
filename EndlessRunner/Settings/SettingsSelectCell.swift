@@ -30,9 +30,9 @@ class SettingsSelectCell: UITableViewCell {
         }
         
         selectButton.menu = UIMenu(children: [
-            UIAction(title: "easy", state: level == .easy ? .on : .off, handler: menuClosure),
-            UIAction(title: "medium", state: level == .medium ? .on : .off, handler: menuClosure),
-            UIAction(title: "hard", state: level == .hard ? .on : .off, handler: menuClosure),
+            UIAction(title: String(localized: "easyLabel"), state: level == .easy ? .on : .off, handler: menuClosure),
+            UIAction(title: String(localized: "mediumLabel"), state: level == .medium ? .on : .off, handler: menuClosure),
+            UIAction(title: String(localized: "hardLabel"), state: level == .hard ? .on : .off, handler: menuClosure),
         ])
         
         selectButton.showsMenuAsPrimaryAction = true

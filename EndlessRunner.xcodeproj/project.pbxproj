@@ -29,6 +29,7 @@
 		268103E72C4F50AB00C6111A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268103E62C4F50AB00C6111A /* MenuViewController.swift */; };
 		268103E92C4F50BE00C6111A /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 268103E82C4F50BE00C6111A /* Menu.storyboard */; };
 		26C068BE2C6A9F7C003A51F8 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C068BD2C6A9F7C003A51F8 /* Sounds.swift */; };
+		26C068C02C6E580E003A51F8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 26C068BF2C6E580E003A51F8 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		268103E62C4F50AB00C6111A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		268103E82C4F50BE00C6111A /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		26C068BD2C6A9F7C003A51F8 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		26C068BF2C6E580E003A51F8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				09C6B66C2C5852D1009DF62B /* Settings */,
 				094A847B2C45D76D00E17B2C /* Assets.xcassets */,
 				094A847D2C45D76D00E17B2C /* LaunchScreen.storyboard */,
+				26C068BF2C6E580E003A51F8 /* Localizable.xcstrings */,
 			);
 			path = EndlessRunner;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 094A84622C45D76900E17B2C;
 			productRefGroup = 094A846C2C45D76900E17B2C /* Products */;
@@ -225,6 +229,7 @@
 				260EF3632C5A8B660032DBFC /* PauseView.xib in Resources */,
 				094A847F2C45D76D00E17B2C /* Base in Resources */,
 				09C6B6732C585425009DF62B /* Settings.storyboard in Resources */,
+				26C068C02C6E580E003A51F8 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +413,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4A7DB99C3F;
+				DEVELOPMENT_TEAM = WSHKS965HP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to capture the player's movements.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

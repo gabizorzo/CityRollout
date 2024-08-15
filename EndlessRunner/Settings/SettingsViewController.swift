@@ -22,10 +22,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         
-        navBarItem.title = "Settings"
+        navBarItem.title = String(localized: "settingsLabel")
         
         let backButton = UIButton(type: .custom)
-        backButton.setTitle("Back", for: .normal)
+        backButton.setTitle(String(localized: "backButton"), for: .normal)
         backButton.setTitleColor(.tintColor, for: .normal)
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
