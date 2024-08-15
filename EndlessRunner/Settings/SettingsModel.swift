@@ -11,7 +11,7 @@ enum SettingsName: String {
     case haptics, sounds, faceMovements, difficulty
 }
 
-enum SettingsLevel: String {
+enum SettingsDifficulty: String {
     case easy, medium, hard
 }
 
@@ -19,5 +19,5 @@ struct SettingsModel {
     var label: String
     var name: SettingsName
     var active: Bool
-    var level: SettingsLevel?
+    var difficulty: SettingsDifficulty?
 }

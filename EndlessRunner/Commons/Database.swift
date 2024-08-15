@@ -45,8 +45,8 @@ class Database {
         userDefaults.setValue(level, forKey: setting.rawValue)
     }
     
-    func getSettingsLevel(for setting: SettingsName) -> SettingsLevel {
-        let level = userDefaults.string(forKey: setting.rawValue) ?? ""
-        return SettingsLevel(rawValue: level) ?? .medium
+    func getSettingsDifficulty() -> SettingsDifficulty {
+        let level = userDefaults.string(forKey: SettingsName.difficulty.rawValue) ?? ""
+        return SettingsDifficulty(rawValue: level) ?? .medium
     }
 }

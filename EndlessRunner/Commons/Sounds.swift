@@ -14,7 +14,7 @@ class Sounds {
         let soundStatus = Database.shared.getSettingsStatus(for: .sounds)
         
         if soundStatus {
-            AudioServicesPlaySystemSound(1057) // PINKeyPressed
+            AudioServicesPlayAlertSound(1057) // PINKeyPressed
         }
     }
     
@@ -22,7 +22,7 @@ class Sounds {
         let soundStatus = Database.shared.getSettingsStatus(for: .sounds)
         
         if soundStatus {
-            AudioServicesPlaySystemSound(1113) // BeginRecording
+            AudioServicesPlayAlertSound(1113) // BeginRecording
         }
     }
     
@@ -30,7 +30,7 @@ class Sounds {
         let soundStatus = Database.shared.getSettingsStatus(for: .sounds)
         
         if soundStatus {
-            AudioServicesPlaySystemSound(1073) // AudioToneError
+            AudioServicesPlayAlertSound(1324) // Descent
         }
     }
     
@@ -38,7 +38,7 @@ class Sounds {
         let soundStatus = Database.shared.getSettingsStatus(for: .sounds)
         
         if soundStatus {
-            AudioServicesPlaySystemSound(1072) // AudioTonePathAcknowledge
+            AudioServicesPlayAlertSound(1072) // AudioTonePathAcknowledge
         }
     }
     
@@ -46,7 +46,7 @@ class Sounds {
         let soundStatus = Database.shared.getSettingsStatus(for: .sounds)
         
         if soundStatus {
-            AudioServicesPlaySystemSound(1070) // AudioToneBusy
+            AudioServicesPlayAlertSound(1070) // AudioToneBusy
         }
     }
 }

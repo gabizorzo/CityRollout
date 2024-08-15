@@ -43,11 +43,14 @@ class GameScene: SKScene {
     private var score: Int = 0
     private var lives: Int = 3
     private var gamePaused: Bool = false
+    private var difficulty: SettingsDifficulty = .medium
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         physicsWorld.contactDelegate = self
 
+        difficulty = Database.shared.getSettingsDifficulty()
+        
         createSceneBoundingBox()
         createBackground()
         createPlayer()
@@ -171,7 +174,7 @@ extension GameScene {
     
     func moveObstacles() {
         self.enumerateChildNodes(withName: "Obstacle") { node, error in
-            node.position.y -= 2 // aqui que define a velocidade na qual serão movidos os obstáculos
+            node.position.y -= self.getSpeedMovement() // aqui que define a velocidade na qual serão movidos os obstáculos
             if node.position.y <= -self.screenHeight/2 + 15 { // 15 é o tamanho do obstáculo, ajustar depois
                 node.removeFromParent()
             }
@@ -180,7 +183,7 @@ extension GameScene {
     
     func moveBonus() {
         self.enumerateChildNodes(withName: "Bonus") { node, error in
-            node.position.y -= 2 // aqui que define a velocidade na qual serão movidos os bonus
+            node.position.y -= self.getSpeedMovement() // aqui que define a velocidade na qual serão movidos os bonus
             if node.position.y <= -self.screenHeight/2 + 15 { // 15 é o tamanho do bonus, ajustar depois
                 node.removeFromParent()
             }
@@ -220,6 +223,17 @@ extension GameScene: SKPhysicsContactDelegate {
 
 // MARK: - Help funcs
 extension GameScene {
+    func getSpeedMovement() -> CGFloat {
+        switch difficulty {
+        case .easy:
+            return 2
+        case .medium:
+            return 2.5
+        case .hard:
+            return 3
+        }
+    }
+    
     func getPosition() -> CGFloat {
         let min = -screenWidth/2 + 15 // 15 é o tamanho do obstáculo, ajustar depois
         let max = screenWidth/2 - 15 // 15 é o tamanho do obstáculo, ajustar depois
@@ -286,14 +300,29 @@ extension GameScene {
         // Player movement
         movePlayerTouch()
         
+        var timeObstacle = Double.random(in: 1.5 ..< 4.5)
+        var timeBonus = Double.random(in: 3.5 ..< 7.0)
+        
+        switch difficulty {
+        case .easy:
+            timeObstacle = Double.random(in: 3.5 ..< 4.5)
+            timeBonus = Double.random(in: 5.5 ..< 6.5)
+        case .medium:
+            timeObstacle = Double.random(in: 2.0 ..< 3.0)
+            timeBonus = Double.random(in: 6.5 ..< 7.0)
+        case .hard:
+            timeObstacle = Double.random(in: 1.0 ..< 2.0)
+            timeBonus = Double.random(in: 6.5 ..< 7.0)
+        }
+        
         // Generate obstacles
-        if deltaTimeObstacle > 2.5 { // aqui que define a velocidade na qual serão gerados novos obstáculos
+        if deltaTimeObstacle > timeObstacle { // aqui que define a velocidade na qual serão gerados novos obstáculos
             createObstacles()
             lastCurrentTimeObstacle = currentTime
         }
         
         // Generate bonus
-        if deltaTimeBonus > 7 { // aqui que define a velocidade na qual serão gerados novos bonus
+        if deltaTimeBonus > timeBonus { // aqui que define a velocidade na qual serão gerados novos bonus
             createBonus()
             lastCurrentTimeBonus = currentTime
         }
