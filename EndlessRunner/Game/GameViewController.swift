@@ -62,6 +62,7 @@ class GameViewController: UIViewController {
         pauseButton.isHidden = true
         pauseView.isHidden = false
         Haptics.shared.buttonHaptic()
+        Sounds.shared.buttonSound()
     }
 
     // MARK: - Configs
@@ -102,6 +103,7 @@ extension GameViewController: GameDelegate {
             self?.scene.setHighScore()
             self?.navigationController?.popViewController(animated: false)
             Haptics.shared.buttonHaptic()
+            Sounds.shared.buttonSound()
         }
     }
     
@@ -111,6 +113,7 @@ extension GameViewController: GameDelegate {
             self?.pauseView.isHidden = true
             self?.gameView.isPaused = false
             Haptics.shared.buttonHaptic()
+            Sounds.shared.buttonSound()
         }
     }
     

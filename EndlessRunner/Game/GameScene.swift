@@ -53,6 +53,7 @@ class GameScene: SKScene {
         createPlayer()
         
         Haptics.shared.startGameHaptic()
+        Sounds.shared.startGameSound()
     }
     
     // MARK: - Create nodes
@@ -205,6 +206,7 @@ extension GameScene: SKPhysicsContactDelegate {
             contact.bodyA.categoryBitMask == bonusCategory) && (contact.bodyB.categoryBitMask == playerCategory) {
             score += 1
             Haptics.shared.bonusHaptic()
+            Sounds.shared.bonusSound()
             self.gameDelegate?.updateScore(score: score)
             
             if contact.bodyA.categoryBitMask == bonusCategory {
@@ -242,9 +244,12 @@ extension GameScene {
         if lives == 0 {
             gamePaused = true
             setHighScore()
+            
             Haptics.shared.gameOverHaptic()
+            Sounds.shared.gameOverSound()
         } else {
             Haptics.shared.obstacleHaptic()
+            Sounds.shared.obstacleSound()
         }
     }
 }

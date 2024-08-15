@@ -36,6 +36,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     @objc func backButtonAction() {
         self.navigationController?.popViewController(animated: false)
         Haptics.shared.buttonHaptic()
+        Sounds.shared.buttonSound()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
