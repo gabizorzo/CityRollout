@@ -25,7 +25,7 @@ class SettingsSelectCell: UITableViewCell {
     func setupMenu() {
         guard let settingName = settingName else { return }
         
-        let level = Database.shared.getSettingsLevel(for: settingName)
+        let level = Database.shared.getSettingsDifficulty()
         
         let menuClosure = {(action: UIAction) in
             self.update(level: action.title)
