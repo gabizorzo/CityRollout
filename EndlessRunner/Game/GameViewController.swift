@@ -25,8 +25,10 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        session = ARSession()
-        session.delegate = self
+        if Database.shared.getSettingsStatus(for: .faceMovements) {
+            session = ARSession()
+            session.delegate = self
+        }
         
         createOrientationObserver()
         rotateLabels()
@@ -43,17 +45,22 @@ class GameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard ARFaceTrackingConfiguration.isSupported else { return } // tratar mensagem para dispositivos que não suportam
         
-        let configuration = ARFaceTrackingConfiguration()
-        
-        session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        if Database.shared.getSettingsStatus(for: .faceMovements) {
+            guard ARFaceTrackingConfiguration.isSupported else { return } // tratar mensagem para dispositivos que não suportam
+            
+            let configuration = ARFaceTrackingConfiguration()
+            
+            session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        session.pause()
+        if Database.shared.getSettingsStatus(for: .faceMovements) {
+            session.pause()
+        }
     }
     
     // MARK: - Actions
