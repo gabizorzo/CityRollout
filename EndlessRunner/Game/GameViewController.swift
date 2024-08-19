@@ -30,6 +30,7 @@ class GameViewController: UIViewController {
             session.delegate = self
         }
         
+        setHudLabels()
         createOrientationObserver()
         rotateLabels()
         presentScene()
@@ -84,6 +85,10 @@ class GameViewController: UIViewController {
     func removeOrientationObserver() {
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
+    
+    func setHudLabels() {
+        livesLabel.text = "\(String(localized: "gameScene.lives")): 3"
+    }
 }
 
 // MARK: - Game scene
@@ -129,7 +134,7 @@ extension GameViewController: GameDelegate {
     }
     
     func updateLives(lives: Int) {
-        livesLabel.text = "Lives: \(lives)"
+        livesLabel.text = "\(String(localized: "gameScene.lives")): \(lives)"
     }
     
     func gameOver(score: Int) {

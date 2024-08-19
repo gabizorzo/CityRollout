@@ -32,10 +32,10 @@ class GameOverView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        gameOverLabel.text = "GAME OVER!"
-        yourScoreLabel.text = "Your score:"
-        highScoreLabel.text = "High score:"
-        restartButton.setTitle(" Play Again", for: .normal)
+        gameOverLabel.text = String(localized: "gameOverView.gameOver")
+        yourScoreLabel.text = String(localized: "gameOverView.yourScore")
+        highScoreLabel.text = String(localized: "gameOverView.highScore")
+        restartButton.setTitle(String(localized: "gameOverView.playAgain"), for: .normal)
         restartButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     

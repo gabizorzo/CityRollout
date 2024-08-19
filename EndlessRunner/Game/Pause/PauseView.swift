@@ -28,7 +28,7 @@ class PauseView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        menuButton.setTitle("Exit", for: .normal)
+        menuButton.setTitle(String(localized: "pauseView.exit"), for: .normal)
     }
     
     

@@ -24,12 +24,12 @@ class SettingsViewModel {
             statusFaceMovements = Database.shared.getSettingsStatus(for: .faceMovements)
         }
         
-        let haptics: SettingsModel = SettingsModel(label: String(localized: "hapticsLabel"), name: .haptics, active: statusHaptics)
-        let sounds: SettingsModel = SettingsModel(label: String(localized: "soundsLabel"), name: .sounds, active: statusSounds)
-        let faceMovements: SettingsModel = SettingsModel(label: String(localized: "faceMovesLabel"), name: .faceMovements, active: statusFaceMovements)
+        let haptics: SettingsModel = SettingsModel(label: String(localized: "settingsView.haptics"), name: .haptics, active: statusHaptics)
+        let sounds: SettingsModel = SettingsModel(label: String(localized: "settingsView.sounds"), name: .sounds, active: statusSounds)
+        let faceMovements: SettingsModel = SettingsModel(label: String(localized: "settingsView.faceMoves"), name: .faceMovements, active: statusFaceMovements)
         
         let currentDifficulty = Database.shared.getSettingsDifficulty()
-        let difficulty: SettingsModel = SettingsModel(label: String(localized: "difficultyLabel"), name: .difficulty, active: true, difficulty: currentDifficulty)
+        let difficulty: SettingsModel = SettingsModel(label: String(localized: "settingsView.difficulty"), name: .difficulty, active: true, difficulty: currentDifficulty)
         
         settings = [haptics, sounds, faceMovements, difficulty]
     }
