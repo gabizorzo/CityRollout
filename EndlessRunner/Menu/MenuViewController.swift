@@ -21,11 +21,11 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         backgroundImage.frame.size = UIScreen.main.bounds.size
         
-        startButton.setTitle("Tap to play", for: .normal)
+        startButton.setTitle(String(localized: "menuView.play"), for: .normal)
         startButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         startButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 
-        settingsButton.setTitle("Settings", for: .normal)
+        settingsButton.setTitle(String(localized: "menuView.settings"), for: .normal)
         settingsButton.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
         settingsButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
