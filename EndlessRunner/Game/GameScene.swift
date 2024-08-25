@@ -33,13 +33,12 @@ class GameScene: SKScene {
     // MARK: - Collision Categories
     let playerCategory: UInt32 = 1 << 5
     let obstaclesCategory: UInt32 = 1 << 4
-    let bonusCategory: UInt32 = 1 << 3
     
     // MARK: - Variables
     private var isTouching: Bool = false
     private var touchLocation: CGFloat = 0.0
     private var lastCurrentTimeObstacle: Double = -1
-    private var lastCurrentTimeBonus: Double = -1
+    private var lastCurrentTimeScore: Double = -1
     private var score: Int = 0
     private var lives: Int = 3
     private var gamePaused: Bool = false
@@ -89,7 +88,7 @@ class GameScene: SKScene {
         physics.usesPreciseCollisionDetection = true
         physics.categoryBitMask = playerCategory
         physics.collisionBitMask = obstaclesCategory
-        physics.contactTestBitMask = obstaclesCategory | bonusCategory
+        physics.contactTestBitMask = obstaclesCategory
         self.player.physicsBody = physics
         
         self.addChild(player)
@@ -116,30 +115,6 @@ class GameScene: SKScene {
         obstacle.physicsBody = physics
         
         addChild(obstacle)
-    }
-    
-    func createBonus() {
-        let bonusSize = 15
-        let bonus = SKShapeNode(rectOf: CGSize(width: bonusSize, height: bonusSize))
-        bonus.name = "Bonus"
-        bonus.strokeColor = .clear
-        bonus.fillColor = .systemBlue
-        
-        let x = getPosition()
-        let obstaclePosition = CGPoint(x: x, y: screenHeight/2)
-        bonus.position = obstaclePosition
-        bonus.zPosition = 1
-        bonus.zRotation = 0.785398
-        
-        let physics = SKPhysicsBody(rectangleOf: CGSize(width: bonusSize, height: bonusSize))
-        physics.isDynamic = false
-        physics.affectedByGravity = false
-        physics.usesPreciseCollisionDetection = true
-        physics.categoryBitMask = bonusCategory
-        physics.contactTestBitMask = playerCategory
-        bonus.physicsBody = physics
-        
-        addChild(bonus)
     }
 }
 
@@ -180,15 +155,6 @@ extension GameScene {
             }
         }
     }
-    
-    func moveBonus() {
-        self.enumerateChildNodes(withName: "Bonus") { node, error in
-            node.position.y -= self.getSpeedMovement() // aqui que define a velocidade na qual serão movidos os bonus
-            if node.position.y <= -self.screenHeight/2 + 15 { // 15 é o tamanho do bonus, ajustar depois
-                node.removeFromParent()
-            }
-        }
-    }
 }
 
 // MARK: - Physics
@@ -201,20 +167,6 @@ extension GameScene: SKPhysicsContactDelegate {
             if contact.bodyA.categoryBitMask == obstaclesCategory {
                 contact.bodyA.node?.removeFromParent()
             } else if contact.bodyB.categoryBitMask == obstaclesCategory {
-                contact.bodyB.node?.removeFromParent()
-            }
-        }
-        
-        if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == bonusCategory) || (
-            contact.bodyA.categoryBitMask == bonusCategory) && (contact.bodyB.categoryBitMask == playerCategory) {
-            score += 1
-            Haptics.shared.bonusHaptic()
-            Sounds.shared.bonusSound()
-            self.gameDelegate?.updateScore(score: score)
-            
-            if contact.bodyA.categoryBitMask == bonusCategory {
-                contact.bodyA.node?.removeFromParent()
-            } else if contact.bodyB.categoryBitMask == bonusCategory {
                 contact.bodyB.node?.removeFromParent()
             }
         }
@@ -291,28 +243,31 @@ extension GameScene {
         
         if lastCurrentTimeObstacle == -1 {
             lastCurrentTimeObstacle = currentTime
-            lastCurrentTimeBonus = currentTime
+            lastCurrentTimeScore = currentTime
         }
         
         let deltaTimeObstacle = currentTime - lastCurrentTimeObstacle
-        let deltaTimeBonus = currentTime - lastCurrentTimeBonus
+        let deltaTimeScore = currentTime - lastCurrentTimeScore
         
         // Player movement
         movePlayerTouch()
         
         var timeObstacle = Double.random(in: 1.5 ..< 4.5)
-        var timeBonus = Double.random(in: 3.5 ..< 7.0)
         
         switch difficulty {
         case .easy:
             timeObstacle = Double.random(in: 3.5 ..< 4.5)
-            timeBonus = Double.random(in: 5.5 ..< 6.5)
         case .medium:
             timeObstacle = Double.random(in: 2.0 ..< 3.0)
-            timeBonus = Double.random(in: 6.5 ..< 7.0)
         case .hard:
             timeObstacle = Double.random(in: 1.0 ..< 2.0)
-            timeBonus = Double.random(in: 6.5 ..< 7.0)
+        }
+        
+        // Update score
+        if deltaTimeScore > 2 {
+            score += 1
+            self.gameDelegate?.updateScore(score: score)
+            lastCurrentTimeScore = currentTime
         }
         
         // Generate obstacles
@@ -321,19 +276,10 @@ extension GameScene {
             lastCurrentTimeObstacle = currentTime
         }
         
-        // Generate bonus
-        if deltaTimeBonus > timeBonus { // aqui que define a velocidade na qual serão gerados novos bonus
-            createBonus()
-            lastCurrentTimeBonus = currentTime
-        }
-        
         // Background movement
         moveBackground()
         
         // Obstacles movement
         moveObstacles()
-        
-        // Bonus movement
-        moveBonus()
     }
 }
