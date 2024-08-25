@@ -95,13 +95,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " Tap to Play!"
+            "value" : "Play!"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " Toque Para Jogar!"
+            "value" : " Jogar!"
           }
         }
       }

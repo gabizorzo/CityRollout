@@ -158,10 +158,13 @@ extension GameViewController: GameDelegate {
         
         if currentOrientation == .landscapeLeft {
             rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+            self.gameOverView.setStackConstraintPriority(priority: 250)
         } else if currentOrientation == .landscapeRight {
             rotation = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
+            self.gameOverView.setStackConstraintPriority(priority: 250)
         } else {
             rotation = CGAffineTransform(rotationAngle: 0)
+            self.gameOverView.setStackConstraintPriority(priority: 750)
         }
         
         self.scoreLabel.transform = rotation
@@ -183,7 +186,7 @@ extension GameViewController: ARSessionDelegate {
         let blendShapes: [ARFaceAnchor.BlendShapeLocation:Any] = faceAnchor.blendShapes
         
         if let left = blendShapes[.mouthLeft] as? Float {
-            print("L: \(left)")
+//            print("L: \(left)")
             
             if left > 0.09 {
                 scene.movePositive()
@@ -191,7 +194,7 @@ extension GameViewController: ARSessionDelegate {
         }
         
         if let right = blendShapes[.mouthRight] as? Float {
-            print("R: \(right)")
+//            print("R: \(right)")
             
             if right > 0.09 {
                 scene.moveNegative()
