@@ -38,10 +38,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="laU-5C-QbG">
-                                <rect key="frame" x="144.33333333333334" y="658.66666666666663" width="104.33333333333334" height="127.33333333333337"/>
+                                <rect key="frame" x="16" y="658.66666666666663" width="361" height="127.33333333333337"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5R-Ud-Alm">
-                                        <rect key="frame" x="0.0" y="0.0" width="104.33333333333333" height="47.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="47.666666666666664"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Button">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
@@ -51,7 +51,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3F-8q-Xd8" userLabel="Settings Button">
-                                        <rect key="frame" x="0.0" y="79.666666666666742" width="104.33333333333333" height="47.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="79.666666666666742" width="361" height="47.666666666666657"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Button">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
@@ -62,12 +62,20 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="a3F-8q-Xd8" firstAttribute="leading" secondItem="laU-5C-QbG" secondAttribute="leading" id="0Ah-p1-7K2"/>
+                                    <constraint firstAttribute="trailing" secondItem="a3F-8q-Xd8" secondAttribute="trailing" id="2Sp-nt-QAV"/>
+                                    <constraint firstItem="b5R-Ud-Alm" firstAttribute="leading" secondItem="laU-5C-QbG" secondAttribute="leading" id="8Jz-SC-ePd"/>
+                                    <constraint firstAttribute="trailing" secondItem="b5R-Ud-Alm" secondAttribute="trailing" id="YZh-qK-HgH"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <constraints>
+                            <constraint firstItem="laU-5C-QbG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="93s-qI-xuw"/>
                             <constraint firstItem="laU-5C-QbG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="GiK-Cf-SeQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="laU-5C-QbG" secondAttribute="bottom" constant="32" id="Vqn-rA-t5f"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="laU-5C-QbG" secondAttribute="trailing" constant="16" id="vJR-LJ-KGY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QQQ-VA-YzT"/>
