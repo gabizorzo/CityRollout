@@ -1,6 +1,24 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "gameOverView.congratulations" : {
+      "comment" : "This label will appear instead of \"GAME OVER\" only if player has scored a new record",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CONGRATULATIONS!"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PARABÉNS"
+          }
+        }
+      }
+    },
     "gameOverView.gameOver" : {
       "comment" : "Game over label on game over view",
       "extractionState" : "manual",
@@ -20,6 +38,7 @@
       }
     },
     "gameOverView.highScore" : {
+      "comment" : "High score label on game over view",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -36,7 +55,26 @@
         }
       }
     },
+    "gameOverView.newHighScore" : {
+      "comment" : "New high score label on game over view if player has scored a new record",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New High Score:"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novo recorde:"
+          }
+        }
+      }
+    },
     "gameOverView.playAgain" : {
+      "comment" : "Play again label inside button on game over view",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -54,6 +92,7 @@
       }
     },
     "gameOverView.yourScore" : {
+      "comment" : "Your score label on game over view",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

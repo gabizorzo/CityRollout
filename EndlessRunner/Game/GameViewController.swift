@@ -137,8 +137,8 @@ extension GameViewController: GameDelegate {
         livesLabel.text = "\(String(localized: "gameScene.lives")): \(lives)"
     }
     
-    func gameOver(score: Int) {
-        gameOverView.setupScore(score: score)
+    func gameOver(score: Int, isNewHighScore: Bool) {
+        gameOverView.setupScore(score: score, isNewHighScore: isNewHighScore)
         gameOverView.isHidden = false
     }
     

@@ -10,7 +10,7 @@ class GameOverView: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var gameOverLabel: UILabel!
+    @IBOutlet weak var gameOverTitleLabel: UILabel!
     @IBOutlet weak var yourScoreLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var restartButton: UIButton!
@@ -35,9 +35,9 @@ class GameOverView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        gameOverLabel.text = String(localized: "gameOverView.gameOver")
-        gameOverLabel.lineBreakMode = .byCharWrapping
-        gameOverLabel.numberOfLines = 0
+        gameOverTitleLabel.text = String(localized: "gameOverView.gameOver")
+        gameOverTitleLabel.lineBreakMode = .byCharWrapping
+        gameOverTitleLabel.numberOfLines = 0
         
         yourScoreLabel.text = String(localized: "gameOverView.yourScore")
         yourScoreLabel.lineBreakMode = .byCharWrapping
@@ -53,9 +53,17 @@ class GameOverView: UIView {
         restartButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    func setupScore(score: Int) {
-        yourScoreLabel.text = String(localized: "gameOverView.yourScore") + " \(score)"
-        highScoreLabel.text = String(localized: "gameOverView.highScore") + " \(Database.shared.getHighScore())"
+    func setupScore(score: Int, isNewHighScore: Bool) {
+        if isNewHighScore {
+            gameOverTitleLabel.text = String(localized: "gameOverView.congratulations")
+            yourScoreLabel.text = String(localized: "gameOverView.newHighScore") + " \(score)"
+            highScoreLabel.isHidden = true
+        } else {
+            gameOverTitleLabel.text = String(localized: "gameOverView.gameOver")
+            yourScoreLabel.text = String(localized: "gameOverView.yourScore") + " \(score)"
+            highScoreLabel.isHidden = false
+            highScoreLabel.text = String(localized: "gameOverView.highScore") + " \(Database.shared.getHighScore())"
+        }
     }
     
     func setStackConstraintPriority(priority: Float) {

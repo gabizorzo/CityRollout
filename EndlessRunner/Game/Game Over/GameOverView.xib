@@ -10,7 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameOverView" customModule="EndlessRunner" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="7Ei-uP-0Qn" id="Gw5-mo-yXf"/>
-                <outlet property="gameOverLabel" destination="3F0-hO-Doh" id="Ffh-y5-Gbo"/>
+                <outlet property="gameOverTitleLabel" destination="3F0-hO-Doh" id="IH9-F6-2NB"/>
                 <outlet property="highScoreLabel" destination="Xjv-3t-6OJ" id="IwU-jM-Etr"/>
                 <outlet property="leadConstraint" destination="y4w-cD-3wi" id="N7h-Fh-ITZ"/>
                 <outlet property="restartButton" destination="4AQ-Fn-lmG" id="1Lq-K9-h5w"/>
@@ -49,7 +49,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-Fn-lmG" userLabel="Restart Button">
-                            <rect key="frame" x="0.0" y="142" width="110.66666666666667" height="47.333333333333343"/>
+                            <rect key="frame" x="0.0" y="142" width="110.66666666666666" height="47.333333333333343"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="gray" image="gobackward" catalog="system" title="Button">
                                 <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
@@ -60,8 +60,8 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="4AQ-Fn-lmG" secondAttribute="trailing" id="RcC-Im-nfn"/>
-                        <constraint firstItem="4AQ-Fn-lmG" firstAttribute="leading" secondItem="AzB-Vl-tFw" secondAttribute="leading" id="f0X-I2-7pA"/>
+                        <constraint firstItem="4AQ-Fn-lmG" firstAttribute="leading" secondItem="AzB-Vl-tFw" secondAttribute="leading" id="Cqb-sL-Ntr"/>
+                        <constraint firstAttribute="trailing" secondItem="4AQ-Fn-lmG" secondAttribute="trailing" id="zpw-Pi-JBj"/>
                     </constraints>
                 </stackView>
             </subviews>
