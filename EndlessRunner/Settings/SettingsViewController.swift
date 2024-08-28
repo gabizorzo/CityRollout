@@ -61,8 +61,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             
             cell.settingName = viewModel.settings[indexPath.row].name
             cell.settingLabel.text = viewModel.settings[indexPath.row].label
-            cell.settingLabel.lineBreakMode = .byCharWrapping
-            cell.settingLabel.numberOfLines = 0
+            cell.settingLabel.numberOfLines = 1
+            cell.settingLabel.adjustsFontSizeToFitWidth = true
             
             cell.setupMenu()
             

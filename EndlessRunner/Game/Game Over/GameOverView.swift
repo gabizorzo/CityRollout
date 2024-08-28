@@ -11,7 +11,9 @@ class GameOverView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var gameOverTitleLabel: UILabel!
+    @IBOutlet weak var congratulationsLabel: UILabel!
     @IBOutlet weak var yourScoreLabel: UILabel!
+    @IBOutlet weak var newHighScore: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var restartButton: UIButton!
     
@@ -38,14 +40,27 @@ class GameOverView: UIView {
         gameOverTitleLabel.text = String(localized: "gameOverView.gameOver")
         gameOverTitleLabel.lineBreakMode = .byCharWrapping
         gameOverTitleLabel.numberOfLines = 0
+        gameOverTitleLabel.isHidden = true
+        
+        congratulationsLabel.text = String(localized: "gameOverView.congratulations")
+        congratulationsLabel.lineBreakMode = .byCharWrapping
+        congratulationsLabel.numberOfLines = 0
+        congratulationsLabel.isHidden = true
         
         yourScoreLabel.text = String(localized: "gameOverView.yourScore")
         yourScoreLabel.lineBreakMode = .byCharWrapping
         yourScoreLabel.numberOfLines = 0
+        yourScoreLabel.isHidden = true
         
-        highScoreLabel.text = String(localized: "gameOverView.highScore")
+        highScoreLabel.text = String(localized: "gameOverView.highScore") + "\(Database.shared.getHighScore())"
         highScoreLabel.lineBreakMode = .byCharWrapping
         highScoreLabel.numberOfLines = 0
+        highScoreLabel.isHidden = true
+        
+        newHighScore.text = String(localized: "gameOverView.newHighScore") + "\(Database.shared.getHighScore())"
+        newHighScore.lineBreakMode = .byCharWrapping
+        newHighScore.numberOfLines = 0
+        newHighScore.isHidden = true
         
         restartButton.setTitle(String(localized: "gameOverView.playAgain"), for: .normal)
         restartButton.titleLabel?.lineBreakMode = .byCharWrapping
@@ -54,15 +69,24 @@ class GameOverView: UIView {
     }
     
     func setupScore(score: Int, isNewHighScore: Bool) {
-        if isNewHighScore {
-            gameOverTitleLabel.text = String(localized: "gameOverView.congratulations")
-            yourScoreLabel.text = String(localized: "gameOverView.newHighScore") + " \(score)"
+        
+        if true {
+//            newHighScore.text = String(localized: "gameOverView.newHighScore") + "\(score)"
+            
+            gameOverTitleLabel.isHidden = true
+            yourScoreLabel.isHidden = true
             highScoreLabel.isHidden = true
+            congratulationsLabel.isHidden = false
+            newHighScore.isHidden = false
+            
         } else {
-            gameOverTitleLabel.text = String(localized: "gameOverView.gameOver")
-            yourScoreLabel.text = String(localized: "gameOverView.yourScore") + " \(score)"
+            yourScoreLabel.text = String(localized: "gameOverView.yourScore") + "\(score)"
+            
+            gameOverTitleLabel.isHidden = false
+            yourScoreLabel.isHidden = false
             highScoreLabel.isHidden = false
-            highScoreLabel.text = String(localized: "gameOverView.highScore") + " \(Database.shared.getHighScore())"
+            congratulationsLabel.isHidden = true
+            newHighScore.isHidden = true
         }
     }
     
@@ -77,4 +101,3 @@ class GameOverView: UIView {
         restartButtonAction()
     }
 }
-

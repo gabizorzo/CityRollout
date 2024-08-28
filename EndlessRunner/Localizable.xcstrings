@@ -134,7 +134,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Play!"
+            "value" : " Play!"
           }
         },
         "pt-BR" : {
@@ -266,7 +266,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vibrações "
+            "value" : "Vibrações"
           }
         }
       }
