@@ -14,7 +14,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "PARABÉNS"
+            "value" : "PARABÉNS!"
           }
         }
       }
@@ -62,7 +62,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "New High Score:"
+            "value" : "New high score:"
           }
         },
         "pt-BR" : {

@@ -158,13 +158,13 @@ extension GameViewController: GameDelegate {
         
         if currentOrientation == .landscapeLeft {
             rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-            self.gameOverView.setStackConstraintPriority(priority: 250)
+            self.gameOverView.setStackBehavior(priority: 250)
         } else if currentOrientation == .landscapeRight {
             rotation = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
-            self.gameOverView.setStackConstraintPriority(priority: 250)
+            self.gameOverView.setStackBehavior(priority: 250)
         } else {
             rotation = CGAffineTransform(rotationAngle: 0)
-            self.gameOverView.setStackConstraintPriority(priority: 750)
+            self.gameOverView.setStackBehavior(priority: 1000)
         }
         
         self.scoreLabel.transform = rotation
