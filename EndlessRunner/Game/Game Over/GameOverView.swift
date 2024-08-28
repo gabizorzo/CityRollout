@@ -35,22 +35,13 @@ class GameOverView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        gameOverTitleLabel.text = String(localized: "gameOverView.gameOver")
         gameOverTitleLabel.lineBreakMode = .byCharWrapping
-        gameOverTitleLabel.numberOfLines = 0
-        
-        yourScoreLabel.text = String(localized: "gameOverView.yourScore")
         yourScoreLabel.lineBreakMode = .byCharWrapping
-        yourScoreLabel.numberOfLines = 0
-        
-        highScoreLabel.text = String(localized: "gameOverView.highScore") + " \(Database.shared.getHighScore())"
         highScoreLabel.lineBreakMode = .byCharWrapping
-        highScoreLabel.numberOfLines = 0
         
         restartButton.setTitle(String(localized: "gameOverView.playAgain"), for: .normal)
         restartButton.titleLabel?.lineBreakMode = .byCharWrapping
         restartButton.titleLabel?.numberOfLines = 0
-        restartButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
     func setupScore(score: Int, isNewHighScore: Bool) {
