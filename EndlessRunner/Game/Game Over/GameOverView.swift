@@ -57,19 +57,24 @@ class GameOverView: UIView {
          }
     }
     
-    func setStackBehavior(priority: Float) {
-        self.trailConstraint.priority = UILayoutPriority(priority)
-        self.leadConstraint.priority = UILayoutPriority(priority)
-        if priority == 250 { // landscape
-            self.gameOverTitleLabel.numberOfLines = 1
-            self.yourScoreLabel.numberOfLines = 1
-            self.highScoreLabel.numberOfLines = 1
-            self.restartButton.titleLabel?.numberOfLines = 1
-        } else { // portrait
+    func setStackBehavior(_ currentOrientation: UIDeviceOrientation) {
+        let priority: Float = currentOrientation == .portrait ? 1000 : 250
+        if currentOrientation == .portrait {
+            self.trailConstraint.priority = UILayoutPriority(priority)
+            self.leadConstraint.priority = UILayoutPriority(priority)
+            
             self.gameOverTitleLabel.numberOfLines = 0
             self.yourScoreLabel.numberOfLines = 0
             self.highScoreLabel.numberOfLines = 0
             self.restartButton.titleLabel?.numberOfLines = 0
+        } else if currentOrientation == .landscapeRight || currentOrientation == .landscapeLeft {
+            self.trailConstraint.priority = UILayoutPriority(priority)
+            self.leadConstraint.priority = UILayoutPriority(priority)
+            
+            self.gameOverTitleLabel.numberOfLines = 1
+            self.yourScoreLabel.numberOfLines = 1
+            self.highScoreLabel.numberOfLines = 1
+            self.restartButton.titleLabel?.numberOfLines = 1
         }
     }
     
