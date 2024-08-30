@@ -137,8 +137,8 @@ extension GameViewController: GameDelegate {
         livesLabel.text = "\(String(localized: "gameScene.lives")): \(lives)"
     }
     
-    func gameOver(score: Int) {
-        gameOverView.setupScore(score: score)
+    func gameOver(score: Int, isNewHighScore: Bool) {
+        gameOverView.setupScore(score: score, isNewHighScore: isNewHighScore)
         gameOverView.isHidden = false
     }
     
@@ -154,20 +154,23 @@ extension GameViewController: GameDelegate {
     
     @objc func rotateLabels() {
         let currentOrientation = UIDevice.current.orientation
-        var rotation = CGAffineTransform()
-        
-        if currentOrientation == .landscapeLeft {
-            rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-        } else if currentOrientation == .landscapeRight {
-            rotation = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
-        } else {
-            rotation = CGAffineTransform(rotationAngle: 0)
+        if currentOrientation != .faceUp && currentOrientation != .faceDown {
+            var rotation = CGAffineTransform()
+            
+            if currentOrientation == .landscapeLeft {
+                rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+            } else if currentOrientation == .landscapeRight {
+                rotation = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
+            } else if currentOrientation == .portrait{
+                rotation = CGAffineTransform(rotationAngle: 0)
+            }
+            
+            self.scoreLabel.transform = rotation
+            self.livesLabel.transform = rotation
+            self.pauseButton.transform = rotation
+            self.gameOverView.stackView.transform = rotation
+            self.gameOverView.setStackBehavior(currentOrientation)
         }
-        
-        self.scoreLabel.transform = rotation
-        self.livesLabel.transform = rotation
-        self.pauseButton.transform = rotation
-        self.gameOverView.stackView.transform = rotation
     }
 }
 
@@ -183,7 +186,7 @@ extension GameViewController: ARSessionDelegate {
         let blendShapes: [ARFaceAnchor.BlendShapeLocation:Any] = faceAnchor.blendShapes
         
         if let left = blendShapes[.mouthLeft] as? Float {
-            print("L: \(left)")
+//            print("L: \(left)")
             
             if left > 0.09 {
                 scene.movePositive()
@@ -191,7 +194,7 @@ extension GameViewController: ARSessionDelegate {
         }
         
         if let right = blendShapes[.mouthRight] as? Float {
-            print("R: \(right)")
+//            print("R: \(right)")
             
             if right > 0.09 {
                 scene.moveNegative()

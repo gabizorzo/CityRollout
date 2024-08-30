@@ -23,10 +23,14 @@ class MenuViewController: UIViewController {
         
         startButton.setTitle(String(localized: "menuView.play"), for: .normal)
         startButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        startButton.titleLabel?.numberOfLines = 0
+        startButton.titleLabel?.lineBreakMode = .byCharWrapping
         startButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 
         settingsButton.setTitle(String(localized: "menuView.settings"), for: .normal)
         settingsButton.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
+        settingsButton.titleLabel?.numberOfLines = 0
+        settingsButton.titleLabel?.lineBreakMode = .byCharWrapping
         settingsButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 }

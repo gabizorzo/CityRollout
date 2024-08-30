@@ -10,13 +10,14 @@ class GameOverView: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var gameOverLabel: UILabel!
+    @IBOutlet weak var gameOverTitleLabel: UILabel!
     @IBOutlet weak var yourScoreLabel: UILabel!
-    @IBOutlet weak var yourScoreValueLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
-    @IBOutlet weak var highScoreValueLabel: UILabel!
     @IBOutlet weak var restartButton: UIButton!
-        
+    
+    @IBOutlet weak var leadConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailConstraint: NSLayoutConstraint!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -30,18 +31,51 @@ class GameOverView: UIView {
     private func commonInit() {
         Bundle.main.loadNibNamed("GameOverView", owner: self, options: nil)
         addSubview(contentView)
+        
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        gameOverLabel.text = String(localized: "gameOverView.gameOver")
-        yourScoreLabel.text = String(localized: "gameOverView.yourScore")
-        highScoreLabel.text = String(localized: "gameOverView.highScore")
+        
+        gameOverTitleLabel.lineBreakMode = .byCharWrapping
+        yourScoreLabel.lineBreakMode = .byCharWrapping
+        highScoreLabel.lineBreakMode = .byCharWrapping
+        
         restartButton.setTitle(String(localized: "gameOverView.playAgain"), for: .normal)
-        restartButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        restartButton.titleLabel?.lineBreakMode = .byCharWrapping
+        restartButton.titleLabel?.numberOfLines = 0
     }
     
-    func setupScore(score: Int) {
-        yourScoreValueLabel.text = "\(score)"
-        highScoreValueLabel.text = "\(Database.shared.getHighScore())"
+    func setupScore(score: Int, isNewHighScore: Bool) {
+        if isNewHighScore {
+             gameOverTitleLabel.text = String(localized: "gameOverView.congratulations")
+             yourScoreLabel.text = String(localized: "gameOverView.newHighScore") + " \(score)"
+             highScoreLabel.isHidden = true
+         } else {
+             gameOverTitleLabel.text = String(localized: "gameOverView.gameOver")
+             yourScoreLabel.text = String(localized: "gameOverView.yourScore") + " \(score)"
+             highScoreLabel.text = String(localized: "gameOverView.highScore") + " \(Database.shared.getHighScore())"
+             highScoreLabel.isHidden = false
+         }
+    }
+    
+    func setStackBehavior(_ currentOrientation: UIDeviceOrientation) {
+        let priority: Float = currentOrientation == .portrait ? 1000 : 250
+        if currentOrientation == .portrait {
+            self.trailConstraint.priority = UILayoutPriority(priority)
+            self.leadConstraint.priority = UILayoutPriority(priority)
+            
+            self.gameOverTitleLabel.numberOfLines = 0
+            self.yourScoreLabel.numberOfLines = 0
+            self.highScoreLabel.numberOfLines = 0
+            self.restartButton.titleLabel?.numberOfLines = 0
+        } else if currentOrientation == .landscapeRight || currentOrientation == .landscapeLeft {
+            self.trailConstraint.priority = UILayoutPriority(priority)
+            self.leadConstraint.priority = UILayoutPriority(priority)
+            
+            self.gameOverTitleLabel.numberOfLines = 1
+            self.yourScoreLabel.numberOfLines = 1
+            self.highScoreLabel.numberOfLines = 1
+            self.restartButton.titleLabel?.numberOfLines = 1
+        }
     }
     
     //MARK: - Actions
@@ -50,4 +84,3 @@ class GameOverView: UIView {
         restartButtonAction()
     }
 }
-

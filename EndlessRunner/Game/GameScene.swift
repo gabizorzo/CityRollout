@@ -11,7 +11,7 @@ import GameplayKit
 protocol GameDelegate: AnyObject {
     func updateScore(score: Int)
     func updateLives(lives: Int)
-    func gameOver(score: Int)
+    func gameOver(score: Int, isNewHighScore: Bool)
     func unpauseGame()
     func backToMenu()
     func restartGame()
@@ -194,13 +194,15 @@ extension GameScene {
     }
     
     func setHighScore() {
+        var isNewHighScore = false
         print("\nscore: \(score)")
         print("high score: \(Database.shared.getHighScore())")
         if score > Database.shared.getHighScore() {
             Database.shared.setHighScore(score: score)
+            isNewHighScore = true
             print("new high score: \(score)")
         }
-        self.gameDelegate?.gameOver(score: score)
+        self.gameDelegate?.gameOver(score: score, isNewHighScore: isNewHighScore)
     }
     
     func didCollide() {
