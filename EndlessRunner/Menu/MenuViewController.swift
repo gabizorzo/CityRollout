@@ -28,5 +28,7 @@ class MenuViewController: UIViewController {
         settingsButton.setTitle(String(localized: "menuView.settings"), for: .normal)
         settingsButton.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
         settingsButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        UIAccessibility.post(notification: .screenChanged, argument: startButton)
     }
 }
