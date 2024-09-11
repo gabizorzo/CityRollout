@@ -14,6 +14,7 @@ class GameOverView: UIView {
     @IBOutlet weak var yourScoreLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
     
     @IBOutlet weak var leadConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailConstraint: NSLayoutConstraint!
@@ -42,6 +43,10 @@ class GameOverView: UIView {
         restartButton.setTitle(String(localized: "gameOverView.playAgain"), for: .normal)
         restartButton.titleLabel?.lineBreakMode = .byCharWrapping
         restartButton.titleLabel?.numberOfLines = 0
+        
+        menuButton.setTitle(String(localized: "gameOverView.exit"), for: .normal)
+        menuButton.titleLabel?.lineBreakMode = .byCharWrapping
+        menuButton.titleLabel?.numberOfLines = 0
     }
     
     func setupScore(score: Int, isNewHighScore: Bool) {
@@ -83,4 +88,10 @@ class GameOverView: UIView {
     @IBAction func restartAction(_ sender: UIButton) {
         restartButtonAction()
     }
+    
+    var menuButtonAction: () -> Void = {}
+    @IBAction func menuAction(_ sender: Any) {
+        menuButtonAction()
+    }
+    
 }

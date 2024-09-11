@@ -13,6 +13,7 @@
                 <outlet property="gameOverTitleLabel" destination="3F0-hO-Doh" id="IH9-F6-2NB"/>
                 <outlet property="highScoreLabel" destination="Xjv-3t-6OJ" id="IwU-jM-Etr"/>
                 <outlet property="leadConstraint" destination="e6K-Tq-ZZi" id="17b-qG-UVK"/>
+                <outlet property="menuButton" destination="DlK-aU-0c4" id="sXL-4j-ySe"/>
                 <outlet property="restartButton" destination="4AQ-Fn-lmG" id="1Lq-K9-h5w"/>
                 <outlet property="stackView" destination="AzB-Vl-tFw" id="heg-gy-Utg"/>
                 <outlet property="trailConstraint" destination="zJa-fA-0tI" id="fNa-4e-rIt"/>
@@ -25,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AzB-Vl-tFw">
-                    <rect key="frame" x="16.000000000000007" y="294.33333333333326" width="110.66666666666669" height="263.66666666666674"/>
+                    <rect key="frame" x="16.000000000000007" y="294" width="110.66666666666669" height="264"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="3F0-hO-Doh" userLabel="Game Over">
                             <rect key="frame" x="0.0" y="0.0" width="110.66666666666667" height="40.666666666666664"/>
@@ -35,27 +36,35 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Acq-g8-jMV" userLabel="Your score">
-                            <rect key="frame" x="0.0" y="65.333333333333329" width="110.66666666666667" height="33.666666666666671"/>
+                            <rect key="frame" x="0.0" y="50.666666666666671" width="110.66666666666667" height="33.666666666666671"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Xjv-3t-6OJ" userLabel="High score">
-                            <rect key="frame" x="0.0" y="123.66666666666667" width="110.66666666666667" height="33.666666666666671"/>
+                            <rect key="frame" x="0.0" y="94.333333333333329" width="110.66666666666667" height="33.666666666666671"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-Fn-lmG" userLabel="Restart Button">
-                            <rect key="frame" x="0.0" y="182" width="110.66666666666667" height="81.666666666666686"/>
+                            <rect key="frame" x="0.0" y="138" width="110.66666666666667" height="81.666666666666686"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="gray" image="gobackward" catalog="system" title="Button">
                                 <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
                             </buttonConfiguration>
                             <connections>
                                 <action selector="restartAction:" destination="-1" eventType="touchUpInside" id="H3E-a5-ZWG"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DlK-aU-0c4" userLabel="Menu Button">
+                            <rect key="frame" x="18" y="229.66666666666663" width="75" height="34.333333333333314"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            <connections>
+                                <action selector="menuAction:" destination="-1" eventType="touchUpInside" id="sih-Mi-tsW"/>
                             </connections>
                         </button>
                     </subviews>

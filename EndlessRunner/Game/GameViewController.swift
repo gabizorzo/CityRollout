@@ -117,6 +117,12 @@ extension GameViewController: GameDelegate {
             Haptics.shared.buttonHaptic()
             Sounds.shared.buttonSound()
         }
+#warning("como melhorar essa duplicacao de codigo??")
+        gameOverView.menuButtonAction = { [weak self] in
+            self?.navigationController?.popViewController(animated: false)
+            Haptics.shared.buttonHaptic()
+            Sounds.shared.buttonSound()
+        }
     }
     
     func unpauseGame() {

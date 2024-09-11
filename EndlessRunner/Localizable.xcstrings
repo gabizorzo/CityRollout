@@ -19,6 +19,24 @@
         }
       }
     },
+    "gameOverView.exit" : {
+      "comment" : "Exit button text on game over view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sair"
+          }
+        }
+      }
+    },
     "gameOverView.gameOver" : {
       "comment" : "Game over label on game over view",
       "extractionState" : "manual",
@@ -195,6 +213,45 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sair"
+          }
+        }
+      }
+    },
+    "pauseView.howToPlay" : {
+      "comment" : "How to play button text on pause view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to play"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como jogar"
+          }
+        }
+      }
+    },
+    "pauseView.unpause" : {
+
+    },
+    "pauseView.unpause\n" : {
+      "comment" : "Resume button text on pause view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumir"
           }
         }
       }
