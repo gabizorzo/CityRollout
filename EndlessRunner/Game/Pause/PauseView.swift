@@ -30,7 +30,6 @@ class PauseView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        // SET COLORS DOS FUNDOS! E TAMANHO DA FONTE?
         unpauseButton.setTitle(String(localized: "pauseView.unpause"), for: .normal)
         menuButton.setTitle(String(localized: "pauseView.exit"), for: .normal)
         howToPlayButton.setTitle(String(localized: "pauseView.howToPlay"), for: .normal)

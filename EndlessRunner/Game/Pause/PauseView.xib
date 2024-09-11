@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="nnH-zo-fIU">
-                    <rect key="frame" x="16" y="642.33333333333337" width="361" height="193.66666666666663"/>
+                    <rect key="frame" x="16" y="608.33333333333337" width="361" height="193.66666666666663"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSs-7K-6fQ" userLabel="Unpause">
                             <rect key="frame" x="0.0" y="0.0" width="361" height="47.666666666666664"/>
@@ -67,7 +67,7 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nnH-zo-fIU" secondAttribute="trailing" constant="16" id="F2Q-gk-FxL"/>
                 <constraint firstItem="nnH-zo-fIU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Gfa-8U-2rv"/>
-                <constraint firstAttribute="bottom" secondItem="nnH-zo-fIU" secondAttribute="bottom" constant="16" id="ysQ-la-9GC"/>
+                <constraint firstAttribute="bottomMargin" secondItem="nnH-zo-fIU" secondAttribute="bottom" constant="16" id="m0D-kq-O4F"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
