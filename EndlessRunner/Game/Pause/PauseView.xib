@@ -10,8 +10,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PauseView" customModule="EndlessRunner" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="KFF-tn-1wL"/>
+                <outlet property="howToPlayButton" destination="eIT-64-ycr" id="q0D-DK-dZ7"/>
                 <outlet property="menuButton" destination="Lbz-HX-3O4" id="Odn-Bv-l9Q"/>
-                <outlet property="unpauseButton" destination="qDU-z3-azw" id="Q1b-66-Imd"/>
+                <outlet property="unpauseButton" destination="eSs-7K-6fQ" id="Xe1-Lk-7IC"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,30 +20,54 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDU-z3-azw" userLabel="Unpause Button">
-                    <rect key="frame" x="333.66666666666669" y="75" width="43.333333333333314" height="34.333333333333343"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
-                    <connections>
-                        <action selector="unpauseAction:" destination="-1" eventType="touchUpInside" id="V0f-y1-V5c"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbz-HX-3O4" userLabel="Menu Button">
-                    <rect key="frame" x="159" y="767" width="75" height="35"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                    <connections>
-                        <action selector="menuAction:" destination="-1" eventType="touchUpInside" id="IUd-Rf-7V1"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="nnH-zo-fIU">
+                    <rect key="frame" x="16" y="642.33333333333337" width="361" height="193.66666666666663"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSs-7K-6fQ" userLabel="Unpause">
+                            <rect key="frame" x="0.0" y="0.0" width="361" height="47.666666666666664"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="gray" title="Button">
+                                <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="unpauseAction:" destination="-1" eventType="touchUpInside" id="ahP-YE-Xbq"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIT-64-ycr" userLabel="How to play">
+                            <rect key="frame" x="32" y="79.666666666666629" width="297" height="47.666666666666657"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="gray" title="Button">
+                                <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="howToPlayAction:" destination="-1" eventType="touchUpInside" id="aCA-hF-9AR"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbz-HX-3O4" userLabel="Menu">
+                            <rect key="frame" x="32" y="159.33333333333326" width="297" height="34.333333333333343"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                            <connections>
+                                <action selector="menuAction:" destination="-1" eventType="touchUpInside" id="IUd-Rf-7V1"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Lbz-HX-3O4" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" constant="32" id="1EI-Uy-Tlw"/>
+                        <constraint firstAttribute="trailing" secondItem="eIT-64-ycr" secondAttribute="trailing" constant="32" id="2nR-T7-wDb"/>
+                        <constraint firstAttribute="trailing" secondItem="eSs-7K-6fQ" secondAttribute="trailing" id="H86-xH-Lqs"/>
+                        <constraint firstAttribute="trailing" secondItem="Lbz-HX-3O4" secondAttribute="trailing" constant="32" id="UcL-xZ-EYY"/>
+                        <constraint firstItem="eIT-64-ycr" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" constant="32" id="cb9-EX-fc8"/>
+                        <constraint firstItem="eSs-7K-6fQ" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" id="pBE-Xg-93N"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Lbz-HX-3O4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="PJs-Va-7KB"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Lbz-HX-3O4" secondAttribute="bottom" constant="16" id="Rf8-0T-7G4"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qDU-z3-azw" secondAttribute="trailing" constant="16" id="iPR-Eq-YjY"/>
-                <constraint firstItem="qDU-z3-azw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="peK-Cc-orp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nnH-zo-fIU" secondAttribute="trailing" constant="16" id="F2Q-gk-FxL"/>
+                <constraint firstItem="nnH-zo-fIU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Gfa-8U-2rv"/>
+                <constraint firstAttribute="bottom" secondItem="nnH-zo-fIU" secondAttribute="bottom" constant="16" id="ysQ-la-9GC"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -50,7 +75,4 @@
             <point key="canvasLocation" x="136.64122137404578" y="17.605633802816904"/>
         </view>
     </objects>
-    <resources>
-        <image name="play.fill" catalog="system" width="117" height="128"/>
-    </resources>
 </document>

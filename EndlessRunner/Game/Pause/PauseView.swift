@@ -12,6 +12,7 @@ class PauseView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var unpauseButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var howToPlayButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,7 +29,11 @@ class PauseView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        // SET COLORS DOS FUNDOS! E TAMANHO DA FONTE?
+        unpauseButton.setTitle(String(localized: "pauseView.unpause"), for: .normal)
         menuButton.setTitle(String(localized: "pauseView.exit"), for: .normal)
+        howToPlayButton.setTitle(String(localized: "pauseView.howToPlay"), for: .normal)
     }
     
     
@@ -43,4 +48,8 @@ class PauseView: UIView {
         menuButtonAction()
     }
     
+    var howToPlayButtonAction: () -> Void = {} // passar essa closure na game view e chamar na action abaixo
+    @IBAction func howToPlayAction(_ sender: Any) {
+        print(#function)
+    }
 }
