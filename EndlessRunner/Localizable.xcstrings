@@ -152,13 +152,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " Play!"
+            "value" : "Tap to play"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " Jogar!"
+            "value" : "Toque para jogar"
           }
         }
       }
@@ -236,11 +236,7 @@
       }
     },
     "pauseView.unpause" : {
-
-    },
-    "pauseView.unpause\n" : {
       "comment" : "Resume button text on pause view",
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

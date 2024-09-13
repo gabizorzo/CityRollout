@@ -37,50 +37,72 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="laU-5C-QbG">
-                                <rect key="frame" x="16" y="658.66666666666663" width="361" height="127.33333333333337"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="laU-5C-QbG">
+                                <rect key="frame" x="38" y="607" width="317" height="179"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5R-Ud-Alm">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="47.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="317" height="47.666666666666664"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="Button">
+                                        <buttonConfiguration key="configuration" style="plain" title="Button">
+                                            <backgroundConfiguration key="background" cornerRadius="16">
+                                                <color key="backgroundColor" red="0.94509803921568625" green="0.43529411764705883" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                            </backgroundConfiguration>
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <segue destination="SuN-UC-c1G" kind="show" animates="NO" id="u2i-oe-PkT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3F-8q-Xd8" userLabel="Settings Button">
-                                        <rect key="frame" x="0.0" y="79.666666666666742" width="361" height="47.666666666666657"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zW-75-MVf" userLabel="How to play Button">
+                                        <rect key="frame" x="32" y="65.666666666666629" width="253" height="47.666666666666657"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="Button">
+                                        <buttonConfiguration key="configuration" style="plain" title="Button">
+                                            <backgroundConfiguration key="background" cornerRadius="16">
+                                                <color key="backgroundColor" red="0.38823529410000002" green="0.086274509799999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </backgroundConfiguration>
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="buttonTapFeedback:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eby-uF-doe"/>
+                                            <action selector="buttonTapFeedback:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="T9P-Jj-4en"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3F-8q-Xd8" userLabel="Settings Button">
+                                        <rect key="frame" x="32" y="131.33333333333337" width="253" height="47.666666666666657"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Button">
+                                            <backgroundConfiguration key="background" cornerRadius="16">
+                                                <color key="backgroundColor" red="0.38823529411764707" green="0.086274509803921567" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="buttonTapFeedback:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RR6-WY-uQ1"/>
                                             <segue destination="nfE-tJ-fv0" kind="show" animates="NO" id="yUf-Ms-II3"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="a3F-8q-Xd8" firstAttribute="leading" secondItem="laU-5C-QbG" secondAttribute="leading" id="0Ah-p1-7K2"/>
-                                    <constraint firstAttribute="trailing" secondItem="a3F-8q-Xd8" secondAttribute="trailing" id="2Sp-nt-QAV"/>
                                     <constraint firstItem="b5R-Ud-Alm" firstAttribute="leading" secondItem="laU-5C-QbG" secondAttribute="leading" id="8Jz-SC-ePd"/>
+                                    <constraint firstItem="a3F-8q-Xd8" firstAttribute="leading" secondItem="laU-5C-QbG" secondAttribute="leading" constant="32" id="T7U-KQ-457"/>
                                     <constraint firstAttribute="trailing" secondItem="b5R-Ud-Alm" secondAttribute="trailing" id="YZh-qK-HgH"/>
+                                    <constraint firstItem="8zW-75-MVf" firstAttribute="leading" secondItem="laU-5C-QbG" secondAttribute="leading" constant="32" id="Yi8-3s-e9o"/>
+                                    <constraint firstAttribute="trailing" secondItem="8zW-75-MVf" secondAttribute="trailing" constant="32" id="ksq-mr-Yof"/>
+                                    <constraint firstAttribute="trailing" secondItem="a3F-8q-Xd8" secondAttribute="trailing" constant="32" id="zm0-RP-P1H"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <constraints>
-                            <constraint firstItem="laU-5C-QbG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="93s-qI-xuw"/>
+                            <constraint firstItem="laU-5C-QbG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="BAW-vR-YCx"/>
                             <constraint firstItem="laU-5C-QbG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="GiK-Cf-SeQ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="laU-5C-QbG" secondAttribute="trailing" constant="38" id="I95-9Z-i0f"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="laU-5C-QbG" secondAttribute="bottom" constant="32" id="Vqn-rA-t5f"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="laU-5C-QbG" secondAttribute="trailing" constant="16" id="vJR-LJ-KGY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QQQ-VA-YzT"/>
                     <connections>
                         <outlet property="backgroundImage" destination="KHj-mz-5uX" id="q6w-26-1AH"/>
+                        <outlet property="howToPlayButton" destination="8zW-75-MVf" id="YZc-3N-Wvo"/>
                         <outlet property="settingsButton" destination="a3F-8q-Xd8" id="yYp-cK-1qp"/>
                         <outlet property="startButton" destination="b5R-Ud-Alm" id="fG3-l0-xOq"/>
                     </connections>
@@ -111,6 +133,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="99" height="96"/>
+        <image name="background" width="390" height="737"/>
     </resources>
 </document>
