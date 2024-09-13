@@ -11,10 +11,13 @@ import GameplayKit
 import ARKit
 
 class GameViewController: UIViewController {
-
+    #warning("check if possible to remove livesstack outlet")
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var livesLabel: UILabel!
+    @IBOutlet weak var livesStackView: UIStackView!
+    @IBOutlet weak var heart1: UIImageView!
+    @IBOutlet weak var heart2: UIImageView!
+    @IBOutlet weak var heart3: UIImageView!
     @IBOutlet weak var pauseView: PauseView!
     @IBOutlet weak var gameOverView: GameOverView!
     @IBOutlet weak var pauseButton: UIButton!
@@ -87,7 +90,6 @@ class GameViewController: UIViewController {
     }
     
     func setHudLabels() {
-        livesLabel.text = "\(String(localized: "gameScene.lives")): 3"
         scoreLabel.layer.cornerRadius = 8
         scoreLabel.layer.masksToBounds = true
     }
@@ -142,7 +144,24 @@ extension GameViewController: GameDelegate {
     }
     
     func updateLives(lives: Int) {
-        livesLabel.text = "\(String(localized: "gameScene.lives")): \(lives)"
+        switch lives {
+        case 2:
+            self.heart3.image = UIImage(named: "hurtHeart")
+            break
+        case 1:
+            self.heart2.image = UIImage(named: "hurtHeart")
+            break
+        case 0:
+            self.heart1.image = UIImage(named: "hurtHeart")
+            break
+        case 3:
+            self.heart1.image = UIImage(named: "heart")
+            self.heart2.image = UIImage(named: "heart")
+            self.heart3.image = UIImage(named: "heart")
+            break
+        default:
+            break
+        }
     }
     
     func gameOver(score: Int, isNewHighScore: Bool) {
@@ -174,7 +193,9 @@ extension GameViewController: GameDelegate {
             }
             
             self.scoreLabel.transform = rotation
-            self.livesLabel.transform = rotation
+            for heart in self.livesStackView.arrangedSubviews {
+                heart.transform = rotation
+            }
             self.pauseButton.transform = rotation
             self.gameOverView.stackView.transform = rotation
             self.gameOverView.setStackBehavior(currentOrientation)
