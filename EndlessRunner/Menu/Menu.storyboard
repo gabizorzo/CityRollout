@@ -90,18 +90,26 @@
                                     <constraint firstAttribute="trailing" secondItem="a3F-8q-Xd8" secondAttribute="trailing" constant="32" id="zm0-RP-P1H"/>
                                 </constraints>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="gameLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vhc-bO-Bab">
+                                <rect key="frame" x="69" y="204" width="255" height="258"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <constraints>
                             <constraint firstItem="laU-5C-QbG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="38" id="BAW-vR-YCx"/>
                             <constraint firstItem="laU-5C-QbG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="GiK-Cf-SeQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="laU-5C-QbG" secondAttribute="trailing" constant="38" id="I95-9Z-i0f"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vhc-bO-Bab" secondAttribute="trailing" constant="69" id="JG7-n5-cQP"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="laU-5C-QbG" secondAttribute="bottom" constant="32" id="Vqn-rA-t5f"/>
+                            <constraint firstItem="vhc-bO-Bab" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="145" id="aLS-DS-mAi"/>
+                            <constraint firstItem="vhc-bO-Bab" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="69" id="dlM-Wm-JVf"/>
+                            <constraint firstItem="laU-5C-QbG" firstAttribute="top" secondItem="vhc-bO-Bab" secondAttribute="bottom" constant="145" id="wLg-Or-26o"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QQQ-VA-YzT"/>
                     <connections>
                         <outlet property="backgroundImage" destination="KHj-mz-5uX" id="q6w-26-1AH"/>
+                        <outlet property="gameLogoImage" destination="vhc-bO-Bab" id="aBu-g1-cwz"/>
                         <outlet property="howToPlayButton" destination="8zW-75-MVf" id="YZc-3N-Wvo"/>
                         <outlet property="settingsButton" destination="a3F-8q-Xd8" id="yYp-cK-1qp"/>
                         <outlet property="startButton" destination="b5R-Ud-Alm" id="fG3-l0-xOq"/>
@@ -134,5 +142,6 @@
     </scenes>
     <resources>
         <image name="background" width="390" height="737"/>
+        <image name="gameLogo" width="249.66667175292969" height="269.66665649414062"/>
     </resources>
 </document>

@@ -9,6 +9,7 @@ import UIKit
 
 class MenuViewController: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var gameLogoImage: UIImageView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var howToPlayButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
