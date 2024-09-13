@@ -23,7 +23,7 @@ class GameScene: SKScene {
     weak var gameDelegate: GameDelegate?
     
     // MARK: - Nodes
-    private var player = SKShapeNode(circleOfRadius: 15)
+    private var player = SKSpriteNode()
     private var background: [SKSpriteNode] = []
     
     // MARK: - Sizes
@@ -77,12 +77,12 @@ class GameScene: SKScene {
     
     func createPlayer() {
         self.player.name = "Player"
-        self.player.fillColor = .green
-        self.player.strokeColor = .clear
+        let texture = SKTexture(imageNamed: "player")
+        self.player = SKSpriteNode(texture: texture)
         self.player.position = CGPoint(x: 0, y: -(screenHeight/2.5))
         self.player.zPosition = 1
         
-        let physics = SKPhysicsBody(circleOfRadius: 15)
+        let physics = SKPhysicsBody(texture: texture, size: player.size)
         physics.isDynamic = true
         physics.affectedByGravity = false
         physics.usesPreciseCollisionDetection = true
@@ -90,7 +90,7 @@ class GameScene: SKScene {
         physics.collisionBitMask = obstaclesCategory
         physics.contactTestBitMask = obstaclesCategory
         self.player.physicsBody = physics
-        
+        self.player.yScale = -1 // to make player point up
         self.addChild(player)
     }
     
