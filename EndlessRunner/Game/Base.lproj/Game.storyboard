@@ -19,8 +19,9 @@
                             <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bj7-Qz-EIm" userLabel="Game View">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </skView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-7o-I1a">
-                                <rect key="frame" x="32" y="75" width="17.666666666666671" height="33.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 0 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-7o-I1a">
+                                <rect key="frame" x="32" y="75" width="29.666666666666671" height="33.666666666666657"/>
+                                <color key="backgroundColor" red="0.38823529410000002" green="0.086274509799999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -32,9 +33,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGf-o3-4y2" userLabel="Pause Button">
-                                <rect key="frame" x="335" y="75" width="42" height="34.333333333333343"/>
+                                <rect key="frame" x="327.33333333333331" y="75" width="49.666666666666686" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="pause.fill" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="pause.circle.fill" catalog="system">
+                                    <color key="baseForegroundColor" red="0.94509803920000002" green="0.43529411759999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="pauseAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="RGQ-k6-2nB"/>
                                 </connections>
@@ -86,7 +89,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pause.fill" catalog="system" width="117" height="128"/>
+        <image name="pause.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -69,7 +69,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3F-8q-Xd8" userLabel="Settings Button">
                                         <rect key="frame" x="32" y="131.33333333333337" width="253" height="47.666666666666657"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="Button">
+                                        <buttonConfiguration key="configuration" style="plain" title="Button">
                                             <backgroundConfiguration key="background" cornerRadius="16">
                                                 <color key="backgroundColor" red="0.38823529411764707" green="0.086274509803921567" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                             </backgroundConfiguration>

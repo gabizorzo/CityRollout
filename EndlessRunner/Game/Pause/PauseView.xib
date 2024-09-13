@@ -20,13 +20,18 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="nnH-zo-fIU">
-                    <rect key="frame" x="16" y="608.33333333333337" width="361" height="193.66666666666663"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="nnH-zo-fIU">
+                    <rect key="frame" x="38" y="607" width="317" height="179"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSs-7K-6fQ" userLabel="Unpause">
-                            <rect key="frame" x="0.0" y="0.0" width="361" height="47.666666666666664"/>
+                            <rect key="frame" x="0.0" y="0.0" width="317" height="47.666666666666664"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="gray" title="Button">
+                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <backgroundConfiguration key="background" cornerRadius="16">
+                                    <color key="backgroundColor" red="0.94509803920000002" green="0.43529411759999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </backgroundConfiguration>
                                 <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
                             </buttonConfiguration>
                             <connections>
@@ -34,9 +39,12 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIT-64-ycr" userLabel="How to play">
-                            <rect key="frame" x="32" y="79.666666666666629" width="297" height="47.666666666666657"/>
+                            <rect key="frame" x="32" y="65.666666666666629" width="253" height="47.666666666666657"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="gray" title="Button">
+                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <backgroundConfiguration key="background" cornerRadius="16">
+                                    <color key="backgroundColor" red="0.38823529410000002" green="0.086274509799999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </backgroundConfiguration>
                                 <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
                             </buttonConfiguration>
                             <connections>
@@ -44,30 +52,36 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbz-HX-3O4" userLabel="Menu">
-                            <rect key="frame" x="32" y="159.33333333333326" width="297" height="34.333333333333343"/>
+                            <rect key="frame" x="32" y="131.33333333333337" width="253" height="47.666666666666657"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <backgroundConfiguration key="background" cornerRadius="16">
+                                    <color key="backgroundColor" red="0.38823529410000002" green="0.086274509799999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </backgroundConfiguration>
+                                <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                            </buttonConfiguration>
                             <connections>
                                 <action selector="menuAction:" destination="-1" eventType="touchUpInside" id="IUd-Rf-7V1"/>
                             </connections>
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="Lbz-HX-3O4" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" constant="32" id="1EI-Uy-Tlw"/>
-                        <constraint firstAttribute="trailing" secondItem="eIT-64-ycr" secondAttribute="trailing" constant="32" id="2nR-T7-wDb"/>
-                        <constraint firstAttribute="trailing" secondItem="eSs-7K-6fQ" secondAttribute="trailing" id="H86-xH-Lqs"/>
-                        <constraint firstAttribute="trailing" secondItem="Lbz-HX-3O4" secondAttribute="trailing" constant="32" id="UcL-xZ-EYY"/>
-                        <constraint firstItem="eIT-64-ycr" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" constant="32" id="cb9-EX-fc8"/>
-                        <constraint firstItem="eSs-7K-6fQ" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" id="pBE-Xg-93N"/>
+                        <constraint firstAttribute="trailing" secondItem="Lbz-HX-3O4" secondAttribute="trailing" constant="32" id="BR2-6q-JSm"/>
+                        <constraint firstItem="Lbz-HX-3O4" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" constant="32" id="D4G-Fe-bKQ"/>
+                        <constraint firstItem="eSs-7K-6fQ" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" id="aUb-S0-Zks"/>
+                        <constraint firstAttribute="trailing" secondItem="eSs-7K-6fQ" secondAttribute="trailing" id="cN6-AP-fTo"/>
+                        <constraint firstItem="eIT-64-ycr" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" constant="32" id="ekR-up-0me"/>
+                        <constraint firstAttribute="trailing" secondItem="eIT-64-ycr" secondAttribute="trailing" constant="32" id="lYd-tn-yzh"/>
                     </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nnH-zo-fIU" secondAttribute="trailing" constant="16" id="F2Q-gk-FxL"/>
-                <constraint firstItem="nnH-zo-fIU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Gfa-8U-2rv"/>
-                <constraint firstAttribute="bottomMargin" secondItem="nnH-zo-fIU" secondAttribute="bottom" constant="16" id="m0D-kq-O4F"/>
+                <constraint firstItem="nnH-zo-fIU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cLh-Dz-uAl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nnH-zo-fIU" secondAttribute="bottom" constant="32" id="dFA-Ep-a3l"/>
+                <constraint firstItem="nnH-zo-fIU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="38" id="fOH-pv-77W"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nnH-zo-fIU" secondAttribute="trailing" constant="38" id="zed-ae-81f"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

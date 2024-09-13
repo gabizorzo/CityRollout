@@ -88,6 +88,8 @@ class GameViewController: UIViewController {
     
     func setHudLabels() {
         livesLabel.text = "\(String(localized: "gameScene.lives")): 3"
+        scoreLabel.layer.cornerRadius = 8
+        scoreLabel.layer.masksToBounds = true
     }
 }
 
@@ -136,7 +138,7 @@ extension GameViewController: GameDelegate {
     }
     
     func updateScore(score: Int) {
-        scoreLabel.text = "\(score)"
+        scoreLabel.text = " \(score) "
     }
     
     func updateLives(lives: Int) {

@@ -31,8 +31,11 @@ class PauseView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         unpauseButton.setTitle(String(localized: "pauseView.unpause"), for: .normal)
+        unpauseButton.setTitleColor(.white, for: .normal)
         menuButton.setTitle(String(localized: "pauseView.exit"), for: .normal)
+        menuButton.setTitleColor(.white, for: .normal)
         howToPlayButton.setTitle(String(localized: "pauseView.howToPlay"), for: .normal)
+        howToPlayButton.setTitleColor(.white, for: .normal)
     }
     
     
