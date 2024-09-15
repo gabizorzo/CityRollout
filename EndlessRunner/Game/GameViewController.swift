@@ -40,6 +40,8 @@ class GameViewController: UIViewController {
         restartGame()
         unpauseGame()
         backToMenu()
+        
+        UIAccessibility.post(notification: .screenChanged, argument: scoreLabel)
     }
     
     deinit {
@@ -74,6 +76,8 @@ class GameViewController: UIViewController {
         pauseView.isHidden = false
         Haptics.shared.buttonHaptic()
         Sounds.shared.buttonSound()
+        
+        UIAccessibility.post(notification: .screenChanged, argument: pauseView.unpauseButton)
     }
 
     // MARK: - Configs
@@ -136,6 +140,8 @@ extension GameViewController: GameDelegate {
             self?.gameView.isPaused = false
             Haptics.shared.buttonHaptic()
             Sounds.shared.buttonSound()
+            
+            UIAccessibility.post(notification: .layoutChanged, argument: self?.scoreLabel)
         }
     }
     
@@ -167,6 +173,8 @@ extension GameViewController: GameDelegate {
     func gameOver(score: Int, isNewHighScore: Bool) {
         gameOverView.setupScore(score: score, isNewHighScore: isNewHighScore)
         gameOverView.isHidden = false
+        
+        UIAccessibility.post(notification: .screenChanged, argument: gameOverView.gameOverLabel)
     }
     
     func restartGame() {
@@ -176,6 +184,8 @@ extension GameViewController: GameDelegate {
             self?.gameOverView.isHidden = true
             self?.presentScene()
             Haptics.shared.startGameHaptic()
+            
+            UIAccessibility.post(notification: .layoutChanged, argument: self?.scoreLabel)
         }
     }
     

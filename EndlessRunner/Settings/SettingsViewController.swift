@@ -31,6 +31,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
         let barButtonItem = UIBarButtonItem(customView: backButton)
         navBarItem.leftBarButtonItem = barButtonItem
+        
+        UIAccessibility.post(notification: .screenChanged, argument: navBarItem)
     }
 
     @objc func backButtonAction() {
