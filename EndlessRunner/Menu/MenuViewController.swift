@@ -32,5 +32,7 @@ class MenuViewController: UIViewController {
         settingsButton.titleLabel?.numberOfLines = 0
         settingsButton.titleLabel?.lineBreakMode = .byCharWrapping
         settingsButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        UIAccessibility.post(notification: .screenChanged, argument: startButton)
     }
 }
