@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TutorialView" customModule="EndlessRunner" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="qsc-nA-nhL" id="3rh-7i-vVR"/>
+                <outlet property="continueButton" destination="zuo-Mz-FWm" id="krM-9R-t32"/>
+                <outlet property="stackView" destination="ggI-Ni-MJg" id="vab-3L-vai"/>
+                <outlet property="tutorialLabel" destination="yHT-R6-2Xj" id="UvO-JC-9OQ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" ambiguous="YES" id="qsc-nA-nhL">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="yOn-VT-eTk">
+                    <rect key="frame" x="0.0" y="0.0" width="398" height="852"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggI-Ni-MJg">
+                            <rect key="frame" x="0.0" y="0.0" width="398" height="852"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHT-R6-2Xj">
+                                    <rect key="frame" x="32" y="416" width="334" height="20.333333333333314"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuo-Mz-FWm">
+                                    <rect key="frame" x="32" y="436.33333333333331" width="334" height="34.333333333333314"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Button">
+                                        <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="continueButtonAction:" destination="-1" eventType="touchUpInside" id="2Yd-8S-xlC"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="zuo-Mz-FWm" secondAttribute="trailing" constant="32" id="5TJ-QC-Qdr"/>
+                                <constraint firstItem="yHT-R6-2Xj" firstAttribute="leading" secondItem="ggI-Ni-MJg" secondAttribute="leading" constant="32" id="7S1-Af-JZ2"/>
+                                <constraint firstItem="zuo-Mz-FWm" firstAttribute="top" secondItem="yHT-R6-2Xj" secondAttribute="bottom" id="P6Z-Us-OAy"/>
+                                <constraint firstItem="yHT-R6-2Xj" firstAttribute="centerX" secondItem="ggI-Ni-MJg" secondAttribute="centerX" id="UXd-Sx-XvO"/>
+                                <constraint firstItem="zuo-Mz-FWm" firstAttribute="leading" secondItem="ggI-Ni-MJg" secondAttribute="leading" constant="32" id="kct-BP-FSU"/>
+                                <constraint firstAttribute="trailing" secondItem="yHT-R6-2Xj" secondAttribute="trailing" constant="32" id="lCI-pt-kBR"/>
+                                <constraint firstItem="yHT-R6-2Xj" firstAttribute="centerY" secondItem="ggI-Ni-MJg" secondAttribute="centerY" id="thM-PM-9Ln"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="ez6-ag-tPd" firstAttribute="bottom" secondItem="ggI-Ni-MJg" secondAttribute="bottom" id="7rs-mj-KSr"/>
+                        <constraint firstItem="ggI-Ni-MJg" firstAttribute="leading" secondItem="ez6-ag-tPd" secondAttribute="leading" id="AO5-ZP-zVu"/>
+                        <constraint firstItem="ez6-ag-tPd" firstAttribute="trailing" secondItem="ggI-Ni-MJg" secondAttribute="trailing" id="HqY-h8-qlF"/>
+                        <constraint firstItem="ggI-Ni-MJg" firstAttribute="top" secondItem="ez6-ag-tPd" secondAttribute="top" id="bd3-ar-AFE"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="0EY-ag-8Qs"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="ez6-ag-tPd"/>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="cwP-8I-OdQ"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="yOn-VT-eTk" firstAttribute="leading" secondItem="cwP-8I-OdQ" secondAttribute="leading" id="53u-LT-Hlh"/>
+                <constraint firstItem="cwP-8I-OdQ" firstAttribute="trailing" secondItem="yOn-VT-eTk" secondAttribute="trailing" id="FPt-T0-9hP"/>
+                <constraint firstItem="yOn-VT-eTk" firstAttribute="top" secondItem="cwP-8I-OdQ" secondAttribute="top" id="G0I-TQ-VHB"/>
+                <constraint firstAttribute="bottom" secondItem="yOn-VT-eTk" secondAttribute="bottom" id="jaM-vs-OFa"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-4148.8549618320612" y="653.52112676056345"/>
+        </view>
+    </objects>
+</document>

@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var livesLabel: UILabel!
     @IBOutlet weak var pauseView: PauseView!
     @IBOutlet weak var gameOverView: GameOverView!
+    @IBOutlet weak var tutorialView: TutorialView!
     @IBOutlet weak var pauseButton: UIButton!
     
     var scene: GameScene!
@@ -178,6 +179,7 @@ extension GameViewController: GameDelegate {
         self.livesLabel.transform = rotation
         self.pauseButton.transform = rotation
         self.gameOverView.stackView.transform = rotation
+        self.tutorialView.stackView.transform = rotation
     }
 }
 
