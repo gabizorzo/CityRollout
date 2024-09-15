@@ -163,7 +163,7 @@ extension GameScene {
     func moveObstacles() {
         self.enumerateChildNodes(withName: "Obstacle") { node, error in
             node.position.y -= self.getSpeedMovement() // aqui que define a velocidade na qual serão movidos os obstáculos
-            if node.position.y <= -self.screenHeight/2 + 15 { // 15 é o tamanho do obstáculo, ajustar depois
+            if node.position.y <= -self.screenHeight/2 - node.frame.height {
                 node.removeFromParent()
             }
         }
