@@ -81,6 +81,7 @@ class GameScene: SKScene {
         self.player = SKSpriteNode(texture: texture)
         self.player.position = CGPoint(x: 0, y: -(screenHeight/2.5))
         self.player.zPosition = 1
+        self.player.constraints = [SKConstraint.zRotation(SKRange(constantValue: 0))]
         
         let physics = SKPhysicsBody(texture: texture, size: player.size)
         physics.isDynamic = true
@@ -95,18 +96,29 @@ class GameScene: SKScene {
     }
     
     func createObstacles() {
-        let obstacleSize = 15
-        let obstacle = SKShapeNode(rectOf: CGSize(width: obstacleSize, height: obstacleSize))
-        obstacle.name = "Obstacle"
-        obstacle.strokeColor = .clear
-        obstacle.fillColor = .red
+        var obstacle = SKSpriteNode()
         
+        switch Int.random(in: 0..<3) {
+        case 0:
+            obstacle = SKSpriteNode(imageNamed: "tree")
+            break
+        case 1:
+            obstacle = SKSpriteNode(imageNamed: "rock")
+            break
+        case 2:
+            obstacle = SKSpriteNode(imageNamed: "cone")
+            break
+        default:
+            break
+        }
+        
+        obstacle.name = "Obstacle"
         let x = getPosition()
         let obstaclePosition = CGPoint(x: x, y: screenHeight/2)
         obstacle.position = obstaclePosition
         obstacle.zPosition = 1
         
-        let physics = SKPhysicsBody(rectangleOf: CGSize(width: obstacleSize, height: obstacleSize))
+        let physics = SKPhysicsBody(texture: obstacle.texture!, size: obstacle.size)
         physics.isDynamic = false
         physics.affectedByGravity = false
         physics.usesPreciseCollisionDetection = true
@@ -114,6 +126,7 @@ class GameScene: SKScene {
         physics.contactTestBitMask = playerCategory
         obstacle.physicsBody = physics
         
+        if Bool.random() { obstacle.run(SKAction.scaleX(to: -1, duration: 0)) }
         addChild(obstacle)
     }
 }
