@@ -20,6 +20,8 @@ class GameViewController: UIViewController {
     
     var scene: GameScene!
     var session: ARSession!
+
+    open override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge { return .all }
     
     override func viewDidLoad() {
         super.viewDidLoad()

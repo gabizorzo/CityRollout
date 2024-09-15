@@ -24,7 +24,6 @@ class GameScene: SKScene {
     
     // MARK: - Nodes
     private var player = SKSpriteNode()
-    private var background: [SKSpriteNode] = []
     
     // MARK: - Sizes
     private let screenHeight = UIScreen.main.bounds.height
