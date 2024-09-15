@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,17 +27,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zTS-VA-t2r">
-                                <rect key="frame" x="149" y="75" width="95" height="22.666666666666671"/>
+                                <rect key="frame" x="147" y="75" width="99" height="33.666666666666657"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="ei5-oa-50P" userLabel="heart1">
-                                        <rect key="frame" x="0.0" y="0.0" width="26.333333333333332" height="22.666666666666668"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="6PK-W6-FcY" userLabel="heart2">
-                                        <rect key="frame" x="34.333333333333343" y="0.0" width="26.333333333333329" height="22.666666666666668"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="QHb-4s-CTS" userLabel="heart3">
-                                        <rect key="frame" x="68.666666666666657" y="0.0" width="26.333333333333329" height="22.666666666666668"/>
-                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="♥" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eb-rP-8pv" userLabel="heart1">
+                                        <rect key="frame" x="0.0" y="0.0" width="27.666666666666668" height="33.666666666666664"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <color key="textColor" red="0.86274509799999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="♥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdB-yh-NC8" userLabel="heart2">
+                                        <rect key="frame" x="35.666666666666657" y="0.0" width="27.666666666666671" height="33.666666666666664"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <color key="textColor" red="0.86274509799999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="♥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTT-Rl-cin" userLabel="heart3">
+                                        <rect key="frame" x="71.333333333333343" y="0.0" width="27.666666666666671" height="33.666666666666664"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <color key="textColor" red="0.86274509803921573" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGf-o3-4y2" userLabel="Pause Button">
@@ -85,9 +94,6 @@
                     <connections>
                         <outlet property="gameOverView" destination="iHa-n3-d18" id="NCL-M3-vug"/>
                         <outlet property="gameView" destination="Bj7-Qz-EIm" id="mEc-jF-8ro"/>
-                        <outlet property="heart1" destination="ei5-oa-50P" id="xOU-w9-JKh"/>
-                        <outlet property="heart2" destination="6PK-W6-FcY" id="Vtw-aE-HrW"/>
-                        <outlet property="heart3" destination="QHb-4s-CTS" id="ylT-9P-NX3"/>
                         <outlet property="livesStackView" destination="zTS-VA-t2r" id="Hqr-tg-Khq"/>
                         <outlet property="pauseButton" destination="bGf-o3-4y2" id="zFB-b0-Ant"/>
                         <outlet property="pauseView" destination="zZV-63-Ilf" id="zEo-yX-acb"/>
@@ -100,7 +106,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart" width="26.333333969116211" height="22.666666030883789"/>
         <image name="pause.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

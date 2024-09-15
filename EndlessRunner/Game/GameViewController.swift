@@ -11,13 +11,9 @@ import GameplayKit
 import ARKit
 
 class GameViewController: UIViewController {
-    #warning("check if possible to remove livesstack outlet")
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var livesStackView: UIStackView!
-    @IBOutlet weak var heart1: UIImageView!
-    @IBOutlet weak var heart2: UIImageView!
-    @IBOutlet weak var heart3: UIImageView!
     @IBOutlet weak var pauseView: PauseView!
     @IBOutlet weak var gameOverView: GameOverView!
     @IBOutlet weak var pauseButton: UIButton!
@@ -150,23 +146,8 @@ extension GameViewController: GameDelegate {
     }
     
     func updateLives(lives: Int) {
-        switch lives {
-        case 2:
-            self.heart3.image = UIImage(named: "hurtHeart")
-            break
-        case 1:
-            self.heart2.image = UIImage(named: "hurtHeart")
-            break
-        case 0:
-            self.heart1.image = UIImage(named: "hurtHeart")
-            break
-        case 3:
-            self.heart1.image = UIImage(named: "heart")
-            self.heart2.image = UIImage(named: "heart")
-            self.heart3.image = UIImage(named: "heart")
-            break
-        default:
-            break
+        for _ in 0..<3-lives {
+            self.livesStackView.arrangedSubviews.last?.removeFromSuperview()
         }
     }
     
@@ -174,7 +155,7 @@ extension GameViewController: GameDelegate {
         gameOverView.setupScore(score: score, isNewHighScore: isNewHighScore)
         gameOverView.isHidden = false
         
-        UIAccessibility.post(notification: .screenChanged, argument: gameOverView.gameOverLabel)
+        UIAccessibility.post(notification: .screenChanged, argument: gameOverView.gameOverTitleLabel)
     }
     
     func restartGame() {
