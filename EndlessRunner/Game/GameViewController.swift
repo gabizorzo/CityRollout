@@ -90,6 +90,11 @@ class GameViewController: UIViewController {
     }
     
     func setHudLabels() {
+        if UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory {
+            self.livesStackView.spacing = -4
+        } else {
+            self.livesStackView.spacing = 8
+        }
         scoreLabel.layer.cornerRadius = 8
         scoreLabel.layer.masksToBounds = true
     }
@@ -146,8 +151,16 @@ extension GameViewController: GameDelegate {
     }
     
     func updateLives(lives: Int) {
-        for _ in 0..<3-lives {
-            self.livesStackView.arrangedSubviews.last?.removeFromSuperview()
+        if lives == 3 {
+            for i in 0..<lives {
+                self.livesStackView.arrangedSubviews[i].isHidden = false
+            }
+        } else {
+            self.livesStackView.arrangedSubviews[lives].isHidden = true
+        }
+        
+        for i in 0..<3 {
+            self.livesStackView.arrangedSubviews[i].accessibilityLabel = lives == 1 ? "\(lives) \(String(localized: "gameScene.life"))" : "\(lives) \(String(localized: "gameScene.lives"))"
         }
     }
     
@@ -179,7 +192,7 @@ extension GameViewController: GameDelegate {
                 rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
             } else if currentOrientation == .landscapeRight {
                 rotation = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
-            } else if currentOrientation == .portrait{
+            } else if currentOrientation == .portrait || currentOrientation == .portraitUpsideDown {
                 rotation = CGAffineTransform(rotationAngle: 0)
             }
             

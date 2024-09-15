@@ -43,6 +43,7 @@ class GameScene: SKScene {
     private var lives: Int = 3
     private var gamePaused: Bool = false
     private var difficulty: SettingsDifficulty = .medium
+    private var collisionTimer = Timer()
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -163,6 +164,7 @@ extension GameScene: SKPhysicsContactDelegate {
         if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == obstaclesCategory) || (
             contact.bodyA.categoryBitMask == obstaclesCategory) && (contact.bodyB.categoryBitMask == playerCategory) {
             didCollide()
+            collisionTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: {_ in})
             
             if contact.bodyA.categoryBitMask == obstaclesCategory {
                 contact.bodyA.node?.removeFromParent()
@@ -206,18 +208,20 @@ extension GameScene {
     }
     
     func didCollide() {
-        lives -= 1
-        print("lives: \(lives)")
-        self.gameDelegate?.updateLives(lives: lives)
-        if lives == 0 {
-            gamePaused = true
-            setHighScore()
-            
-            Haptics.shared.gameOverHaptic()
-            Sounds.shared.gameOverSound()
-        } else {
-            Haptics.shared.obstacleHaptic()
-            Sounds.shared.obstacleSound()
+        if !collisionTimer.isValid {
+            lives -= 1
+            print("lives: \(lives)")
+            self.gameDelegate?.updateLives(lives: lives)
+            if lives == 0 {
+                gamePaused = true
+                setHighScore()
+                
+                Haptics.shared.gameOverHaptic()
+                Sounds.shared.gameOverSound()
+            } else {
+                Haptics.shared.obstacleHaptic()
+                Sounds.shared.obstacleSound()
+            }
         }
     }
 }

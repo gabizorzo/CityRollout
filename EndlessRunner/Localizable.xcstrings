@@ -127,6 +127,24 @@
         }
       }
     },
+    "gameScene.life" : {
+      "comment" : "Life string used on game hud VoiceOver",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Life"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vida"
+          }
+        }
+      }
+    },
     "gameScene.lives" : {
       "comment" : "Lives label on game hud",
       "extractionState" : "manual",
@@ -141,6 +159,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vidas"
+          }
+        }
+      }
+    },
+    "menuView.howToPlay" : {
+      "comment" : "How to play button text on main menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to Play"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como jogar"
           }
         }
       }
