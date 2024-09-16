@@ -20,8 +20,6 @@ class GameViewController: UIViewController {
     
     var scene: GameScene!
     var session: ARSession!
-
-    open override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge { return .all }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +81,10 @@ class GameViewController: UIViewController {
         return true
     }
     
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge { 
+        return .all
+    }
+    
     func createOrientationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.rotateLabels), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
@@ -128,7 +130,7 @@ extension GameViewController: GameDelegate {
             Haptics.shared.buttonHaptic()
             Sounds.shared.buttonSound()
         }
-#warning("como melhorar essa duplicacao de codigo??")
+
         gameOverView.menuButtonAction = { [weak self] in
             self?.navigationController?.popViewController(animated: false)
             Haptics.shared.buttonHaptic()

@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         let backButton = UIButton(type: .custom)
         backButton.setTitle(String(localized: "nav.back"), for: .normal)
         backButton.setTitleColor(.tintColor, for: .normal)
+        backButton.tintColor = UIColor(red: 241/255, green: 111/255, blue: 2/255, alpha: 1)
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
         let barButtonItem = UIBarButtonItem(customView: backButton)
@@ -56,6 +57,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.settingName = viewModel.settings[indexPath.row].name
             cell.settingLabel.text = viewModel.settings[indexPath.row].label
             cell.settingSwitch.isOn = viewModel.settings[indexPath.row].active
+            cell.settingSwitch.onTintColor = UIColor(red: 241/255, green: 111/255, blue: 2/255, alpha: 1)
             
             return cell
         } else {
