@@ -32,10 +32,18 @@ class PauseView: UIView {
         
         unpauseButton.setTitle(String(localized: "pauseView.unpause"), for: .normal)
         unpauseButton.setTitleColor(.white, for: .normal)
+        unpauseButton.titleLabel?.numberOfLines = 0
+        unpauseButton.titleLabel?.lineBreakMode = .byCharWrapping
+        
         menuButton.setTitle(String(localized: "pauseView.exit"), for: .normal)
         menuButton.setTitleColor(.white, for: .normal)
+        menuButton.titleLabel?.numberOfLines = 0
+        menuButton.titleLabel?.lineBreakMode = .byCharWrapping
+        
         howToPlayButton.setTitle(String(localized: "pauseView.howToPlay"), for: .normal)
         howToPlayButton.setTitleColor(.white, for: .normal)
+        howToPlayButton.titleLabel?.numberOfLines = 0
+        howToPlayButton.titleLabel?.lineBreakMode = .byCharWrapping
     }
     
     

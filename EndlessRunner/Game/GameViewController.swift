@@ -99,6 +99,7 @@ class GameViewController: UIViewController {
         } else {
             self.livesStackView.spacing = 8
         }
+        
         scoreLabel.layer.cornerRadius = 8
         scoreLabel.layer.masksToBounds = true
     }

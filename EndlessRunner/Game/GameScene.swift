@@ -112,9 +112,11 @@ class GameScene: SKScene {
             break
         }
         
+        let scalingFactor = 0.8 // ajuste do tamanho do obstáculo
+        obstacle.run(SKAction.scaleX(by: scalingFactor, y: scalingFactor, duration: 0))
         obstacle.name = "Obstacle"
-        let x = getPosition()
-        let obstaclePosition = CGPoint(x: x, y: screenHeight/2)
+        let x = getPosition(obstacleWidth: obstacle.frame.width)
+        let obstaclePosition = CGPoint(x: x, y: screenHeight/2 + obstacle.frame.height)
         obstacle.position = obstaclePosition
         obstacle.zPosition = 1
         
@@ -126,7 +128,7 @@ class GameScene: SKScene {
         physics.contactTestBitMask = playerCategory
         obstacle.physicsBody = physics
         
-        if Bool.random() { obstacle.run(SKAction.scaleX(to: -1, duration: 0)) }
+        if Bool.random() { obstacle.run(SKAction.scaleX(to: -scalingFactor, duration: 0)) }
         addChild(obstacle)
     }
 }
@@ -144,11 +146,17 @@ extension GameScene {
     }
     
     func movePositive() {
-        self.player.run(SKAction.move(by: CGVector(dx: 2, dy: 0), duration: 0.05))
+        let distance = 2.0
+        if !((self.player.position.x + distance) > (self.screenWidth / 2.95)) {
+            self.player.run(SKAction.move(by: CGVector(dx: distance, dy: 0), duration: 0.05))
+        }
     }
     
     func moveNegative() {
-        self.player.run(SKAction.move(by: CGVector(dx: -2, dy: 0), duration: 0.05))
+        let distance = 2.0
+        if !((self.player.position.x - distance) < (-self.screenWidth / 2.95)) {
+            self.player.run(SKAction.move(by: CGVector(dx: -distance, dy: 0), duration: 0.05))
+        }
     }
     
     func moveBackground() {
@@ -200,9 +208,9 @@ extension GameScene {
         }
     }
     
-    func getPosition() -> CGFloat {
-        let min = -screenWidth/2 + 15 // 15 é o tamanho do obstáculo, ajustar depois
-        let max = screenWidth/2 - 15 // 15 é o tamanho do obstáculo, ajustar depois
+    func getPosition(obstacleWidth: Double) -> CGFloat {
+        let min = -screenWidth/2 + obstacleWidth
+        let max = screenWidth/2 - obstacleWidth
         let value = Int.random(in: Int(min)..<Int(max))
         return CGFloat(value)
     }
