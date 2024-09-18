@@ -13,6 +13,7 @@ class TutorialView: UIView {
     @IBOutlet weak var tutorialLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var stackView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
     
     @IBAction func continueButtonAction(_ sender: Any) {
         status = status + 1
@@ -32,6 +33,7 @@ class TutorialView: UIView {
         commonInit()
         setLabelText()
         setButtonText()
+        setImage(visible: true)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,6 +41,7 @@ class TutorialView: UIView {
         commonInit()
         setLabelText()
         setButtonText()
+        setImage(visible: true)
     }
     
     private func commonInit() {
@@ -72,4 +75,36 @@ class TutorialView: UIView {
             continueButton.setTitle(String(localized: "continue.tutorial"), for: .normal)
         }
     }
+    
+    private func setImage(visible: Bool) {
+        imageView.image = UIImage(named: "tutorial.arrows.png")
+        
+        if visible {
+            imageView.isHidden = false
+            tutorialLabel.isHidden = true
+        } else {
+            imageView.isHidden = true
+            tutorialLabel.isHidden = false
+        }
+    }
+    
+    // MARK: - Actions
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let touchLocation = touch.location(in: self).x
+        
+        let location = touchLocation > UIScreen.main.bounds.width/2 ? 1.0 : -1.0
+        
+        movePlayer(location)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard touches.first != nil else { return }
+        
+        stopPlayer()
+    }
+    
+    var movePlayer: (_ location: Double) -> Void = { location in }
+    var stopPlayer: () -> Void = {}
 }

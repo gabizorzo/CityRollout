@@ -35,8 +35,8 @@ class GameScene: SKScene {
     let obstaclesCategory: UInt32 = 1 << 4
     
     // MARK: - Variables
-    private var isTouching: Bool = false
-    private var touchLocation: CGFloat = 0.0
+    public var isTouching: Bool = false
+    public var touchLocation: CGFloat = 0.0
     private var lastCurrentTimeObstacle: Double = -1
     private var lastCurrentTimeScore: Double = -1
     private var score: Int = 0

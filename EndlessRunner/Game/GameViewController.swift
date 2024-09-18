@@ -38,6 +38,8 @@ class GameViewController: UIViewController {
         restartGame()
         unpauseGame()
         backToMenu()
+        movePlayerTutorial()
+        stopMovePlayerTutorial()
         
         UIAccessibility.post(notification: .screenChanged, argument: scoreLabel)
     }
@@ -208,6 +210,22 @@ extension GameViewController: ARSessionDelegate {
             if right > 0.09 {
                 scene.moveNegative()
             }
+        }
+    }
+}
+
+// MARK: - Tutorial Moves
+extension GameViewController {
+    func movePlayerTutorial() {
+        tutorialView.movePlayer = { [weak self] location in
+            self?.scene.touchLocation = location
+            self?.scene.isTouching = true
+        }
+    }
+    
+    func stopMovePlayerTutorial() {
+        tutorialView.stopPlayer = { [weak self] in
+            self?.scene.isTouching = false
         }
     }
 }
