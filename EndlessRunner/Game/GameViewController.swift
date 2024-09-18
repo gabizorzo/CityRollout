@@ -217,6 +217,8 @@ extension GameViewController: ARSessionDelegate {
 // MARK: - Tutorial Moves
 extension GameViewController {
     func movePlayerTutorial() {
+        tutorialView.isUserInteractionEnabled = true
+        tutorialView.continueButton.isUserInteractionEnabled = true
         tutorialView.movePlayer = { [weak self] location in
             self?.scene.touchLocation = location
             self?.scene.isTouching = true

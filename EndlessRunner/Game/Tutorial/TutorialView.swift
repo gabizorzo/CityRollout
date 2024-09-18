@@ -33,7 +33,6 @@ class TutorialView: UIView {
         commonInit()
         setLabelText()
         setButtonText()
-        setImage(visible: true)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,7 +40,6 @@ class TutorialView: UIView {
         commonInit()
         setLabelText()
         setButtonText()
-        setImage(visible: true)
     }
     
     private func commonInit() {
@@ -54,14 +52,21 @@ class TutorialView: UIView {
     private func setLabelText() {
         switch status {
         case 1:
+            setImage(visible: false)
             tutorialLabel.text = String(localized: "label1.tutorial")
         case 2:
             tutorialLabel.text = String(localized: "label2.tutorial")
         case 3:
-            tutorialLabel.text = String(localized: "label3.tutorial")
+            setImage(visible: true)
         case 4:
-            tutorialLabel.text = String(localized: "label4.tutorial")
+            setImage(visible: false)
+            tutorialLabel.text = String(localized: "label3.tutorial")
         case 5:
+            setImage(visible: true)
+        case 6:
+            setImage(visible: false)
+            tutorialLabel.text = String(localized: "label4.tutorial")
+        case 7:
             tutorialLabel.text = String(localized: "label5.tutorial")
         default:
             break
@@ -69,7 +74,7 @@ class TutorialView: UIView {
     }
     
     private func setButtonText() {
-        if status == 5 {
+        if status >= 7 {
             continueButton.setTitle(String(localized: "play.tutorial"), for: .normal)
         } else {
             continueButton.setTitle(String(localized: "continue.tutorial"), for: .normal)
