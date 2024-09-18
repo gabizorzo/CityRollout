@@ -19,11 +19,7 @@ class MenuViewController: UIViewController {
         Haptics.shared.buttonHaptic()
         Sounds.shared.buttonSound()
     }
-    
-//    override func viewWillLayoutSubviews() {
-//            
-//    }
-    
+
     override func viewWillLayoutSubviews() {
         // UICTContentSizeCategoryAccessibilityM
         // UICTContentSizeCategoryAccessibilityXXL
@@ -44,31 +40,26 @@ class MenuViewController: UIViewController {
             settingsButtonHeightConstraint.constant = settingsButtonHeight * scalingFactor
         }
         
+        self.view.layoutIfNeeded()
     }
     
     override func viewDidLoad() {
         backgroundImage.frame.size = UIScreen.main.bounds.size
         
         startButton.setTitle(String(localized: "menuView.play"), for: .normal)
-        
         startButton.setTitleColor(.white, for: .normal)
         startButton.titleLabel?.numberOfLines = 0
         startButton.titleLabel?.lineBreakMode = .byCharWrapping
-//        let height = (startButton.titleLabel?.intrinsicContentSize.height)! * 1.5
-//        startButton.heightAnchor.constraint(equalToConstant: height).isActive = true
-//        startButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 
         howToPlayButton.setTitle(String(localized: "menuView.howToPlay"), for: .normal)
         howToPlayButton.setTitleColor(.white, for: .normal)
         howToPlayButton.titleLabel?.numberOfLines = 0
         howToPlayButton.titleLabel?.lineBreakMode = .byCharWrapping
-//        howToPlayButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         settingsButton.setTitle(String(localized: "menuView.settings"), for: .normal)
         settingsButton.setTitleColor(.white, for: .normal)
         settingsButton.titleLabel?.numberOfLines = 0
         settingsButton.titleLabel?.lineBreakMode = .byCharWrapping
-//        settingsButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         UIAccessibility.post(notification: .screenChanged, argument: startButton)
     }
