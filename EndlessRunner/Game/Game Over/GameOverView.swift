@@ -40,19 +40,25 @@ class GameOverView: UIView {
         overlay.isUserInteractionEnabled = false
         overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
         overlay.layer.zPosition = -1
+        overlay.layer.position = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
         self.contentView.addSubview(overlay)
         
         gameOverTitleLabel.lineBreakMode = .byCharWrapping
         yourScoreLabel.lineBreakMode = .byCharWrapping
         highScoreLabel.lineBreakMode = .byCharWrapping
         
+        let buttonInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
         restartButton.setTitle(String(localized: "gameOverView.playAgain"), for: .normal)
-        restartButton.titleLabel?.lineBreakMode = .byCharWrapping
-        restartButton.titleLabel?.numberOfLines = 0
+        var buttonConfig = restartButton.configuration
+        buttonConfig?.contentInsets = buttonInsets
+        buttonConfig?.titleLineBreakMode = .byTruncatingTail
+        restartButton.configuration = buttonConfig
         
         menuButton.setTitle(String(localized: "gameOverView.exit"), for: .normal)
-        menuButton.titleLabel?.lineBreakMode = .byCharWrapping
-        menuButton.titleLabel?.numberOfLines = 0
+        buttonConfig = menuButton.configuration
+        buttonConfig?.contentInsets = buttonInsets
+        buttonConfig?.titleLineBreakMode = .byTruncatingTail
+        menuButton.configuration = buttonConfig
     }
     
     func setupScore(score: Int, isNewHighScore: Bool) {
@@ -69,24 +75,44 @@ class GameOverView: UIView {
     }
     
     func setStackBehavior(_ currentOrientation: UIDeviceOrientation) {
-        let priority: Float = currentOrientation == .portrait ? 1000 : 250
-        if currentOrientation == .portrait {
+        let isPortrait = currentOrientation == .portrait || currentOrientation == .portraitUpsideDown
+        let priority: Float = isPortrait ? 1000 : 250
+        if isPortrait {
             self.trailConstraint.priority = UILayoutPriority(priority)
             self.leadConstraint.priority = UILayoutPriority(priority)
             
             self.gameOverTitleLabel.numberOfLines = 0
             self.yourScoreLabel.numberOfLines = 0
             self.highScoreLabel.numberOfLines = 0
-            self.restartButton.titleLabel?.numberOfLines = 0
-        } else if currentOrientation == .landscapeRight || currentOrientation == .landscapeLeft {
+            
+            adjustButtonsInsets(size: 16)
+        } else {
             self.trailConstraint.priority = UILayoutPriority(priority)
             self.leadConstraint.priority = UILayoutPriority(priority)
             
             self.gameOverTitleLabel.numberOfLines = 1
             self.yourScoreLabel.numberOfLines = 1
             self.highScoreLabel.numberOfLines = 1
-            self.restartButton.titleLabel?.numberOfLines = 1
+            
+            let currentContentSize = UIApplication.shared.preferredContentSizeCategory
+            if currentContentSize == .accessibilityExtraExtraExtraLarge || currentContentSize == .accessibilityExtraExtraLarge {
+                adjustButtonsInsets(size: 0)
+            } else {
+                adjustButtonsInsets(size: 16)
+            }
+            
         }
+    }
+    
+    func adjustButtonsInsets(size: CGFloat) {
+            var buttonConfig = restartButton.configuration
+            let buttonInsets = NSDirectionalEdgeInsets(top: size, leading: 0, bottom: size, trailing: 0)
+            buttonConfig?.contentInsets = buttonInsets
+            restartButton.configuration = buttonConfig
+            
+            buttonConfig = menuButton.configuration
+            buttonConfig?.contentInsets = buttonInsets
+            menuButton.configuration = buttonConfig
     }
     
     //MARK: - Actions

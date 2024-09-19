@@ -40,7 +40,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="laU-5C-QbG">
                                 <rect key="frame" x="38" y="619" width="317" height="167"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5R-Ud-Alm">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="b5R-Ud-Alm">
                                         <rect key="frame" x="0.0" y="0.0" width="317" height="47.666666666666664"/>
                                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -54,7 +54,7 @@
                                             <segue destination="SuN-UC-c1G" kind="show" animates="NO" id="u2i-oe-PkT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zW-75-MVf" userLabel="How to play Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="8zW-75-MVf" userLabel="How to play Button">
                                         <rect key="frame" x="0.0" y="59.666666666666629" width="317" height="47.666666666666657"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -68,7 +68,7 @@
                                             <action selector="buttonTapFeedback:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="T9P-Jj-4en"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3F-8q-Xd8" userLabel="Settings Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="a3F-8q-Xd8" userLabel="Settings Button">
                                         <rect key="frame" x="0.0" y="119.33333333333339" width="317" height="47.666666666666671"/>
                                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>

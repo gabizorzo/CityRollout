@@ -188,13 +188,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tap to play"
+            "value" : "Play"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toque para jogar"
+            "value" : "Jogar"
           }
         }
       }
@@ -247,7 +247,7 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Sair do jogo"
           }
         }

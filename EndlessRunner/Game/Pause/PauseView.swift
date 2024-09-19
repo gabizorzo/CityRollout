@@ -33,36 +33,31 @@ class PauseView: UIView {
         let overlay = UIView(frame: contentView.frame)
         overlay.isUserInteractionEnabled = false
         overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        overlay.layer.position = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
         overlay.layer.zPosition = -1
         self.contentView.addSubview(overlay)
         
+        let buttonInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
         unpauseButton.setTitle(String(localized: "pauseView.unpause"), for: .normal)
         unpauseButton.setTitleColor(.white, for: .normal)
-        unpauseButton.titleLabel?.numberOfLines = 0
-        unpauseButton.titleLabel?.lineBreakMode = .byCharWrapping
+        var buttonConfig = unpauseButton.configuration
+        buttonConfig?.contentInsets = buttonInsets
+        buttonConfig?.titleLineBreakMode = .byTruncatingTail
+        unpauseButton.configuration = buttonConfig
         
         menuLabel.text = String(localized: "pauseView.exit")
-        menuLabel.font = .boldSystemFont(ofSize: menuLabel.font.pointSize)
-        menuLabel.numberOfLines = 0
-        menuLabel.lineBreakMode = .byCharWrapping
+        if let boldFontDescriptor = UIFontDescriptor
+            .preferredFontDescriptor(withTextStyle: .body)
+            .withSymbolicTraits(.traitBold) {
+            menuLabel.font = UIFont(descriptor: boldFontDescriptor, size: 0.0)
+        }
         
         howToPlayButton.setTitle(String(localized: "pauseView.howToPlay"), for: .normal)
         howToPlayButton.setTitleColor(.white, for: .normal)
-        howToPlayButton.titleLabel?.numberOfLines = 0
-        howToPlayButton.titleLabel?.lineBreakMode = .byCharWrapping
-
-        adjustButtonsHeight()
-    }
-    
-    private func adjustButtonsHeight() {
-        let scalingFactor = UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory ? 1.5 : 1.7
-        guard let unpauseButtonHeight = unpauseButton.titleLabel?.intrinsicContentSize.height,
-              let howToPlayButtonHeight = howToPlayButton.titleLabel?.intrinsicContentSize.height else { return }
-        
-        unpauseButton.heightAnchor.constraint(equalToConstant: unpauseButtonHeight * scalingFactor).isActive = true
-        howToPlayButton.heightAnchor.constraint(equalToConstant: howToPlayButtonHeight * scalingFactor).isActive = true
- 
-        self.layoutIfNeeded()
+        buttonConfig = howToPlayButton.configuration
+        buttonConfig?.contentInsets = buttonInsets
+        buttonConfig?.titleLineBreakMode = .byTruncatingTail
+        howToPlayButton.configuration = buttonConfig
     }
     
     //MARK: - Actions

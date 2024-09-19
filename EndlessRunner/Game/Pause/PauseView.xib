@@ -61,8 +61,8 @@
                         <constraint firstAttribute="trailing" secondItem="eIT-64-ycr" secondAttribute="trailing" id="lYd-tn-yzh" userLabel="trailing = How to play.trailing"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXH-0d-mbV" userLabel="Menu Label">
-                    <rect key="frame" x="163.33333333333334" y="131" width="66.333333333333343" height="33.666666666666657"/>
+                <label opaque="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXH-0d-mbV" userLabel="Menu Label">
+                    <rect key="frame" x="163.33333333333334" y="147" width="66.333333333333343" height="33.666666666666657"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                     <color key="textColor" red="0.94509803920000002" green="0.43529411759999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -73,7 +73,7 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
-                <constraint firstItem="XXH-0d-mbV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="72" id="OWi-LX-NkN"/>
+                <constraint firstItem="XXH-0d-mbV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="88" id="OWi-LX-NkN"/>
                 <constraint firstItem="nnH-zo-fIU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cLh-Dz-uAl"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nnH-zo-fIU" secondAttribute="bottom" constant="32" id="dFA-Ep-a3l"/>
                 <constraint firstItem="XXH-0d-mbV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="das-YN-2Q3"/>
