@@ -15,6 +15,8 @@ class TutorialView: UIView {
     @IBOutlet weak var stackView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var contentViewAspectRatio: NSLayoutConstraint!
+    
     @IBAction func continueButtonAction(_ sender: Any) {
         status = status + 1
         
@@ -33,6 +35,7 @@ class TutorialView: UIView {
         commonInit()
         setLabelText()
         setButtonText()
+        setContentViewSize()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,6 +43,7 @@ class TutorialView: UIView {
         commonInit()
         setLabelText()
         setButtonText()
+        setContentViewSize()
     }
     
     private func commonInit() {
@@ -90,6 +94,16 @@ class TutorialView: UIView {
         } else {
             imageView.isHidden = true
             tutorialLabel.isHidden = false
+        }
+    }
+    
+    private func setContentViewSize() {
+        if UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory {
+            tutorialLabel.numberOfLines = 5
+            NSLayoutConstraint.activate([
+             tutorialLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+             tutorialLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+            ])
         }
     }
     
