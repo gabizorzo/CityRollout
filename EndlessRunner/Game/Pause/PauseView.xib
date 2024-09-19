@@ -4,14 +4,20 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PauseView" customModule="EndlessRunner" customModuleProvider="target">
             <connections>
+                <outlet property="bottomConstraint" destination="dFA-Ep-a3l" id="jaP-v9-Jmp"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="KFF-tn-1wL"/>
                 <outlet property="howToPlayButton" destination="eIT-64-ycr" id="q0D-DK-dZ7"/>
+                <outlet property="leadingConstraint" destination="fOH-pv-77W" id="fUm-gu-Nj1"/>
                 <outlet property="menuLabel" destination="XXH-0d-mbV" id="DGi-Xm-Bxn"/>
+                <outlet property="spacerView" destination="VL5-Fe-DaA" id="nRK-18-yAT"/>
+                <outlet property="stackView" destination="nnH-zo-fIU" id="URt-Kj-Ytz"/>
+                <outlet property="trailingConstraint" destination="zed-ae-81f" id="Tzk-6o-jSO"/>
                 <outlet property="unpauseButton" destination="eSs-7K-6fQ" id="Xe1-Lk-7IC"/>
             </connections>
         </placeholder>
@@ -21,10 +27,23 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="nnH-zo-fIU">
-                    <rect key="frame" x="38" y="678.66666666666663" width="317" height="107.33333333333337"/>
+                    <rect key="frame" x="38" y="66" width="317" height="720"/>
                     <subviews>
+                        <label opaque="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXH-0d-mbV" userLabel="Menu Label">
+                            <rect key="frame" x="125.33333333333334" y="0.0" width="66.333333333333343" height="107.33333333333333"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <color key="textColor" red="0.94509803920000002" green="0.43529411759999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="34x-gK-3DB" appends="YES" id="gwf-do-An6"/>
+                            </connections>
+                        </label>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VL5-Fe-DaA" userLabel="Spacer View">
+                            <rect key="frame" x="38.666666666666686" y="119.33333333333334" width="240" height="481.33333333333326"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSs-7K-6fQ" userLabel="Unpause">
-                            <rect key="frame" x="0.0" y="0.0" width="317" height="47.666666666666664"/>
+                            <rect key="frame" x="0.0" y="612.66666666666663" width="317" height="47.666666666666629"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                             <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -40,7 +59,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIT-64-ycr" userLabel="How to play">
-                            <rect key="frame" x="0.0" y="59.666666666666742" width="317" height="47.666666666666657"/>
+                            <rect key="frame" x="0.0" y="672.33333333333337" width="317" height="47.666666666666629"/>
                             <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Button">
@@ -55,29 +74,21 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="VL5-Fe-DaA" firstAttribute="centerX" secondItem="nnH-zo-fIU" secondAttribute="centerX" id="JCe-M7-RKH"/>
                         <constraint firstItem="eSs-7K-6fQ" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" id="aUb-S0-Zks"/>
+                        <constraint firstItem="VL5-Fe-DaA" firstAttribute="centerY" secondItem="nnH-zo-fIU" secondAttribute="centerY" id="bln-gl-L70"/>
                         <constraint firstAttribute="trailing" secondItem="eSs-7K-6fQ" secondAttribute="trailing" id="cN6-AP-fTo"/>
                         <constraint firstItem="eIT-64-ycr" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" id="ekR-up-0me" userLabel="How to play.leading = leading"/>
                         <constraint firstAttribute="trailing" secondItem="eIT-64-ycr" secondAttribute="trailing" id="lYd-tn-yzh" userLabel="trailing = How to play.trailing"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXH-0d-mbV" userLabel="Menu Label">
-                    <rect key="frame" x="163.33333333333334" y="147" width="66.333333333333343" height="33.666666666666657"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                    <color key="textColor" red="0.94509803920000002" green="0.43529411759999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="34x-gK-3DB" appends="YES" id="gwf-do-An6"/>
-                    </connections>
-                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
-                <constraint firstItem="XXH-0d-mbV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="88" id="OWi-LX-NkN"/>
                 <constraint firstItem="nnH-zo-fIU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cLh-Dz-uAl"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nnH-zo-fIU" secondAttribute="bottom" constant="32" id="dFA-Ep-a3l"/>
-                <constraint firstItem="XXH-0d-mbV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="das-YN-2Q3"/>
                 <constraint firstItem="nnH-zo-fIU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="38" id="fOH-pv-77W"/>
+                <constraint firstItem="nnH-zo-fIU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xJf-TC-gAI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nnH-zo-fIU" secondAttribute="trailing" constant="38" id="zed-ae-81f"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
@@ -91,4 +102,9 @@
             </connections>
         </tapGestureRecognizer>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

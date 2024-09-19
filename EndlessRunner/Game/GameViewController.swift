@@ -208,6 +208,9 @@ extension GameViewController: GameDelegate {
             self.pauseButton.transform = rotation
             self.gameOverView.stackView.transform = rotation
             self.gameOverView.setStackBehavior(currentOrientation)
+        
+            self.pauseView.stackView.transform = rotation
+            self.pauseView.setStackBehavior(currentOrientation)
         }
     }
 }
