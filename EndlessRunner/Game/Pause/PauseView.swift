@@ -29,13 +29,7 @@ class PauseView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        let overlay = UIView(frame: contentView.frame)
-        overlay.isUserInteractionEnabled = false
-        overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
-        overlay.layer.position = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
-        overlay.layer.zPosition = -1
-        self.contentView.addSubview(overlay)
+        self.backgroundColor = .black.withAlphaComponent(0.3)
         
         let buttonInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
         unpauseButton.setTitle(String(localized: "pauseView.unpause"), for: .normal)
