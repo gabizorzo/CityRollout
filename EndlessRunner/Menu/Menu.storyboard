@@ -55,7 +55,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zW-75-MVf" userLabel="How to play Button">
-                                        <rect key="frame" x="32" y="60" width="253" height="47.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="60" width="317" height="47.666666666666657"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button">
@@ -69,7 +69,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3F-8q-Xd8" userLabel="Settings Button">
-                                        <rect key="frame" x="32" y="119.66666666666676" width="253" height="47.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="119.66666666666676" width="317" height="47.666666666666671"/>
                                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button">
@@ -86,11 +86,11 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="b5R-Ud-Alm" firstAttribute="leading" secondItem="laU-5C-QbG" secondAttribute="leading" id="8Jz-SC-ePd"/>
-                                    <constraint firstItem="a3F-8q-Xd8" firstAttribute="leading" secondItem="laU-5C-QbG" secondAttribute="leading" constant="32" id="T7U-KQ-457"/>
+                                    <constraint firstItem="a3F-8q-Xd8" firstAttribute="leading" secondItem="laU-5C-QbG" secondAttribute="leading" id="T7U-KQ-457"/>
                                     <constraint firstAttribute="trailing" secondItem="b5R-Ud-Alm" secondAttribute="trailing" id="YZh-qK-HgH"/>
-                                    <constraint firstItem="8zW-75-MVf" firstAttribute="leading" secondItem="laU-5C-QbG" secondAttribute="leading" constant="32" id="Yi8-3s-e9o"/>
-                                    <constraint firstAttribute="trailing" secondItem="8zW-75-MVf" secondAttribute="trailing" constant="32" id="ksq-mr-Yof"/>
-                                    <constraint firstAttribute="trailing" secondItem="a3F-8q-Xd8" secondAttribute="trailing" constant="32" id="zm0-RP-P1H"/>
+                                    <constraint firstItem="8zW-75-MVf" firstAttribute="leading" secondItem="laU-5C-QbG" secondAttribute="leading" id="Yi8-3s-e9o"/>
+                                    <constraint firstAttribute="trailing" secondItem="8zW-75-MVf" secondAttribute="trailing" id="ksq-mr-Yof"/>
+                                    <constraint firstAttribute="trailing" secondItem="a3F-8q-Xd8" secondAttribute="trailing" id="zm0-RP-P1H"/>
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="gameLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vhc-bO-Bab">

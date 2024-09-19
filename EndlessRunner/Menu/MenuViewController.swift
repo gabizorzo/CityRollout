@@ -20,29 +20,12 @@ class MenuViewController: UIViewController {
         Sounds.shared.buttonSound()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        adjustButtonsHeight()
+    }
+    
     override func viewWillLayoutSubviews() {
-        // UICTContentSizeCategoryAccessibilityM
-        // UICTContentSizeCategoryAccessibilityXXL
-        // UICTContentSizeCategoryXS
-        // UICTContentSizeCategoryXXL
-        let scalingFactor = UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory ? 2.0 : 3.0
-
-        guard let startButtonHeight = startButton.titleLabel?.intrinsicContentSize.height,
-              let howToPlayButtonHeight = howToPlayButton.titleLabel?.intrinsicContentSize.height,
-              let settingsButtonHeight = settingsButton.titleLabel?.intrinsicContentSize.height else { return }
-        
-//        print("\(startButtonHeight), \(howToPlayButtonHeight), \(settingsButtonHeight)")
-
-        if let startButtonHeightContraint = startButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal }),
-           let howToPlayHeightConstraint = howToPlayButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal }),
-           let settingsButtonHeightConstraint = settingsButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal })
-        {
-            startButtonHeightContraint.constant = startButtonHeight * scalingFactor
-            howToPlayHeightConstraint.constant = howToPlayButtonHeight * scalingFactor
-            settingsButtonHeightConstraint.constant = settingsButtonHeight * scalingFactor
-        }
-        
-        self.view.layoutIfNeeded()
+        adjustButtonsHeight()
     }
     
     override func viewDidLoad() {
@@ -64,5 +47,24 @@ class MenuViewController: UIViewController {
         settingsButton.titleLabel?.lineBreakMode = .byCharWrapping
         
         UIAccessibility.post(notification: .screenChanged, argument: startButton)
+    }
+    
+    func adjustButtonsHeight() {
+        let scalingFactor = UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory ? 2.0 : 2.5
+
+        guard let startButtonHeight = startButton.titleLabel?.intrinsicContentSize.height,
+              let howToPlayButtonHeight = howToPlayButton.titleLabel?.intrinsicContentSize.height,
+              let settingsButtonHeight = settingsButton.titleLabel?.intrinsicContentSize.height else { return }
+
+        if let startButtonHeightContraint = startButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal }),
+           let howToPlayHeightConstraint = howToPlayButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal }),
+           let settingsButtonHeightConstraint = settingsButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal })
+        {
+            startButtonHeightContraint.constant = startButtonHeight * scalingFactor
+            howToPlayHeightConstraint.constant = howToPlayButtonHeight * scalingFactor
+            settingsButtonHeightConstraint.constant = settingsButtonHeight * scalingFactor
+        }
+        
+        self.view.layoutIfNeeded()
     }
 }

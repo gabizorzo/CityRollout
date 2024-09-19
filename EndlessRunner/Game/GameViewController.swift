@@ -68,7 +68,6 @@ class GameViewController: UIViewController {
     // MARK: - Actions
     @IBAction func pauseAction(_ sender: Any) {
         gameView.isPaused = true
-        gameView.alpha = 0.85
         pauseButton.isHidden = true
         pauseView.isHidden = false
         Haptics.shared.buttonHaptic()
@@ -145,7 +144,6 @@ extension GameViewController: GameDelegate {
             self?.pauseButton.isHidden = false
             self?.pauseView.isHidden = true
             self?.gameView.isPaused = false
-            self?.gameView.alpha = 1.0
             Haptics.shared.buttonHaptic()
             Sounds.shared.buttonSound()
             
@@ -173,7 +171,6 @@ extension GameViewController: GameDelegate {
     
     func gameOver(score: Int, isNewHighScore: Bool) {
         gameOverView.setupScore(score: score, isNewHighScore: isNewHighScore)
-        gameView.alpha = 0.85
         gameOverView.isHidden = false
         
         UIAccessibility.post(notification: .screenChanged, argument: gameOverView.gameOverTitleLabel)
@@ -184,7 +181,6 @@ extension GameViewController: GameDelegate {
             self?.updateLives(lives: 3)
             self?.updateScore(score: 0)
             self?.gameOverView.isHidden = true
-            self?.gameView.alpha = 1.0
             self?.presentScene()
             Haptics.shared.startGameHaptic()
             

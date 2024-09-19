@@ -11,8 +11,8 @@ class PauseView: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var unpauseButton: UIButton!
-    @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var howToPlayButton: UIButton!
+    @IBOutlet weak var menuLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,32 +30,35 @@ class PauseView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        let overlay = UIView(frame: contentView.frame)
+        overlay.isUserInteractionEnabled = false
+        overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        overlay.layer.zPosition = -1
+        self.contentView.addSubview(overlay)
+        
         unpauseButton.setTitle(String(localized: "pauseView.unpause"), for: .normal)
         unpauseButton.setTitleColor(.white, for: .normal)
         unpauseButton.titleLabel?.numberOfLines = 0
         unpauseButton.titleLabel?.lineBreakMode = .byCharWrapping
         
-        menuButton.setTitle(String(localized: "pauseView.exit"), for: .normal)
-        menuButton.setTitleColor(.white, for: .normal)
-        menuButton.titleLabel?.numberOfLines = 0
-        menuButton.titleLabel?.lineBreakMode = .byCharWrapping
+        menuLabel.text = String(localized: "pauseView.exit")
+        menuLabel.font = .boldSystemFont(ofSize: menuLabel.font.pointSize)
+        menuLabel.numberOfLines = 0
+        menuLabel.lineBreakMode = .byCharWrapping
         
         howToPlayButton.setTitle(String(localized: "pauseView.howToPlay"), for: .normal)
         howToPlayButton.setTitleColor(.white, for: .normal)
         howToPlayButton.titleLabel?.numberOfLines = 0
         howToPlayButton.titleLabel?.lineBreakMode = .byCharWrapping
 
-        let scalingFactor = UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory ? 1.85 : 1.95
+        let scalingFactor = UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory ? 1.5 : 1.7
         guard let unpauseButtonHeight = unpauseButton.titleLabel?.intrinsicContentSize.height,
-              let menuButtonHeight = menuButton.titleLabel?.intrinsicContentSize.height,
               let howToPlayButtonHeight = howToPlayButton.titleLabel?.intrinsicContentSize.height else { return }
         
         if let unpauseButtonHeightContraint = unpauseButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal }),
-           let menuButtonHeightConstraint = menuButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal }),
            let howToPlayButtonButtonHeightConstraint = howToPlayButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal })
         {
             unpauseButtonHeightContraint.constant = unpauseButtonHeight * scalingFactor
-            menuButtonHeightConstraint.constant = menuButtonHeight * scalingFactor
             howToPlayButtonButtonHeightConstraint.constant = howToPlayButtonHeight * scalingFactor
         }
         

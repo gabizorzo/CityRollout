@@ -242,13 +242,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exit"
+            "value" : "Exit game"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sair"
+            "state" : "needs_review",
+            "value" : "Sair do jogo"
           }
         }
       }
