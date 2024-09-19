@@ -51,17 +51,17 @@ class PauseView: UIView {
         howToPlayButton.titleLabel?.numberOfLines = 0
         howToPlayButton.titleLabel?.lineBreakMode = .byCharWrapping
 
+        adjustButtonsHeight()
+    }
+    
+    private func adjustButtonsHeight() {
         let scalingFactor = UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory ? 1.5 : 1.7
         guard let unpauseButtonHeight = unpauseButton.titleLabel?.intrinsicContentSize.height,
               let howToPlayButtonHeight = howToPlayButton.titleLabel?.intrinsicContentSize.height else { return }
         
-        if let unpauseButtonHeightContraint = unpauseButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal }),
-           let howToPlayButtonButtonHeightConstraint = howToPlayButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal })
-        {
-            unpauseButtonHeightContraint.constant = unpauseButtonHeight * scalingFactor
-            howToPlayButtonButtonHeightConstraint.constant = howToPlayButtonHeight * scalingFactor
-        }
-        
+        unpauseButton.heightAnchor.constraint(equalToConstant: unpauseButtonHeight * scalingFactor).isActive = true
+        howToPlayButton.heightAnchor.constraint(equalToConstant: howToPlayButtonHeight * scalingFactor).isActive = true
+ 
         self.layoutIfNeeded()
     }
     
