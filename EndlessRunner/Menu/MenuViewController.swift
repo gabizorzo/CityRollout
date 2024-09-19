@@ -31,6 +31,8 @@ class MenuViewController: UIViewController {
               let howToPlayButtonHeight = howToPlayButton.titleLabel?.intrinsicContentSize.height,
               let settingsButtonHeight = settingsButton.titleLabel?.intrinsicContentSize.height else { return }
         
+//        print("\(startButtonHeight), \(howToPlayButtonHeight), \(settingsButtonHeight)")
+
         if let startButtonHeightContraint = startButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal }),
            let howToPlayHeightConstraint = howToPlayButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal }),
            let settingsButtonHeightConstraint = settingsButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal })

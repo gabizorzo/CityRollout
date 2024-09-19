@@ -44,8 +44,23 @@ class PauseView: UIView {
         howToPlayButton.setTitleColor(.white, for: .normal)
         howToPlayButton.titleLabel?.numberOfLines = 0
         howToPlayButton.titleLabel?.lineBreakMode = .byCharWrapping
+
+        let scalingFactor = UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory ? 1.85 : 1.95
+        guard let unpauseButtonHeight = unpauseButton.titleLabel?.intrinsicContentSize.height,
+              let menuButtonHeight = menuButton.titleLabel?.intrinsicContentSize.height,
+              let howToPlayButtonHeight = howToPlayButton.titleLabel?.intrinsicContentSize.height else { return }
+        
+        if let unpauseButtonHeightContraint = unpauseButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal }),
+           let menuButtonHeightConstraint = menuButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal }),
+           let howToPlayButtonButtonHeightConstraint = howToPlayButton.constraints.first(where: { $0.firstAttribute == .height && $0.relation == .equal })
+        {
+            unpauseButtonHeightContraint.constant = unpauseButtonHeight * scalingFactor
+            menuButtonHeightConstraint.constant = menuButtonHeight * scalingFactor
+            howToPlayButtonButtonHeightConstraint.constant = howToPlayButtonHeight * scalingFactor
+        }
+        
+        self.layoutIfNeeded()
     }
-    
     
     //MARK: - Actions
     var unpauseButtonAction: () -> Void = {}
