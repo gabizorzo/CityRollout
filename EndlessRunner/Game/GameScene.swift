@@ -81,7 +81,8 @@ class GameScene: SKScene {
         self.player = SKSpriteNode(texture: texture)
         self.player.position = CGPoint(x: 0, y: -(screenHeight/2.5))
         self.player.zPosition = 1
-        self.player.constraints = [SKConstraint.zRotation(SKRange(constantValue: 0))]
+        self.player.constraints = [SKConstraint.zRotation(SKRange(constantValue: 0)),
+                                   SKConstraint.positionY(SKRange(constantValue: 0))]
         
         let physics = SKPhysicsBody(texture: texture, size: player.size)
         physics.isDynamic = true
