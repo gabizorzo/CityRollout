@@ -22,12 +22,18 @@ class GameViewController: UIViewController {
     var scene: GameScene!
     var session: ARSession!
     
+    var isTutorialEnabled: Bool = true // TODO: pegar do UserDefaults
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if Database.shared.getSettingsStatus(for: .faceMovements) {
             session = ARSession()
             session.delegate = self
+        }
+        
+        if isTutorialEnabled {
+            pauseButton.isHidden = true
         }
         
         setHudLabels()
@@ -39,6 +45,7 @@ class GameViewController: UIViewController {
         backToMenu()
         movePlayerTutorial()
         stopMovePlayerTutorial()
+        closeTutorial()
         
         UIAccessibility.post(notification: .screenChanged, argument: scoreLabel)
     }
@@ -249,7 +256,7 @@ extension GameViewController: ARSessionDelegate {
     }
 }
 
-// MARK: - Tutorial Moves
+// MARK: - Tutorial
 extension GameViewController {
     func movePlayerTutorial() {
         tutorialView.isUserInteractionEnabled = true
@@ -263,6 +270,13 @@ extension GameViewController {
     func stopMovePlayerTutorial() {
         tutorialView.stopPlayer = { [weak self] in
             self?.scene.isTouching = false
+        }
+    }
+    
+    func closeTutorial() {
+        tutorialView.closeTutorial = { [weak self] in
+            self?.tutorialView.isHidden = true
+            self?.pauseButton.isHidden = false
         }
     }
 }

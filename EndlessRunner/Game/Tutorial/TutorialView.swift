@@ -14,8 +14,10 @@ class TutorialView: UIView {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var stackView: UIView!
     @IBOutlet weak var imageView: UIImageView!
-    
-    @IBOutlet weak var contentViewAspectRatio: NSLayoutConstraint!
+        
+    @IBAction func closeTutorialButton(_ sender: Any) {
+        closeTutorial()
+    }
     
     @IBAction func continueButtonAction(_ sender: Any) {
         status = status + 1
@@ -99,6 +101,11 @@ class TutorialView: UIView {
     
     private func setContentViewSize() {
         if UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory {
+            var buttonConfig = continueButton.configuration
+            let buttonInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+            buttonConfig?.contentInsets = buttonInsets
+            continueButton.configuration = buttonConfig
+            
             tutorialLabel.numberOfLines = 5
             NSLayoutConstraint.activate([
              tutorialLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -126,4 +133,5 @@ class TutorialView: UIView {
     
     var movePlayer: (_ location: Double) -> Void = { location in }
     var stopPlayer: () -> Void = {}
+    var closeTutorial: () -> Void = {}
 }
