@@ -29,8 +29,12 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="nnH-zo-fIU">
                     <rect key="frame" x="38" y="66" width="317" height="720"/>
                     <subviews>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPa-JI-0e9" userLabel="Spacer View">
+                            <rect key="frame" x="38.666666666666686" y="0.0" width="240" height="61.666666666666664"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
                         <label opaque="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXH-0d-mbV" userLabel="Menu Label">
-                            <rect key="frame" x="125.33333333333334" y="0.0" width="66.333333333333343" height="107.33333333333333"/>
+                            <rect key="frame" x="125.33333333333334" y="73.666666666666657" width="66.333333333333343" height="33.666666666666657"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                             <color key="textColor" red="0.94509803920000002" green="0.43529411759999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -79,6 +83,9 @@
                         <constraint firstItem="VL5-Fe-DaA" firstAttribute="centerY" secondItem="nnH-zo-fIU" secondAttribute="centerY" id="bln-gl-L70"/>
                         <constraint firstAttribute="trailing" secondItem="eSs-7K-6fQ" secondAttribute="trailing" id="cN6-AP-fTo"/>
                         <constraint firstItem="eIT-64-ycr" firstAttribute="leading" secondItem="nnH-zo-fIU" secondAttribute="leading" id="ekR-up-0me" userLabel="How to play.leading = leading"/>
+                        <constraint firstItem="qPa-JI-0e9" firstAttribute="centerX" secondItem="nnH-zo-fIU" secondAttribute="centerX" id="fwn-yH-pf0"/>
+                        <constraint firstItem="XXH-0d-mbV" firstAttribute="centerX" secondItem="nnH-zo-fIU" secondAttribute="centerX" id="iNR-gA-IiN"/>
+                        <constraint firstItem="XXH-0d-mbV" firstAttribute="top" secondItem="qPa-JI-0e9" secondAttribute="bottom" constant="12" id="ipr-aK-RTa"/>
                         <constraint firstAttribute="trailing" secondItem="eIT-64-ycr" secondAttribute="trailing" id="lYd-tn-yzh" userLabel="trailing = How to play.trailing"/>
                     </constraints>
                 </stackView>
