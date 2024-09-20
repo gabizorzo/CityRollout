@@ -42,7 +42,7 @@
 		0914C42D2C489E08007640C7 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		0922C21F2C49A39E00CE5A4C /* GameOverView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOverView.xib; sourceTree = "<group>"; };
 		0922C2212C49A54200CE5A4C /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
-		094A846B2C45D76900E17B2C /* EndlessRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EndlessRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		094A846B2C45D76900E17B2C /* CityRollout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityRollout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		094A846E2C45D76900E17B2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		094A84742C45D76900E17B2C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		094A84762C45D76900E17B2C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 		094A846C2C45D76900E17B2C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				094A846B2C45D76900E17B2C /* EndlessRunner.app */,
+				094A846B2C45D76900E17B2C /* CityRollout.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,9 +179,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		094A846A2C45D76900E17B2C /* EndlessRunner */ = {
+		094A846A2C45D76900E17B2C /* CityRollout */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 094A84822C45D76D00E17B2C /* Build configuration list for PBXNativeTarget "EndlessRunner" */;
+			buildConfigurationList = 094A84822C45D76D00E17B2C /* Build configuration list for PBXNativeTarget "CityRollout" */;
 			buildPhases = (
 				094A84672C45D76900E17B2C /* Sources */,
 				094A84682C45D76900E17B2C /* Frameworks */,
@@ -191,9 +191,9 @@
 			);
 			dependencies = (
 			);
-			name = EndlessRunner;
+			name = CityRollout;
 			productName = EndlessRunner;
-			productReference = 094A846B2C45D76900E17B2C /* EndlessRunner.app */;
+			productReference = 094A846B2C45D76900E17B2C /* CityRollout.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -225,7 +225,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				094A846A2C45D76900E17B2C /* EndlessRunner */,
+				094A846A2C45D76900E17B2C /* CityRollout */,
 			);
 		};
 /* End PBXProject section */
@@ -431,6 +431,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4A7DB99C3F;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "City Rollout";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to capture the player's movements.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -461,6 +462,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4A7DB99C3F;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "City Rollout";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to capture the player's movements.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -494,7 +496,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		094A84822C45D76D00E17B2C /* Build configuration list for PBXNativeTarget "EndlessRunner" */ = {
+		094A84822C45D76D00E17B2C /* Build configuration list for PBXNativeTarget "CityRollout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				094A84832C45D76D00E17B2C /* Debug */,
