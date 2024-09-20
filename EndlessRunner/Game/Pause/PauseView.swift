@@ -55,7 +55,8 @@ class PauseView: UIView {
         if let boldFontDescriptor = UIFontDescriptor
             .preferredFontDescriptor(withTextStyle: .body)
             .withSymbolicTraits(.traitBold) {
-            menuLabel.font = UIFont(descriptor: boldFontDescriptor, size: 0.0)
+            let fontSize = UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory ? 0.0 : 32.0
+                menuLabel.font = UIFont(descriptor: boldFontDescriptor, size: fontSize)
         }
         
         howToPlayButton.setTitle(String(localized: "pauseView.howToPlay"), for: .normal)
@@ -70,6 +71,7 @@ class PauseView: UIView {
         let isPortrait = currentOrientation == .portrait || currentOrientation == .portraitUpsideDown
         let priority: Float = isPortrait ? 1000 : 1
         let currentContentSize = UIApplication.shared.preferredContentSizeCategory
+
         if isPortrait {
             self.spacerView.isHidden = false
             self.bottomConstraint.priority = UILayoutPriority(priority)
