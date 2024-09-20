@@ -2,7 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "continue.tutorial" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -12,8 +11,44 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Continuar"
+          }
+        }
+      }
+    },
+    "gameOverView.congratulations" : {
+      "comment" : "This label will appear instead of \"GAME OVER\" only if player has scored a new record",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CONGRATULATIONS!"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PARABÉNS!"
+          }
+        }
+      }
+    },
+    "gameOverView.exit" : {
+      "comment" : "Exit button text on game over view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sair"
           }
         }
       }
@@ -37,6 +72,7 @@
       }
     },
     "gameOverView.highScore" : {
+      "comment" : "High score label on game over view",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -53,7 +89,26 @@
         }
       }
     },
+    "gameOverView.newHighScore" : {
+      "comment" : "New high score label on game over view if player has scored a new record",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New high score:"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novo recorde:"
+          }
+        }
+      }
+    },
     "gameOverView.playAgain" : {
+      "comment" : "Play again label inside button on game over view",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -71,6 +126,7 @@
       }
     },
     "gameOverView.yourScore" : {
+      "comment" : "Your score label on game over view",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -83,6 +139,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pontuação:"
+          }
+        }
+      }
+    },
+    "gameScene.life" : {
+      "comment" : "Life string used on game hud VoiceOver",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Life"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vida"
           }
         }
       }
@@ -106,7 +180,6 @@
       }
     },
     "label1.tutorial" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -116,14 +189,13 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Mova-se pela cidade desviando dos obstáculos."
           }
         }
       }
     },
     "label2.tutorial" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -133,14 +205,13 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Para desviar dos obstáculos, toque na tela."
           }
         }
       }
     },
     "label3.tutorial" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -150,48 +221,13 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Você também pode desviar mexendo o canto da sua boca!"
           }
         }
       }
     },
-    "label3left.tutorial" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Left corner"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Canto esquerdo"
-          }
-        }
-      }
-    },
-    "label3right.tutorial" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Right corner"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Canto direito"
-          }
-        }
-      }
-    },
     "label4.tutorial" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -201,14 +237,13 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Ao colidir com um obstáculo, você perde uma vida."
           }
         }
       }
     },
     "label5.tutorial" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -218,8 +253,26 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Quanto mais tempo você jogar, mais ponto você consegue!"
+          }
+        }
+      }
+    },
+    "menuView.howToPlay" : {
+      "comment" : "How to play button text on main menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to Play"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como jogar"
           }
         }
       }
@@ -231,13 +284,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " Tap to Play!"
+            "value" : "Play"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " Toque Para Jogar!"
+            "value" : "Jogar"
           }
         }
       }
@@ -285,13 +338,48 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exit"
+            "value" : "Exit game"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sair"
+            "value" : "Sair do jogo"
+          }
+        }
+      }
+    },
+    "pauseView.howToPlay" : {
+      "comment" : "How to play button text on pause view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to play"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como jogar"
+          }
+        }
+      }
+    },
+    "pauseView.unpause" : {
+      "comment" : "Resume button text on pause view",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumir"
           }
         }
       }
@@ -380,7 +468,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vibrações "
+            "value" : "Vibrações"
           }
         }
       }

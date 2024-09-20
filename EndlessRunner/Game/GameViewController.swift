@@ -11,10 +11,9 @@ import GameplayKit
 import ARKit
 
 class GameViewController: UIViewController {
-
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var livesLabel: UILabel!
+    @IBOutlet weak var livesStackView: UIStackView!
     @IBOutlet weak var pauseView: PauseView!
     @IBOutlet weak var gameOverView: GameOverView!
     @IBOutlet weak var tutorialView: TutorialView!
@@ -85,6 +84,10 @@ class GameViewController: UIViewController {
         return true
     }
     
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge { 
+        return .all
+    }
+    
     func createOrientationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.rotateLabels), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
@@ -94,7 +97,14 @@ class GameViewController: UIViewController {
     }
     
     func setHudLabels() {
-        livesLabel.text = "\(String(localized: "gameScene.lives")): 3"
+        if UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory {
+            self.livesStackView.spacing = -4
+        } else {
+            self.livesStackView.spacing = 8
+        }
+        
+        scoreLabel.layer.cornerRadius = 8
+        scoreLabel.layer.masksToBounds = true
     }
 }
 
@@ -124,6 +134,12 @@ extension GameViewController: GameDelegate {
             Haptics.shared.buttonHaptic()
             Sounds.shared.buttonSound()
         }
+
+        gameOverView.menuButtonAction = { [weak self] in
+            self?.navigationController?.popViewController(animated: false)
+            Haptics.shared.buttonHaptic()
+            Sounds.shared.buttonSound()
+        }
     }
     
     func unpauseGame() {
@@ -139,18 +155,28 @@ extension GameViewController: GameDelegate {
     }
     
     func updateScore(score: Int) {
-        scoreLabel.text = "\(score)"
+        scoreLabel.text = " \(score) "
     }
     
     func updateLives(lives: Int) {
-        livesLabel.text = "\(String(localized: "gameScene.lives")): \(lives)"
+        if lives == 3 {
+            for i in 0..<lives {
+                self.livesStackView.arrangedSubviews[i].isHidden = false
+            }
+        } else {
+            self.livesStackView.arrangedSubviews[lives].isHidden = true
+        }
+        
+        for i in 0..<3 {
+            self.livesStackView.arrangedSubviews[i].accessibilityLabel = lives == 1 ? "\(lives) \(String(localized: "gameScene.life"))" : "\(lives) \(String(localized: "gameScene.lives"))"
+        }
     }
     
-    func gameOver(score: Int) {
-        gameOverView.setupScore(score: score)
+    func gameOver(score: Int, isNewHighScore: Bool) {
+        gameOverView.setupScore(score: score, isNewHighScore: isNewHighScore)
         gameOverView.isHidden = false
         
-        UIAccessibility.post(notification: .screenChanged, argument: gameOverView.gameOverLabel)
+        UIAccessibility.post(notification: .screenChanged, argument: gameOverView.gameOverTitleLabel)
     }
     
     func restartGame() {
@@ -167,21 +193,30 @@ extension GameViewController: GameDelegate {
     
     @objc func rotateLabels() {
         let currentOrientation = UIDevice.current.orientation
-        var rotation = CGAffineTransform()
+        if currentOrientation != .faceUp && currentOrientation != .faceDown {
+            var rotation = CGAffineTransform()
+            
+            if currentOrientation == .landscapeLeft {
+                rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+            } else if currentOrientation == .landscapeRight {
+                rotation = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
+            } else if currentOrientation == .portrait || currentOrientation == .portraitUpsideDown {
+                rotation = CGAffineTransform(rotationAngle: 0)
+            }
+            
+            self.scoreLabel.transform = rotation
+            for heart in self.livesStackView.arrangedSubviews {
+                heart.transform = rotation
+            }
+            self.pauseButton.transform = rotation
+            self.gameOverView.stackView.transform = rotation
+            self.gameOverView.setStackBehavior(currentOrientation)
         
-        if currentOrientation == .landscapeLeft {
-            rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-        } else if currentOrientation == .landscapeRight {
-            rotation = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
-        } else {
-            rotation = CGAffineTransform(rotationAngle: 0)
+            self.pauseView.stackView.transform = rotation
+            self.pauseView.setStackBehavior(currentOrientation)
+        
+            self.tutorialView.stackView.transform = rotation
         }
-        
-        self.scoreLabel.transform = rotation
-        self.livesLabel.transform = rotation
-        self.pauseButton.transform = rotation
-        self.gameOverView.stackView.transform = rotation
-        self.tutorialView.stackView.transform = rotation
     }
 }
 
@@ -197,7 +232,7 @@ extension GameViewController: ARSessionDelegate {
         let blendShapes: [ARFaceAnchor.BlendShapeLocation:Any] = faceAnchor.blendShapes
         
         if let left = blendShapes[.mouthLeft] as? Float {
-            print("L: \(left)")
+//            print("L: \(left)")
             
             if left > 0.09 {
                 scene.movePositive()
@@ -205,7 +240,7 @@ extension GameViewController: ARSessionDelegate {
         }
         
         if let right = blendShapes[.mouthRight] as? Float {
-            print("R: \(right)")
+//            print("R: \(right)")
             
             if right > 0.09 {
                 scene.moveNegative()

@@ -34,9 +34,10 @@ class SettingsSelectCell: UITableViewCell {
             UIAction(title: String(localized: "settingsView.medium"), state: level == .medium ? .on : .off, handler: menuClosure),
             UIAction(title: String(localized: "settingsView.hard"), state: level == .hard ? .on : .off, handler: menuClosure),
         ])
-        
+
         selectButton.showsMenuAsPrimaryAction = true
         selectButton.changesSelectionAsPrimaryAction = true
+        selectButton.tintColor = UIColor(red: 241/255, green: 111/255, blue: 2/255, alpha: 1)
     }
     
     func update(title: String) {
