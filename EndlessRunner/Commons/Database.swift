@@ -13,6 +13,7 @@ class Database {
     
     private let highScore: String = "highScore"
     private let firstSettings: String = "firstSettings"
+    private let firstTutorial: String = "firstTutorial"
     
     private init() {}
     
@@ -30,6 +31,14 @@ class Database {
     
     func setFirstSettings() {
         userDefaults.setValue(true, forKey: firstSettings)
+    }
+    
+    func getFirstTutorial() -> Bool {
+        return userDefaults.bool(forKey: firstTutorial)
+    }
+    
+    func setFirstTutorial() {
+        userDefaults.setValue(true, forKey: firstTutorial)
     }
     
     func toggleSettingsStatus(for setting: SettingsName){

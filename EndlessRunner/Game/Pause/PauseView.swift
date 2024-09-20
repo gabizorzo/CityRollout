@@ -94,8 +94,8 @@ class PauseView: UIView {
         menuButtonAction()
     }
     
-    var howToPlayButtonAction: () -> Void = {} // passar essa closure na game view e chamar na action abaixo
+    var howToPlayButtonAction: () -> Void = {} 
     @IBAction func howToPlayAction(_ sender: Any) {
-        print(#function)
+        howToPlayButtonAction()
     }
 }

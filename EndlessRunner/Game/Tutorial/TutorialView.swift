@@ -20,10 +20,27 @@ class TutorialView: UIView {
     }
     
     @IBAction func continueButtonAction(_ sender: Any) {
+        
         status = status + 1
         
-        if status == 6 {
-            print("DISMISS VIEW")
+        switch status {
+        case 2:
+            pauseGame(true, true)
+        case 3:
+            pauseGame(false, true)
+        case 4:
+            pauseGame(true, true)
+        case 5:
+            pauseGame(false, true)
+        case 6:
+            pauseGame(false, false)
+        case 7:
+            pauseGame(true, true)
+        case 8:
+            pauseGame(false, false)
+            closeTutorial()
+        default:
+            break
         }
         
         setLabelText()
@@ -35,17 +52,11 @@ class TutorialView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        setLabelText()
-        setButtonText()
-        setContentViewSize()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
-        setLabelText()
-        setButtonText()
-        setContentViewSize()
     }
     
     private func commonInit() {
@@ -53,6 +64,18 @@ class TutorialView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        setLabelText()
+        setButtonText()
+        setContentViewSize()
+        
+        //Database.shared.setFirstTutorial()
+    }
+    
+    public func reset() {
+        status = 1
+        setLabelText()
+        setButtonText()
     }
     
     private func setLabelText() {
@@ -64,11 +87,13 @@ class TutorialView: UIView {
             tutorialLabel.text = String(localized: "label2.tutorial")
         case 3:
             setImage(visible: true)
+            tutorialLabel.text = String(localized: "labelTry.tutorial")
         case 4:
             setImage(visible: false)
             tutorialLabel.text = String(localized: "label3.tutorial")
         case 5:
             setImage(visible: true)
+            tutorialLabel.text = String(localized: "labelTry.tutorial")
         case 6:
             setImage(visible: false)
             tutorialLabel.text = String(localized: "label4.tutorial")
@@ -92,10 +117,8 @@ class TutorialView: UIView {
         
         if visible {
             imageView.isHidden = false
-            tutorialLabel.isHidden = true
         } else {
             imageView.isHidden = true
-            tutorialLabel.isHidden = false
         }
     }
     
@@ -134,4 +157,5 @@ class TutorialView: UIView {
     var movePlayer: (_ location: Double) -> Void = { location in }
     var stopPlayer: () -> Void = {}
     var closeTutorial: () -> Void = {}
+    var pauseGame: (_ playerPaused: Bool, _ obstaclesPaused: Bool) -> Void = { playerPaused, obstaclesPaused  in }
 }

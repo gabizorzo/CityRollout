@@ -22,7 +22,7 @@ class GameViewController: UIViewController {
     var scene: GameScene!
     var session: ARSession!
     
-    var isTutorialEnabled: Bool = true // TODO: pegar do UserDefaults
+    var isTutorialEnabled: Bool = !Database.shared.getFirstTutorial()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +32,7 @@ class GameViewController: UIViewController {
             session.delegate = self
         }
         
-        if isTutorialEnabled {
-            pauseButton.isHidden = true
-        }
+        tutorialView.isHidden = true
         
         setHudLabels()
         createOrientationObserver()
@@ -46,6 +44,15 @@ class GameViewController: UIViewController {
         movePlayerTutorial()
         stopMovePlayerTutorial()
         closeTutorial()
+        howToPlay()
+        pauseGame()
+        
+        if isTutorialEnabled {
+            pauseButton.isHidden = true
+            tutorialView.isHidden = false
+            scene.tutorialPlayerPaused = true
+            scene.isTutorial = true
+        }
         
         UIAccessibility.post(notification: .screenChanged, argument: scoreLabel)
     }
@@ -133,34 +140,6 @@ extension GameViewController {
 
 // MARK: - Game Delegate
 extension GameViewController: GameDelegate {
-    
-    func backToMenu() {
-        pauseView.menuButtonAction = { [weak self] in
-            self?.scene.setHighScore()
-            self?.navigationController?.popViewController(animated: false)
-            Haptics.shared.buttonHaptic()
-            Sounds.shared.buttonSound()
-        }
-
-        gameOverView.menuButtonAction = { [weak self] in
-            self?.navigationController?.popViewController(animated: false)
-            Haptics.shared.buttonHaptic()
-            Sounds.shared.buttonSound()
-        }
-    }
-    
-    func unpauseGame() {
-        pauseView.unpauseButtonAction = { [weak self] in
-            self?.pauseButton.isHidden = false
-            self?.pauseView.isHidden = true
-            self?.gameView.isPaused = false
-            Haptics.shared.buttonHaptic()
-            Sounds.shared.buttonSound()
-            
-            UIAccessibility.post(notification: .layoutChanged, argument: self?.scoreLabel)
-        }
-    }
-    
     func updateScore(score: Int) {
         scoreLabel.text = " \(score) "
     }
@@ -256,6 +235,49 @@ extension GameViewController: ARSessionDelegate {
     }
 }
 
+// MARK: - Pause
+
+extension GameViewController {
+    func backToMenu() {
+        pauseView.menuButtonAction = { [weak self] in
+            self?.scene.setHighScore()
+            self?.navigationController?.popViewController(animated: false)
+            Haptics.shared.buttonHaptic()
+            Sounds.shared.buttonSound()
+        }
+
+        gameOverView.menuButtonAction = { [weak self] in
+            self?.navigationController?.popViewController(animated: false)
+            Haptics.shared.buttonHaptic()
+            Sounds.shared.buttonSound()
+        }
+    }
+    
+    func unpauseGame() {
+        pauseView.unpauseButtonAction = { [weak self] in
+            self?.pauseButton.isHidden = false
+            self?.pauseView.isHidden = true
+            self?.gameView.isPaused = false
+            Haptics.shared.buttonHaptic()
+            Sounds.shared.buttonSound()
+            
+            UIAccessibility.post(notification: .layoutChanged, argument: self?.scoreLabel)
+        }
+    }
+    
+    func howToPlay() {
+        pauseView.howToPlayButtonAction = { [weak self] in
+            self?.pauseView.isHidden = true
+            self?.pauseButton.isHidden = true
+            self?.tutorialView.reset()
+            self?.tutorialView.isHidden = false
+            self?.scene.tutorialObstaclesPaused = false
+            self?.scene.tutorialPlayerPaused = true
+            self?.scene.isTutorial = true
+        }
+    }
+}
+
 // MARK: - Tutorial
 extension GameViewController {
     func movePlayerTutorial() {
@@ -277,6 +299,25 @@ extension GameViewController {
         tutorialView.closeTutorial = { [weak self] in
             self?.tutorialView.isHidden = true
             self?.pauseButton.isHidden = false
+            self?.scene.isTutorial = false
+        }
+    }
+    
+    func pauseGame() {
+        tutorialView.pauseGame = { [weak self] playerPaused, obstaclesPaused  in
+            if playerPaused && obstaclesPaused {
+                self?.scene.tutorialPlayerPaused = true
+                self?.scene.tutorialObstaclesPaused = true
+            } else if playerPaused {
+                self?.scene.tutorialPlayerPaused = true
+                self?.scene.tutorialObstaclesPaused = false
+            } else if obstaclesPaused {
+                self?.scene.tutorialPlayerPaused = false
+                self?.scene.tutorialObstaclesPaused = true
+            } else {
+                self?.scene.tutorialPlayerPaused = false
+                self?.scene.tutorialObstaclesPaused = false
+            }
         }
     }
 }

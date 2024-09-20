@@ -11,7 +11,7 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Continuar"
           }
         }
@@ -189,7 +189,7 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Mova-se pela cidade desviando dos obstáculos."
           }
         }
@@ -205,7 +205,7 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Para desviar dos obstáculos, toque na tela."
           }
         }
@@ -221,7 +221,7 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Você também pode desviar mexendo o canto da sua boca!"
           }
         }
@@ -237,7 +237,7 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Ao colidir com um obstáculo, você perde uma vida."
           }
         }
@@ -253,8 +253,25 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Quanto mais tempo você jogar, mais ponto você consegue!"
+          }
+        }
+      }
+    },
+    "labelTry.tutorial" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try!"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tente!"
           }
         }
       }

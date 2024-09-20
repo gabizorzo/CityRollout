@@ -13,9 +13,6 @@ protocol GameDelegate: AnyObject {
     func updateLives(lives: Int)
     func gameOver(score: Int, isNewHighScore: Bool)
     func unpauseGame()
-    func backToMenu()
-    func restartGame()
-    func rotateLabels()
 }
 
 class GameScene: SKScene {
@@ -43,6 +40,10 @@ class GameScene: SKScene {
     private var gamePaused: Bool = false
     private var difficulty: SettingsDifficulty = .medium
     private var collisionTimer = Timer()
+    
+    public var tutorialPlayerPaused: Bool = false
+    public var tutorialObstaclesPaused: Bool = false
+    public var isTutorial: Bool = false
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -231,6 +232,9 @@ extension GameScene {
         if !collisionTimer.isValid {
             lives -= 1
             print("lives: \(lives)")
+            if isTutorial && lives == 0 {
+                lives = 1
+            }
             self.gameDelegate?.updateLives(lives: lives)
             if lives == 0 {
                 gamePaused = true
@@ -267,45 +271,49 @@ extension GameScene {
     override func update(_ currentTime: TimeInterval) {
         self.isPaused = gamePaused // gambiarra pra cena não voltar rodando
         
-        if lastCurrentTimeObstacle == -1 {
-            lastCurrentTimeObstacle = currentTime
-            lastCurrentTimeScore = currentTime
+        if !tutorialPlayerPaused {
+            // Player movement
+            movePlayerTouch()
         }
         
-        let deltaTimeObstacle = currentTime - lastCurrentTimeObstacle
-        let deltaTimeScore = currentTime - lastCurrentTimeScore
+        if !tutorialObstaclesPaused {
+            if lastCurrentTimeObstacle == -1 {
+                lastCurrentTimeObstacle = currentTime
+                lastCurrentTimeScore = currentTime
+            }
+            
+            let deltaTimeObstacle = currentTime - lastCurrentTimeObstacle
+            let deltaTimeScore = currentTime - lastCurrentTimeScore
         
-        // Player movement
-        movePlayerTouch()
+            var timeObstacle = Double.random(in: 1.5 ..< 4.5)
+            
+            switch difficulty {
+            case .easy:
+                timeObstacle = Double.random(in: 3.5 ..< 4.5)
+            case .medium:
+                timeObstacle = Double.random(in: 2.0 ..< 3.0)
+            case .hard:
+                timeObstacle = Double.random(in: 1.0 ..< 2.0)
+            }
+            
+            // Update score
+            if deltaTimeScore > 2 {
+                score += 1
+                self.gameDelegate?.updateScore(score: score)
+                lastCurrentTimeScore = currentTime
+            }
+            
+            // Generate obstacles
+            if deltaTimeObstacle > timeObstacle { // aqui que define a velocidade na qual serão gerados novos obstáculos
+                createObstacles()
+                lastCurrentTimeObstacle = currentTime
+            }
         
-        var timeObstacle = Double.random(in: 1.5 ..< 4.5)
-        
-        switch difficulty {
-        case .easy:
-            timeObstacle = Double.random(in: 3.5 ..< 4.5)
-        case .medium:
-            timeObstacle = Double.random(in: 2.0 ..< 3.0)
-        case .hard:
-            timeObstacle = Double.random(in: 1.0 ..< 2.0)
+            // Background movement
+            moveBackground()
+            
+            // Obstacles movement
+            moveObstacles()
         }
-        
-        // Update score
-        if deltaTimeScore > 2 {
-            score += 1
-            self.gameDelegate?.updateScore(score: score)
-            lastCurrentTimeScore = currentTime
-        }
-        
-        // Generate obstacles
-        if deltaTimeObstacle > timeObstacle { // aqui que define a velocidade na qual serão gerados novos obstáculos
-            createObstacles()
-            lastCurrentTimeObstacle = currentTime
-        }
-        
-        // Background movement
-        moveBackground()
-        
-        // Obstacles movement
-        moveObstacles()
     }
 }
