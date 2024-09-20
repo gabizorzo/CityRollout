@@ -82,7 +82,8 @@ class GameScene: SKScene {
         self.player = SKSpriteNode(texture: texture)
         self.player.position = CGPoint(x: 0, y: -(screenHeight/2.5))
         self.player.zPosition = 1
-        self.player.constraints = [SKConstraint.zRotation(SKRange(constantValue: 0))]
+        self.player.constraints = [SKConstraint.zRotation(SKRange(constantValue: 0)),
+                                   SKConstraint.positionY(SKRange(constantValue: 0))]
         
         let physics = SKPhysicsBody(texture: texture, size: player.size)
         physics.isDynamic = true
@@ -147,14 +148,14 @@ extension GameScene {
     }
     
     func movePositive() {
-        let distance = 2.0
+        let distance = 2.5
         if !((self.player.position.x + distance) > (self.screenWidth / 2.95)) {
             self.player.run(SKAction.move(by: CGVector(dx: distance, dy: 0), duration: 0.05))
         }
     }
     
     func moveNegative() {
-        let distance = 2.0
+        let distance = 2.5
         if !((self.player.position.x - distance) < (-self.screenWidth / 2.95)) {
             self.player.run(SKAction.move(by: CGVector(dx: -distance, dy: 0), duration: 0.05))
         }
@@ -201,7 +202,7 @@ extension GameScene {
     func getSpeedMovement() -> CGFloat {
         switch difficulty {
         case .easy:
-            return 2
+            return 1.75
         case .medium:
             return 2.5
         case .hard:
@@ -289,7 +290,7 @@ extension GameScene {
             
             switch difficulty {
             case .easy:
-                timeObstacle = Double.random(in: 3.5 ..< 4.5)
+                timeObstacle = Double.random(in: 4 ..< 4.5)
             case .medium:
                 timeObstacle = Double.random(in: 2.0 ..< 3.0)
             case .hard:
