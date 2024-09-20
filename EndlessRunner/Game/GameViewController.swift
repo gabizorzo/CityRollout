@@ -84,7 +84,8 @@ class GameViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func pauseAction(_ sender: Any) {
-        gameView.isPaused = true
+        scene.tutorialPlayerPaused = true
+        scene.tutorialObstaclesPaused = true
         pauseButton.isHidden = true
         pauseView.isHidden = false
         Haptics.shared.buttonHaptic()
@@ -257,7 +258,8 @@ extension GameViewController {
         pauseView.unpauseButtonAction = { [weak self] in
             self?.pauseButton.isHidden = false
             self?.pauseView.isHidden = true
-            self?.gameView.isPaused = false
+            self?.scene.tutorialPlayerPaused = false
+            self?.scene.tutorialObstaclesPaused = false
             Haptics.shared.buttonHaptic()
             Sounds.shared.buttonSound()
             
@@ -300,6 +302,8 @@ extension GameViewController {
             self?.tutorialView.isHidden = true
             self?.pauseButton.isHidden = false
             self?.scene.isTutorial = false
+            self?.scene.tutorialPlayerPaused = false
+            self?.scene.tutorialObstaclesPaused = false
         }
     }
     

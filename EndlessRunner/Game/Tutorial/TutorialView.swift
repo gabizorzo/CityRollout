@@ -69,7 +69,7 @@ class TutorialView: UIView {
         setButtonText()
         setContentViewSize()
         
-        //Database.shared.setFirstTutorial()
+        Database.shared.setFirstTutorial()
     }
     
     public func reset() {

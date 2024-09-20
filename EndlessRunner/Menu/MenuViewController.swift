@@ -48,4 +48,11 @@ class MenuViewController: UIViewController {
         UIAccessibility.post(notification: .screenChanged, argument: startButton)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? GameViewController {
+            if segue.identifier == "howToPlaySegue" {
+                destination.isTutorialEnabled = true
+            }
+        }
+    }
 }
