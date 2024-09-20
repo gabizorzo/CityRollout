@@ -13,6 +13,7 @@
                 <outlet property="gameOverTitleLabel" destination="3F0-hO-Doh" id="IH9-F6-2NB"/>
                 <outlet property="highScoreLabel" destination="Xjv-3t-6OJ" id="IwU-jM-Etr"/>
                 <outlet property="leadConstraint" destination="e6K-Tq-ZZi" id="17b-qG-UVK"/>
+                <outlet property="menuButton" destination="DlK-aU-0c4" id="sXL-4j-ySe"/>
                 <outlet property="restartButton" destination="4AQ-Fn-lmG" id="1Lq-K9-h5w"/>
                 <outlet property="stackView" destination="AzB-Vl-tFw" id="heg-gy-Utg"/>
                 <outlet property="trailConstraint" destination="zJa-fA-0tI" id="fNa-4e-rIt"/>
@@ -25,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AzB-Vl-tFw">
-                    <rect key="frame" x="16.000000000000007" y="294.33333333333326" width="110.66666666666669" height="263.66666666666674"/>
+                    <rect key="frame" x="16.000000000000007" y="308.33333333333331" width="110.66666666666669" height="235.33333333333331"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="3F0-hO-Doh" userLabel="Game Over">
                             <rect key="frame" x="0.0" y="0.0" width="110.66666666666667" height="40.666666666666664"/>
@@ -35,32 +36,55 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Acq-g8-jMV" userLabel="Your score">
-                            <rect key="frame" x="0.0" y="65.333333333333329" width="110.66666666666667" height="33.666666666666671"/>
+                            <rect key="frame" x="0.0" y="57.333333333333343" width="110.66666666666667" height="33.666666666666657"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Xjv-3t-6OJ" userLabel="High score">
-                            <rect key="frame" x="0.0" y="123.66666666666667" width="110.66666666666667" height="33.666666666666671"/>
+                            <rect key="frame" x="0.0" y="107.33333333333333" width="110.66666666666667" height="33.666666666666671"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-Fn-lmG" userLabel="Restart Button">
-                            <rect key="frame" x="0.0" y="182" width="110.66666666666667" height="81.666666666666686"/>
+                            <rect key="frame" x="0.0" y="132" width="110.66666666666667" height="47.666666666666657"/>
+                            <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="gray" image="gobackward" catalog="system" title="Button">
+                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <backgroundConfiguration key="background" cornerRadius="16">
+                                    <color key="backgroundColor" red="0.94509803920000002" green="0.43529411759999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </backgroundConfiguration>
                                 <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </buttonConfiguration>
                             <connections>
                                 <action selector="restartAction:" destination="-1" eventType="touchUpInside" id="H3E-a5-ZWG"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DlK-aU-0c4" userLabel="Menu Button">
+                            <rect key="frame" x="0.0" y="187.66666666666669" width="110.66666666666667" height="47.666666666666657"/>
+                            <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <backgroundConfiguration key="background" cornerRadius="16">
+                                    <color key="backgroundColor" red="0.38823529410000002" green="0.086274509799999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </backgroundConfiguration>
+                                <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="menuAction:" destination="-1" eventType="touchUpInside" id="sih-Mi-tsW"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="DlK-aU-0c4" firstAttribute="top" secondItem="4AQ-Fn-lmG" secondAttribute="bottom" constant="8" id="7Un-I8-hfE"/>
                         <constraint firstItem="4AQ-Fn-lmG" firstAttribute="leading" secondItem="AzB-Vl-tFw" secondAttribute="leading" id="9Rl-Yn-wbG"/>
+                        <constraint firstAttribute="trailing" secondItem="DlK-aU-0c4" secondAttribute="trailing" id="DQf-Wi-dIZ"/>
+                        <constraint firstItem="DlK-aU-0c4" firstAttribute="leading" secondItem="AzB-Vl-tFw" secondAttribute="leading" id="KLZ-5T-6ux"/>
                         <constraint firstAttribute="trailing" secondItem="4AQ-Fn-lmG" secondAttribute="trailing" id="L9A-EB-dTZ"/>
                     </constraints>
                 </stackView>
@@ -79,7 +103,4 @@
             <point key="canvasLocation" x="43.511450381679388" y="21.83098591549296"/>
         </view>
     </objects>
-    <resources>
-        <image name="gobackward" catalog="system" width="119" height="128"/>
-    </resources>
 </document>

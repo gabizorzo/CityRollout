@@ -11,16 +11,18 @@ import GameplayKit
 import ARKit
 
 class GameViewController: UIViewController {
-
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var livesLabel: UILabel!
+    @IBOutlet weak var livesStackView: UIStackView!
     @IBOutlet weak var pauseView: PauseView!
     @IBOutlet weak var gameOverView: GameOverView!
+    @IBOutlet weak var tutorialView: TutorialView!
     @IBOutlet weak var pauseButton: UIButton!
     
     var scene: GameScene!
     var session: ARSession!
+    
+    var isTutorialEnabled: Bool = !Database.shared.getFirstTutorial()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,8 @@ class GameViewController: UIViewController {
             session.delegate = self
         }
         
+        tutorialView.isHidden = true
+        
         setHudLabels()
         createOrientationObserver()
         rotateLabels()
@@ -37,6 +41,18 @@ class GameViewController: UIViewController {
         restartGame()
         unpauseGame()
         backToMenu()
+        movePlayerTutorial()
+        stopMovePlayerTutorial()
+        closeTutorial()
+        howToPlay()
+        pauseGame()
+        
+        if isTutorialEnabled {
+            pauseButton.isHidden = true
+            tutorialView.isHidden = false
+            scene.tutorialPlayerPaused = true
+            scene.isTutorial = true
+        }
         
         UIAccessibility.post(notification: .screenChanged, argument: scoreLabel)
     }
@@ -68,7 +84,8 @@ class GameViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func pauseAction(_ sender: Any) {
-        gameView.isPaused = true
+        scene.tutorialPlayerPaused = true
+        scene.tutorialObstaclesPaused = true
         pauseButton.isHidden = true
         pauseView.isHidden = false
         Haptics.shared.buttonHaptic()
@@ -82,6 +99,10 @@ class GameViewController: UIViewController {
         return true
     }
     
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge { 
+        return .all
+    }
+    
     func createOrientationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.rotateLabels), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
@@ -91,7 +112,14 @@ class GameViewController: UIViewController {
     }
     
     func setHudLabels() {
-        livesLabel.text = "\(String(localized: "gameScene.lives")): 3"
+        if UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory {
+            self.livesStackView.spacing = -4
+        } else {
+            self.livesStackView.spacing = 8
+        }
+        
+        scoreLabel.layer.cornerRadius = 8
+        scoreLabel.layer.masksToBounds = true
     }
 }
 
@@ -113,41 +141,29 @@ extension GameViewController {
 
 // MARK: - Game Delegate
 extension GameViewController: GameDelegate {
-    
-    func backToMenu() {
-        pauseView.menuButtonAction = { [weak self] in
-            self?.scene.setHighScore()
-            self?.navigationController?.popViewController(animated: false)
-            Haptics.shared.buttonHaptic()
-            Sounds.shared.buttonSound()
-        }
-    }
-    
-    func unpauseGame() {
-        pauseView.unpauseButtonAction = { [weak self] in
-            self?.pauseButton.isHidden = false
-            self?.pauseView.isHidden = true
-            self?.gameView.isPaused = false
-            Haptics.shared.buttonHaptic()
-            Sounds.shared.buttonSound()
-            
-            UIAccessibility.post(notification: .layoutChanged, argument: self?.scoreLabel)
-        }
-    }
-    
     func updateScore(score: Int) {
-        scoreLabel.text = "\(score)"
+        scoreLabel.text = " \(score) "
     }
     
     func updateLives(lives: Int) {
-        livesLabel.text = "\(String(localized: "gameScene.lives")): \(lives)"
+        if lives == 3 {
+            for i in 0..<lives {
+                self.livesStackView.arrangedSubviews[i].isHidden = false
+            }
+        } else {
+            self.livesStackView.arrangedSubviews[lives].isHidden = true
+        }
+        
+        for i in 0..<3 {
+            self.livesStackView.arrangedSubviews[i].accessibilityLabel = lives == 1 ? "\(lives) \(String(localized: "gameScene.life"))" : "\(lives) \(String(localized: "gameScene.lives"))"
+        }
     }
     
     func gameOver(score: Int, isNewHighScore: Bool) {
         gameOverView.setupScore(score: score, isNewHighScore: isNewHighScore)
         gameOverView.isHidden = false
         
-        UIAccessibility.post(notification: .screenChanged, argument: gameOverView.gameOverLabel)
+        UIAccessibility.post(notification: .screenChanged, argument: gameOverView.gameOverTitleLabel)
     }
     
     func restartGame() {
@@ -171,15 +187,22 @@ extension GameViewController: GameDelegate {
                 rotation = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
             } else if currentOrientation == .landscapeRight {
                 rotation = CGAffineTransform(rotationAngle: -(CGFloat.pi / 2))
-            } else if currentOrientation == .portrait{
+            } else if currentOrientation == .portrait || currentOrientation == .portraitUpsideDown {
                 rotation = CGAffineTransform(rotationAngle: 0)
             }
             
             self.scoreLabel.transform = rotation
-            self.livesLabel.transform = rotation
+            for heart in self.livesStackView.arrangedSubviews {
+                heart.transform = rotation
+            }
             self.pauseButton.transform = rotation
             self.gameOverView.stackView.transform = rotation
             self.gameOverView.setStackBehavior(currentOrientation)
+        
+            self.pauseView.stackView.transform = rotation
+            self.pauseView.setStackBehavior(currentOrientation)
+        
+            self.tutorialView.stackView.transform = rotation
         }
     }
 }
@@ -208,6 +231,96 @@ extension GameViewController: ARSessionDelegate {
             
             if right > 0.09 {
                 scene.moveNegative()
+            }
+        }
+    }
+}
+
+// MARK: - Pause
+
+extension GameViewController {
+    func backToMenu() {
+        pauseView.menuButtonAction = { [weak self] in
+            self?.scene.setHighScore()
+            self?.navigationController?.popViewController(animated: false)
+            Haptics.shared.buttonHaptic()
+            Sounds.shared.buttonSound()
+        }
+
+        gameOverView.menuButtonAction = { [weak self] in
+            self?.navigationController?.popViewController(animated: false)
+            Haptics.shared.buttonHaptic()
+            Sounds.shared.buttonSound()
+        }
+    }
+    
+    func unpauseGame() {
+        pauseView.unpauseButtonAction = { [weak self] in
+            self?.pauseButton.isHidden = false
+            self?.pauseView.isHidden = true
+            self?.scene.tutorialPlayerPaused = false
+            self?.scene.tutorialObstaclesPaused = false
+            Haptics.shared.buttonHaptic()
+            Sounds.shared.buttonSound()
+            
+            UIAccessibility.post(notification: .layoutChanged, argument: self?.scoreLabel)
+        }
+    }
+    
+    func howToPlay() {
+        pauseView.howToPlayButtonAction = { [weak self] in
+            self?.pauseView.isHidden = true
+            self?.pauseButton.isHidden = true
+            self?.tutorialView.reset()
+            self?.tutorialView.isHidden = false
+            self?.scene.tutorialObstaclesPaused = false
+            self?.scene.tutorialPlayerPaused = true
+            self?.scene.isTutorial = true
+        }
+    }
+}
+
+// MARK: - Tutorial
+extension GameViewController {
+    func movePlayerTutorial() {
+        tutorialView.isUserInteractionEnabled = true
+        tutorialView.continueButton.isUserInteractionEnabled = true
+        tutorialView.movePlayer = { [weak self] location in
+            self?.scene.touchLocation = location
+            self?.scene.isTouching = true
+        }
+    }
+    
+    func stopMovePlayerTutorial() {
+        tutorialView.stopPlayer = { [weak self] in
+            self?.scene.isTouching = false
+        }
+    }
+    
+    func closeTutorial() {
+        tutorialView.closeTutorial = { [weak self] in
+            self?.tutorialView.isHidden = true
+            self?.pauseButton.isHidden = false
+            self?.scene.isTutorial = false
+            self?.scene.tutorialPlayerPaused = false
+            self?.scene.tutorialObstaclesPaused = false
+        }
+    }
+    
+    func pauseGame() {
+        tutorialView.pauseGame = { [weak self] playerPaused, obstaclesPaused  in
+            if playerPaused && obstaclesPaused {
+                self?.scene.tutorialPlayerPaused = true
+                self?.scene.tutorialObstaclesPaused = true
+            } else if playerPaused {
+                self?.scene.tutorialPlayerPaused = true
+                self?.scene.tutorialObstaclesPaused = false
+            } else if obstaclesPaused {
+                self?.scene.tutorialPlayerPaused = false
+                self?.scene.tutorialObstaclesPaused = true
+            } else {
+                self?.scene.tutorialPlayerPaused = false
+                self?.scene.tutorialObstaclesPaused = false
             }
         }
     }

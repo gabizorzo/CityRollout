@@ -13,9 +13,6 @@ protocol GameDelegate: AnyObject {
     func updateLives(lives: Int)
     func gameOver(score: Int, isNewHighScore: Bool)
     func unpauseGame()
-    func backToMenu()
-    func restartGame()
-    func rotateLabels()
 }
 
 class GameScene: SKScene {
@@ -23,8 +20,7 @@ class GameScene: SKScene {
     weak var gameDelegate: GameDelegate?
     
     // MARK: - Nodes
-    private var player = SKShapeNode(circleOfRadius: 15)
-    private var background: [SKSpriteNode] = []
+    private var player = SKSpriteNode()
     
     // MARK: - Sizes
     private let screenHeight = UIScreen.main.bounds.height
@@ -35,14 +31,19 @@ class GameScene: SKScene {
     let obstaclesCategory: UInt32 = 1 << 4
     
     // MARK: - Variables
-    private var isTouching: Bool = false
-    private var touchLocation: CGFloat = 0.0
+    public var isTouching: Bool = false
+    public var touchLocation: CGFloat = 0.0
     private var lastCurrentTimeObstacle: Double = -1
     private var lastCurrentTimeScore: Double = -1
     private var score: Int = 0
     private var lives: Int = 3
     private var gamePaused: Bool = false
     private var difficulty: SettingsDifficulty = .medium
+    private var collisionTimer = Timer()
+    
+    public var tutorialPlayerPaused: Bool = false
+    public var tutorialObstaclesPaused: Bool = false
+    public var isTutorial: Bool = false
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -77,12 +78,14 @@ class GameScene: SKScene {
     
     func createPlayer() {
         self.player.name = "Player"
-        self.player.fillColor = .green
-        self.player.strokeColor = .clear
+        let texture = SKTexture(imageNamed: "player")
+        self.player = SKSpriteNode(texture: texture)
         self.player.position = CGPoint(x: 0, y: -(screenHeight/2.5))
         self.player.zPosition = 1
+        self.player.constraints = [SKConstraint.zRotation(SKRange(constantValue: 0)),
+                                   SKConstraint.positionY(SKRange(constantValue: self.player.position.y))]
         
-        let physics = SKPhysicsBody(circleOfRadius: 15)
+        let physics = SKPhysicsBody(texture: texture, size: player.size)
         physics.isDynamic = true
         physics.affectedByGravity = false
         physics.usesPreciseCollisionDetection = true
@@ -90,23 +93,36 @@ class GameScene: SKScene {
         physics.collisionBitMask = obstaclesCategory
         physics.contactTestBitMask = obstaclesCategory
         self.player.physicsBody = physics
-        
+        self.player.yScale = -1 // to make player point up
         self.addChild(player)
     }
     
     func createObstacles() {
-        let obstacleSize = 15
-        let obstacle = SKShapeNode(rectOf: CGSize(width: obstacleSize, height: obstacleSize))
-        obstacle.name = "Obstacle"
-        obstacle.strokeColor = .clear
-        obstacle.fillColor = .red
+        var obstacle = SKSpriteNode()
         
-        let x = getPosition()
-        let obstaclePosition = CGPoint(x: x, y: screenHeight/2)
+        switch Int.random(in: 0..<3) {
+        case 0:
+            obstacle = SKSpriteNode(imageNamed: "tree")
+            break
+        case 1:
+            obstacle = SKSpriteNode(imageNamed: "rock")
+            break
+        case 2:
+            obstacle = SKSpriteNode(imageNamed: "cone")
+            break
+        default:
+            break
+        }
+        
+        let scalingFactor = 0.8 // ajuste do tamanho do obstáculo
+        obstacle.run(SKAction.scaleX(by: scalingFactor, y: scalingFactor, duration: 0))
+        obstacle.name = "Obstacle"
+        let x = getPosition(obstacleWidth: obstacle.frame.width)
+        let obstaclePosition = CGPoint(x: x, y: screenHeight/2 + obstacle.frame.height)
         obstacle.position = obstaclePosition
         obstacle.zPosition = 1
         
-        let physics = SKPhysicsBody(rectangleOf: CGSize(width: obstacleSize, height: obstacleSize))
+        let physics = SKPhysicsBody(texture: obstacle.texture!, size: obstacle.size)
         physics.isDynamic = false
         physics.affectedByGravity = false
         physics.usesPreciseCollisionDetection = true
@@ -114,6 +130,7 @@ class GameScene: SKScene {
         physics.contactTestBitMask = playerCategory
         obstacle.physicsBody = physics
         
+        if Bool.random() { obstacle.run(SKAction.scaleX(to: -scalingFactor, duration: 0)) }
         addChild(obstacle)
     }
 }
@@ -131,11 +148,17 @@ extension GameScene {
     }
     
     func movePositive() {
-        self.player.run(SKAction.move(by: CGVector(dx: 2, dy: 0), duration: 0.05))
+        let distance = 2.5
+        if !((self.player.position.x + distance) > (self.screenWidth / 2.95)) {
+            self.player.run(SKAction.move(by: CGVector(dx: distance, dy: 0), duration: 0.05))
+        }
     }
     
     func moveNegative() {
-        self.player.run(SKAction.move(by: CGVector(dx: -2, dy: 0), duration: 0.05))
+        let distance = 2.5
+        if !((self.player.position.x - distance) < (-self.screenWidth / 2.95)) {
+            self.player.run(SKAction.move(by: CGVector(dx: -distance, dy: 0), duration: 0.05))
+        }
     }
     
     func moveBackground() {
@@ -150,7 +173,7 @@ extension GameScene {
     func moveObstacles() {
         self.enumerateChildNodes(withName: "Obstacle") { node, error in
             node.position.y -= self.getSpeedMovement() // aqui que define a velocidade na qual serão movidos os obstáculos
-            if node.position.y <= -self.screenHeight/2 + 15 { // 15 é o tamanho do obstáculo, ajustar depois
+            if node.position.y <= -self.screenHeight/2 - node.frame.height {
                 node.removeFromParent()
             }
         }
@@ -163,6 +186,7 @@ extension GameScene: SKPhysicsContactDelegate {
         if (contact.bodyA.categoryBitMask == playerCategory) && (contact.bodyB.categoryBitMask == obstaclesCategory) || (
             contact.bodyA.categoryBitMask == obstaclesCategory) && (contact.bodyB.categoryBitMask == playerCategory) {
             didCollide()
+            collisionTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: {_ in})
             
             if contact.bodyA.categoryBitMask == obstaclesCategory {
                 contact.bodyA.node?.removeFromParent()
@@ -178,7 +202,7 @@ extension GameScene {
     func getSpeedMovement() -> CGFloat {
         switch difficulty {
         case .easy:
-            return 2
+            return 1.75
         case .medium:
             return 2.5
         case .hard:
@@ -186,9 +210,9 @@ extension GameScene {
         }
     }
     
-    func getPosition() -> CGFloat {
-        let min = -screenWidth/2 + 15 // 15 é o tamanho do obstáculo, ajustar depois
-        let max = screenWidth/2 - 15 // 15 é o tamanho do obstáculo, ajustar depois
+    func getPosition(obstacleWidth: Double) -> CGFloat {
+        let min = -screenWidth/2 + obstacleWidth
+        let max = screenWidth/2 - obstacleWidth
         let value = Int.random(in: Int(min)..<Int(max))
         return CGFloat(value)
     }
@@ -206,18 +230,23 @@ extension GameScene {
     }
     
     func didCollide() {
-        lives -= 1
-        print("lives: \(lives)")
-        self.gameDelegate?.updateLives(lives: lives)
-        if lives == 0 {
-            gamePaused = true
-            setHighScore()
-            
-            Haptics.shared.gameOverHaptic()
-            Sounds.shared.gameOverSound()
-        } else {
-            Haptics.shared.obstacleHaptic()
-            Sounds.shared.obstacleSound()
+        if !collisionTimer.isValid {
+            lives -= 1
+            print("lives: \(lives)")
+            if isTutorial && lives == 0 {
+                lives = 1
+            }
+            self.gameDelegate?.updateLives(lives: lives)
+            if lives == 0 {
+                gamePaused = true
+                setHighScore()
+                
+                Haptics.shared.gameOverHaptic()
+                Sounds.shared.gameOverSound()
+            } else {
+                Haptics.shared.obstacleHaptic()
+                Sounds.shared.obstacleSound()
+            }
         }
     }
 }
@@ -243,45 +272,49 @@ extension GameScene {
     override func update(_ currentTime: TimeInterval) {
         self.isPaused = gamePaused // gambiarra pra cena não voltar rodando
         
-        if lastCurrentTimeObstacle == -1 {
-            lastCurrentTimeObstacle = currentTime
-            lastCurrentTimeScore = currentTime
+        if !tutorialPlayerPaused {
+            // Player movement
+            movePlayerTouch()
         }
         
-        let deltaTimeObstacle = currentTime - lastCurrentTimeObstacle
-        let deltaTimeScore = currentTime - lastCurrentTimeScore
+        if !tutorialObstaclesPaused {
+            if lastCurrentTimeObstacle == -1 {
+                lastCurrentTimeObstacle = currentTime
+                lastCurrentTimeScore = currentTime
+            }
+            
+            let deltaTimeObstacle = currentTime - lastCurrentTimeObstacle
+            let deltaTimeScore = currentTime - lastCurrentTimeScore
         
-        // Player movement
-        movePlayerTouch()
+            var timeObstacle = Double.random(in: 1.5 ..< 4.5)
+            
+            switch difficulty {
+            case .easy:
+                timeObstacle = Double.random(in: 4 ..< 4.5)
+            case .medium:
+                timeObstacle = Double.random(in: 2.0 ..< 3.0)
+            case .hard:
+                timeObstacle = Double.random(in: 1.0 ..< 2.0)
+            }
+            
+            // Update score
+            if deltaTimeScore > 2 {
+                score += 1
+                self.gameDelegate?.updateScore(score: score)
+                lastCurrentTimeScore = currentTime
+            }
+            
+            // Generate obstacles
+            if deltaTimeObstacle > timeObstacle { // aqui que define a velocidade na qual serão gerados novos obstáculos
+                createObstacles()
+                lastCurrentTimeObstacle = currentTime
+            }
         
-        var timeObstacle = Double.random(in: 1.5 ..< 4.5)
-        
-        switch difficulty {
-        case .easy:
-            timeObstacle = Double.random(in: 3.5 ..< 4.5)
-        case .medium:
-            timeObstacle = Double.random(in: 2.0 ..< 3.0)
-        case .hard:
-            timeObstacle = Double.random(in: 1.0 ..< 2.0)
+            // Background movement
+            moveBackground()
+            
+            // Obstacles movement
+            moveObstacles()
         }
-        
-        // Update score
-        if deltaTimeScore > 2 {
-            score += 1
-            self.gameDelegate?.updateScore(score: score)
-            lastCurrentTimeScore = currentTime
-        }
-        
-        // Generate obstacles
-        if deltaTimeObstacle > timeObstacle { // aqui que define a velocidade na qual serão gerados novos obstáculos
-            createObstacles()
-            lastCurrentTimeObstacle = currentTime
-        }
-        
-        // Background movement
-        moveBackground()
-        
-        // Obstacles movement
-        moveObstacles()
     }
 }

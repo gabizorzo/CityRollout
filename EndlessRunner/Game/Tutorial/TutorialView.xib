@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TutorialView" customModule="CityRollout" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="qsc-nA-nhL" id="3rh-7i-vVR"/>
+                <outlet property="continueButton" destination="zuo-Mz-FWm" id="krM-9R-t32"/>
+                <outlet property="imageView" destination="vqP-Ps-85y" id="hyG-OY-FrI"/>
+                <outlet property="stackView" destination="ggI-Ni-MJg" id="vab-3L-vai"/>
+                <outlet property="tutorialLabel" destination="yHT-R6-2Xj" id="UvO-JC-9OQ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="qsc-nA-nhL">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vqP-Ps-85y">
+                    <rect key="frame" x="62" y="291.66666666666669" width="269" height="269.00000000000006"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="vqP-Ps-85y" secondAttribute="height" multiplier="1:1" id="i5V-3Q-8Gb"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggI-Ni-MJg">
+                    <rect key="frame" x="0.0" y="229.66666666666663" width="393" height="393"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuo-Mz-FWm">
+                            <rect key="frame" x="32" y="324.66666666666674" width="329" height="52.333333333333314"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                                <backgroundConfiguration key="background" cornerRadius="16">
+                                    <color key="backgroundColor" red="0.44032555820000002" green="0.2476132214" blue="0.92161887880000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </backgroundConfiguration>
+                                <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
+                                <directionalEdgeInsets key="contentInsets" top="16" leading="0.0" bottom="16" trailing="0.0"/>
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="continueButtonAction:" destination="-1" eventType="touchUpInside" id="2Yd-8S-xlC"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHT-R6-2Xj">
+                            <rect key="frame" x="64" y="15.999999999999998" width="265" height="20.333333333333329"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="yHT-R6-2Xj" firstAttribute="centerX" secondItem="ggI-Ni-MJg" secondAttribute="centerX" id="CFW-9W-xMr"/>
+                        <constraint firstAttribute="trailing" secondItem="zuo-Mz-FWm" secondAttribute="trailing" constant="32" id="OPc-pt-itL"/>
+                        <constraint firstAttribute="trailing" secondItem="yHT-R6-2Xj" secondAttribute="trailing" constant="64" id="YnH-pn-ysu"/>
+                        <constraint firstAttribute="bottom" secondItem="zuo-Mz-FWm" secondAttribute="bottom" constant="16" id="bYb-Ue-f2a"/>
+                        <constraint firstAttribute="width" secondItem="ggI-Ni-MJg" secondAttribute="height" multiplier="1:1" id="dwf-1e-LhD"/>
+                        <constraint firstItem="yHT-R6-2Xj" firstAttribute="top" secondItem="ggI-Ni-MJg" secondAttribute="top" constant="16" id="lSY-tD-yn8"/>
+                        <constraint firstItem="zuo-Mz-FWm" firstAttribute="leading" secondItem="ggI-Ni-MJg" secondAttribute="leading" constant="32" id="o4o-I0-AJi"/>
+                        <constraint firstItem="yHT-R6-2Xj" firstAttribute="leading" secondItem="ggI-Ni-MJg" secondAttribute="leading" constant="64" id="uQM-tw-5dJ"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHF-OR-Ntb" userLabel="Exit Button">
+                    <rect key="frame" x="315" y="16.000000000000004" width="62" height="47.333333333333343"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal">
+                        <color key="titleColor" red="0.94509803920000002" green="0.43529411759999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <imageReference key="image" image="xmark.circle.fill" catalog="system" renderingMode="original" variableValue="1"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                        </preferredSymbolConfiguration>
+                    </state>
+                    <buttonConfiguration key="configuration" style="plain">
+                        <imageReference key="image" image="xmark" catalog="system" renderingMode="template" variableValue="1"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font" weight="bold">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                        </preferredSymbolConfiguration>
+                        <color key="baseForegroundColor" red="0.94509803920000002" green="0.43529411759999997" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="closeTutorialButton:" destination="-1" eventType="touchUpInside" id="Bpb-13-6WN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="cwP-8I-OdQ"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vqP-Ps-85y" firstAttribute="centerX" secondItem="qsc-nA-nhL" secondAttribute="centerX" id="2fT-nH-EAp"/>
+                <constraint firstItem="ggI-Ni-MJg" firstAttribute="centerX" secondItem="qsc-nA-nhL" secondAttribute="centerX" id="4An-PT-8Vp"/>
+                <constraint firstItem="vqP-Ps-85y" firstAttribute="centerY" secondItem="qsc-nA-nhL" secondAttribute="centerY" id="AJ3-G0-vnQ"/>
+                <constraint firstItem="fHF-OR-Ntb" firstAttribute="top" secondItem="qsc-nA-nhL" secondAttribute="top" constant="16" id="C36-aj-qp3"/>
+                <constraint firstItem="cwP-8I-OdQ" firstAttribute="trailing" secondItem="vqP-Ps-85y" secondAttribute="trailing" constant="62" id="OGE-ga-4Y5"/>
+                <constraint firstItem="vqP-Ps-85y" firstAttribute="leading" secondItem="cwP-8I-OdQ" secondAttribute="leading" constant="62" id="euo-1B-3fQ"/>
+                <constraint firstItem="cwP-8I-OdQ" firstAttribute="trailing" secondItem="fHF-OR-Ntb" secondAttribute="trailing" constant="16" id="fvS-vj-cGT"/>
+                <constraint firstItem="ggI-Ni-MJg" firstAttribute="centerY" secondItem="qsc-nA-nhL" secondAttribute="centerY" id="srz-ro-hNU"/>
+                <constraint firstAttribute="trailing" secondItem="ggI-Ni-MJg" secondAttribute="trailing" id="xme-e1-0D8"/>
+                <constraint firstItem="ggI-Ni-MJg" firstAttribute="leading" secondItem="qsc-nA-nhL" secondAttribute="leading" id="yqA-Ds-fPZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-4148.8549618320612" y="653.52112676056345"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
+    </resources>
+</document>

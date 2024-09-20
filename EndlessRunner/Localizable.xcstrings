@@ -1,6 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "continue.tutorial" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        }
+      }
+    },
     "gameOverView.congratulations" : {
       "comment" : "This label will appear instead of \"GAME OVER\" only if player has scored a new record",
       "extractionState" : "manual",
@@ -15,6 +31,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "PARABÉNS!"
+          }
+        }
+      }
+    },
+    "gameOverView.exit" : {
+      "comment" : "Exit button text on game over view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sair"
           }
         }
       }
@@ -109,6 +143,24 @@
         }
       }
     },
+    "gameScene.life" : {
+      "comment" : "Life string used on game hud VoiceOver",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Life"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vida"
+          }
+        }
+      }
+    },
     "gameScene.lives" : {
       "comment" : "Lives label on game hud",
       "extractionState" : "manual",
@@ -127,6 +179,121 @@
         }
       }
     },
+    "label1.tutorial" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move across the city avoiding the obstacles."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mova-se pela cidade desviando dos obstáculos."
+          }
+        }
+      }
+    },
+    "label2.tutorial" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To avoid the obstacles, touch the screen."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para desviar dos obstáculos, toque na tela."
+          }
+        }
+      }
+    },
+    "label3.tutorial" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can also avoid them by moving the corner of your mouth!"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você também pode desviar mexendo o canto da sua boca!"
+          }
+        }
+      }
+    },
+    "label4.tutorial" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you hit an obstacle, you loose a life."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao colidir com um obstáculo, você perde uma vida."
+          }
+        }
+      }
+    },
+    "label5.tutorial" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The longer you play, more points you receive!"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quanto mais tempo você jogar, mais ponto você consegue!"
+          }
+        }
+      }
+    },
+    "labelTry.tutorial" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try!"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tente!"
+          }
+        }
+      }
+    },
+    "menuView.howToPlay" : {
+      "comment" : "How to play button text on main menu",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to Play"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como jogar"
+          }
+        }
+      }
+    },
     "menuView.play" : {
       "comment" : "Play button text on main menu",
       "extractionState" : "manual",
@@ -134,13 +301,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " Play!"
+            "value" : "Play"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " Jogar!"
+            "value" : "Jogar"
           }
         }
       }
@@ -188,13 +355,65 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exit"
+            "value" : "Exit game"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sair"
+            "value" : "Sair do jogo"
+          }
+        }
+      }
+    },
+    "pauseView.howToPlay" : {
+      "comment" : "How to play button text on pause view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to play"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como jogar"
+          }
+        }
+      }
+    },
+    "pauseView.unpause" : {
+      "comment" : "Resume button text on pause view",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumir"
+          }
+        }
+      }
+    },
+    "play.tutorial" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jogar"
           }
         }
       }
