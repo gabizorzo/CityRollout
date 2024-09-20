@@ -16,8 +16,6 @@ class PauseView: UIView {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var spacerView: UIView!
     
-    #warning("review constraints outlets")
-//    @IBOutlet weak var topContraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
