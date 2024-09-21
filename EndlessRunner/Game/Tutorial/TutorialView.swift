@@ -102,6 +102,9 @@ class TutorialView: UIView {
         default:
             break
         }
+        
+        UIAccessibility.post(notification: .screenChanged, argument: tutorialLabel)
+
     }
     
     private func setButtonText() {
@@ -114,6 +117,7 @@ class TutorialView: UIView {
     
     private func setImage(visible: Bool) {
         imageView.image = UIImage(named: "tutorial.arrows.png")
+        imageView.accessibilityHint = String(localized: "image.tutorial.hint")
         
         if visible {
             imageView.isHidden = false

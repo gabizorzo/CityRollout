@@ -148,16 +148,20 @@ extension GameScene {
     }
     
     func movePositive() {
-        let distance = 2.5
-        if !((self.player.position.x + distance) > (self.screenWidth / 2.95)) {
-            self.player.run(SKAction.move(by: CGVector(dx: distance, dy: 0), duration: 0.05))
+        if !tutorialPlayerPaused {
+            let distance = 2.5
+            if !((self.player.position.x + distance) > (self.screenWidth / 2.95)) {
+                self.player.run(SKAction.move(by: CGVector(dx: distance, dy: 0), duration: 0.05))
+            }
         }
     }
     
     func moveNegative() {
-        let distance = 2.5
-        if !((self.player.position.x - distance) < (-self.screenWidth / 2.95)) {
-            self.player.run(SKAction.move(by: CGVector(dx: -distance, dy: 0), duration: 0.05))
+        if !tutorialPlayerPaused {
+            let distance = 2.5
+            if !((self.player.position.x - distance) < (-self.screenWidth / 2.95)) {
+                self.player.run(SKAction.move(by: CGVector(dx: -distance, dy: 0), duration: 0.05))
+            }
         }
     }
     
@@ -277,11 +281,12 @@ extension GameScene {
             movePlayerTouch()
         }
         
+        if lastCurrentTimeObstacle == -1 {
+            lastCurrentTimeObstacle = currentTime
+            lastCurrentTimeScore = currentTime
+        }
+        
         if !tutorialObstaclesPaused {
-            if lastCurrentTimeObstacle == -1 {
-                lastCurrentTimeObstacle = currentTime
-                lastCurrentTimeScore = currentTime
-            }
             
             let deltaTimeObstacle = currentTime - lastCurrentTimeObstacle
             let deltaTimeScore = currentTime - lastCurrentTimeScore

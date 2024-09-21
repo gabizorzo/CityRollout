@@ -52,9 +52,10 @@ class GameViewController: UIViewController {
             tutorialView.isHidden = false
             scene.tutorialPlayerPaused = true
             scene.isTutorial = true
+            UIAccessibility.post(notification: .screenChanged, argument: tutorialView.tutorialLabel)
+        } else {
+            UIAccessibility.post(notification: .screenChanged, argument: scoreLabel)
         }
-        
-        UIAccessibility.post(notification: .screenChanged, argument: scoreLabel)
     }
     
     deinit {
@@ -276,6 +277,8 @@ extension GameViewController {
             self?.scene.tutorialObstaclesPaused = false
             self?.scene.tutorialPlayerPaused = true
             self?.scene.isTutorial = true
+            
+            UIAccessibility.post(notification: .screenChanged, argument: self?.tutorialView.tutorialLabel)
         }
     }
 }

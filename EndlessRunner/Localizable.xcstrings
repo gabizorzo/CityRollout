@@ -179,6 +179,23 @@
         }
       }
     },
+    "image.tutorial.hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image with a line in the middle and an arrow point to each side"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagem com uma linha no meio e uma seta para cada lado"
+          }
+        }
+      }
+    },
     "label1.tutorial" : {
       "localizations" : {
         "en" : {
