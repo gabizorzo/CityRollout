@@ -12,17 +12,9 @@ class SettingsViewModel {
     var settings: [SettingsModel]
     
     init() {
-        var statusHaptics = true
-        var statusSounds = true
-        var statusFaceMovements = false
-        
-        if !Database.shared.getFirstSettings() {
-            Database.shared.setFirstSettings()
-        } else {
-            statusHaptics = Database.shared.getSettingsStatus(for: .haptics)
-            statusSounds = Database.shared.getSettingsStatus(for: .sounds)
-            statusFaceMovements = Database.shared.getSettingsStatus(for: .faceMovements)
-        }
+        let statusHaptics = Database.shared.getSettingsStatus(for: .haptics)
+        let statusSounds = Database.shared.getSettingsStatus(for: .sounds)
+        let statusFaceMovements = Database.shared.getSettingsStatus(for: .faceMovements)
         
         let haptics: SettingsModel = SettingsModel(label: String(localized: "settingsView.haptics"), name: .haptics, active: statusHaptics)
         let sounds: SettingsModel = SettingsModel(label: String(localized: "settingsView.sounds"), name: .sounds, active: statusSounds)
