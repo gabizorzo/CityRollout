@@ -12,7 +12,7 @@ class Database {
     static var shared = Database()
     
     private let highScore: String = "highScore"
-    private let firstSettings: String = "firstSettingsSetupi"
+    private let firstSettings: String = "firstSettingsSetup"
     private let firstTutorial: String = "firstTutorial"
     
     private init() {}
