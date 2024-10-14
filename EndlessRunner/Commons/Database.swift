@@ -12,7 +12,7 @@ class Database {
     static var shared = Database()
     
     private let highScore: String = "highScore"
-    private let firstSettings: String = "firstSettings"
+    private let firstSettings: String = "firstSettingsSetup"
     private let firstTutorial: String = "firstTutorial"
     
     private init() {}
@@ -39,6 +39,10 @@ class Database {
     
     func setFirstTutorial() {
         userDefaults.setValue(true, forKey: firstTutorial)
+    }
+    
+    func setSettingsStatus(value: Bool, for setting: SettingsName){
+        userDefaults.setValue(value, forKey: setting.rawValue)
     }
     
     func toggleSettingsStatus(for setting: SettingsName){
