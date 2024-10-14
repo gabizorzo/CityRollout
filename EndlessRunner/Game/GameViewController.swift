@@ -277,6 +277,8 @@ extension GameViewController {
             self?.scene.tutorialObstaclesPaused = false
             self?.scene.tutorialPlayerPaused = true
             self?.scene.isTutorial = true
+            Haptics.shared.buttonHaptic()
+            Sounds.shared.buttonSound()
             
             UIAccessibility.post(notification: .screenChanged, argument: self?.tutorialView.tutorialLabel)
         }

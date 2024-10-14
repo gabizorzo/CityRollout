@@ -16,6 +16,8 @@ class TutorialView: UIView {
     @IBOutlet weak var imageView: UIImageView!
         
     @IBAction func closeTutorialButton(_ sender: Any) {
+        Haptics.shared.buttonHaptic()
+        Sounds.shared.buttonSound()
         closeTutorial()
     }
     
@@ -45,6 +47,8 @@ class TutorialView: UIView {
         
         setLabelText()
         setButtonText()
+        Haptics.shared.buttonHaptic()
+        Sounds.shared.buttonSound()
     }
     
     var status: Int = 1
